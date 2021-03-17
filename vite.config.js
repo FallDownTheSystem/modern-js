@@ -50,7 +50,8 @@ export default defineConfig({
 		components({
 			extensions: ['vue', 'md'],
 			customLoaderMatcher: (id) => id.endsWith('.md'),
-			customComponentResolvers: ViteIconsResolver()
+			customComponentResolvers: ViteIconsResolver(),
+			dirs: ['src/components', 'src/pages']
 		}),
 		icons()
 	]

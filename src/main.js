@@ -7,7 +7,6 @@ import App from './App.vue';
 import './styles/tailwind.css';
 import './styles/main.css';
 
-console.log(generatedRoutes);
 const routes = setupLayouts(generatedRoutes);
 console.log(routes);
 
