@@ -1,5 +1,6 @@
 ---
 title: About
+name: Yo
 ---
 
 <div>
@@ -7,6 +8,8 @@ title: About
   <i-carbon-dicom-overlay class="m-auto -mb-6 text-4xl" />
   <h1>About</h1>
 </div>
+
+<HelloWorld msg="yooo" />
 
 This is a **markdown** _test_
 
@@ -39,7 +42,7 @@ Lorem ipsum.
 
 This is totally awesome.
 
-```js {2}
+```js {3}
 // syntax highlighting example
 function vitesse() {
   const foo = 'bar'
@@ -47,7 +50,8 @@ function vitesse() {
 }
 ```
 
-```js {20}
+```js {2,6,10-14,25} ln
+// A test with multiline highlighting and line numbers
 import * as foo from '@foo/bar'
 import foo from '@foo/bar'
 import { foo } from '@foo/bar'

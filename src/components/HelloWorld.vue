@@ -1,4 +1,5 @@
 <template>
+	This is hello world
 	<div>{{ msg }}</div>
 	<div>{{ hello }}</div>
 </template>

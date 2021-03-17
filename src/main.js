@@ -4,6 +4,7 @@ import { createHead } from '@vueuse/head';
 import { setupLayouts } from 'layouts-generated';
 import generatedRoutes from 'pages-generated';
 import App from './App.vue';
+import './styles/tailwind.css';
 import './styles/main.css';
 
 console.log(generatedRoutes);

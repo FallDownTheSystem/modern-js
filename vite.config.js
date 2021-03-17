@@ -8,11 +8,11 @@ import layouts from 'vite-plugin-vue-layouts';
 import markdown from 'vite-plugin-md';
 import anchorPlugin from 'markdown-it-anchor';
 import emojiPlugin from 'markdown-it-emoji';
-import prismPlugin from 'markdown-it-prism';
-import { highlightLinesPlugin } from './src/markdown/highlight-lines';
-
+import { highlight } from './src/markdown/highlight';
+import { highlightLinePlugin } from './src/markdown/highlightLines';
+import { lineNumberPlugin } from './src/markdown/lineNumbers';
 import { containerPlugin } from './src/markdown/containers';
-import { Certificate } from 'crypto';
+import { preWrapperPlugin } from './src/markdown/preWrapper';
 
 export default defineConfig({
 	resolve: {
@@ -29,15 +29,22 @@ export default defineConfig({
 		}),
 		layouts(),
 		markdown({
-			wrapperClasses: 'prose',
+			wrapperClasses: 'prose prose-lg',
 			headEnabled: true,
-			transforms: {
-				after: (code, id) => {
-					return code.replaceAll('<code', '<code v-pre');
-				}
+			markdownItOptions: {
+				html: true,
+				linkify: true,
+				breaks: true,
+				lineNumbers: false,
+				highlight
 			},
 			markdownItSetup(md) {
-				md.use(highlightLinesPlugin).use(prismPlugin).use(containerPlugin).use(emojiPlugin).use(anchorPlugin);
+				md.use(highlightLinePlugin)
+					.use(preWrapperPlugin)
+					.use(lineNumberPlugin)
+					.use(containerPlugin)
+					.use(emojiPlugin)
+					.use(anchorPlugin);
 			}
 		}),
 		components({
