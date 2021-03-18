@@ -1,8 +1,7 @@
-<template>
-	First section
+## First section
+<div>
 	<i-heroicons-outline:emoji-happy class="w-8 h-8" />
-</template>
-
+</div>
 <script setup>
 </script>
 

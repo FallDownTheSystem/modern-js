@@ -3,13 +3,14 @@ title: About
 name: Yo
 ---
 
-<div>
-  <!-- You can use Vue components inside markdown -->
-  <i-carbon-dicom-overlay class="m-auto -mb-6 text-4xl" />
-  <h1>About</h1>
-</div>
 
-<HelloWorld msg="yooo" />
+
+<div>
+	<router-link :to="{ name: 'index' }">Home page</router-link>
+	<!-- You can use Vue components inside markdown -->
+	<i-carbon-dicom-overlay class="m-auto -mb-6 text-4xl" />
+	<h1>About</h1>
+</div>
 
 This is a **markdown** _test_
 
@@ -46,7 +47,7 @@ This is totally awesome.
 // syntax highlighting example
 function vitesse() {
   const foo = 'bar'
-  console.log(foo)
+  console.error(foo)
 }
 ```
 
@@ -102,6 +103,5 @@ export default {
   // ...
 }
 ```
-Check out the <router-link :to="{ name: 'index' }">Home page</router-link> for more details.
 
 

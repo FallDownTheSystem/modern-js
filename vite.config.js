@@ -25,7 +25,16 @@ export default defineConfig({
 			include: [/\.vue$/, /\.md$/]
 		}),
 		pages({
-			extensions: ['vue', 'md']
+			extensions: ['vue', 'md'],
+			importMode(path) {
+				// Load about page synchronously, all other pages are async.
+				const depth = path.split('/').length;
+				if (path == '/src/pages/index.vue' || depth > 4) {
+					return 'sync';
+				}
+
+				return 'async';
+			}
 		}),
 		layouts(),
 		markdown({
