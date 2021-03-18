@@ -12,6 +12,7 @@ import { highlight } from './src/markdown/highlight';
 import { highlightLinePlugin } from './src/markdown/highlightLines';
 import { lineNumberPlugin } from './src/markdown/lineNumbers';
 import { containerPlugin } from './src/markdown/containers';
+import { componentPlugin } from './src/markdown/component';
 import { preWrapperPlugin } from './src/markdown/preWrapper';
 
 export default defineConfig({
@@ -34,6 +35,16 @@ export default defineConfig({
 				}
 
 				return 'async';
+			},
+			extendRoute(route) {
+				console.log(route);
+				if (!route.name) {
+					return {
+						...route,
+						name: route.path.replace('/', '')
+					};
+				}
+				return route;
 			}
 		}),
 		layouts(),
