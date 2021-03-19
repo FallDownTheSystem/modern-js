@@ -37,7 +37,6 @@ export default defineConfig({
 				return 'async';
 			},
 			extendRoute(route) {
-				console.log(route);
 				if (!route.name) {
 					return {
 						...route,

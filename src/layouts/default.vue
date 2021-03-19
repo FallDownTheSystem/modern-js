@@ -1,6 +1,8 @@
 <template>
 	<main>
 		[Default Layout]
-		<router-view />
+		<div class="flex flex-col items-center content-center">
+			<router-view />
+		</div>
 	</main>
 </template>

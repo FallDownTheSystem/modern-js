@@ -1,2 +1,6 @@
 @import './markdown.css';
 @import './custom-block.css';
+
+:root {
+	scroll-behavior: smooth;
+}

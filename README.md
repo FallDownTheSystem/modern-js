@@ -1,7 +1,8 @@
 # Modern JavaScript
 
+## Development
 - Create the front page
-  - Navigation
+  - Header
     - Home page link </>
     - GitHub link (G)
   - Animated title
@@ -10,7 +11,24 @@
       - After the letters are typed, a yellow (JS Logo) rectangle pops up behind 'JavaScript' and the text fades to black
         - Possible to show black text on the overlayed part?
   - Navigation links
-- History of JavaScript
+    - Stacked
+    - Arrow Icon
+
+- Create article layout
+  - Header (same)
+  - Side navigation
+  - Footer (repeat of header)
+  - Experiment with smooth scrolling between sections
+  - Dynamic content buttons
+    - Counter?
+    - Animation left and right
+  - Code blocks with shadow and perspective
+    - Parallax effect
+    - Animation when it shows up?
+
+## Content
+
+### History of JavaScript
   - Origin of JavaScript, competing implementations
   - The EcmaScript specification
   - Different version of EcmaScript
@@ -21,14 +39,16 @@
     - ES6
   - Why does JavaScript suck?
     - Backwards compatibility
-- New ES features
+
+### New ES features
   - Extensions to existing types/classes
   - New types
   - Functional style
   - New syntax / language features
   - Syntactic sugar
   - New Web APIs
-- Moving on from jQuery to vanilla JS
+
+### Moving on from jQuery to vanilla JS
   - Selectors (querying elements)
   - Handling events
   - Modifying the DOM
@@ -36,12 +56,25 @@
     - Creating and inserting elements
     - Changing text content
   - AJAX
-- Modern JavaScript development (tools)
+
+### Modern JavaScript development (tools)
   - Bundlers
-    - Plugins (Other file types, CSS, etc)
+    - Extending functionality
+      - Plugins for other files types
+    - Modules
+      - History
+      - Native ES modules
+        - How Vite takes advantage of ESM
   - Package management
-  - Build scripts
-- Introduction to Vue (and JavaScript frameworks)
+    - Dependencies
+    - Node
+    - NPM
+      - Scripts
+  - Transpilers
+    - Babel
+    - TypeScript
+
+### Introduction to Vue (and JavaScript frameworks)
   - Reactive data (declarative rendering)
     - Interpolation
     - Conditionals and loops
@@ -51,18 +84,7 @@
   - Single File Components
   - Single Page Applications
     - Routing
-    - State management?
-
-
-
-- Pages
-  - History
-    - Each section is a child route
-      - Dynamic content within a section is child of the child
-        - Organize within numbered folders
-        - Get number of folders dynamically, import components dynamically?
-    - Dynamically render children
-  - Features
-  - Vanilla
-  - Tools
-  - Frameworks
+    - State management
+      - Vuex
+        - When to use
+        - Vue 3 Composition API to the rescue
