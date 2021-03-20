@@ -49,6 +49,7 @@ export default defineConfig({
 		layouts(),
 		markdown({
 			wrapperClasses: 'prose prose-lg',
+			wrapperComponent: 'Markdown',
 			headEnabled: true,
 			markdownItOptions: {
 				html: true,

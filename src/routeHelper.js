@@ -15,8 +15,8 @@ export const findChildren = (parentRoute, path) => {
 export const getChildComponents = (childRoutes) => {
 	return (childRoutes ?? []).map((x) => {
 		if (typeof x.component == 'function') {
-			return { name: x.path, component: defineAsyncComponent({ loader: x.component }) };
+			return { name: x.path, children: x.children ?? [], component: defineAsyncComponent({ loader: x.component }) };
 		}
-		return { name: x.path, component: x.component, children: x.children };
+		return { name: x.path, component: x.component, children: x.children ?? [] };
 	});
 };

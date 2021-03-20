@@ -1,7 +1,5 @@
 <template>
-	<slot>
-		<component v-bind="$attrs" :is="currentComponent.component" :children="currentComponent.children"></component>
-	</slot>
+	<component v-bind="$attrs" :is="currentComponent.component" :children="currentComponent.children"></component>
 	<div class="space-x-2">
 		<button
 			class="px-4 py-1 text-white bg-green-500 disabled:bg-gray-400"

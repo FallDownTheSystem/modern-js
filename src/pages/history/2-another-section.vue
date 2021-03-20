@@ -8,7 +8,7 @@
 import { defineProps } from 'vue'
 
 const props = defineProps({
-	children: String
+	children: Array
 });
 </script>
 

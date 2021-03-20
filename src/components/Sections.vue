@@ -21,5 +21,4 @@ const route = useRoute();
 const currentRoute = route.matched.filter((x) => x.path == route.path)[0];
 const childRoutes = props.children != null ? props.children : findChildren(currentRoute, route.path)
 const childComponents = getChildComponents(childRoutes)
-console.log(childComponents)
 </script>

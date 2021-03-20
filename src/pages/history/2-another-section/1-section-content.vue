@@ -1,6 +1,6 @@
 <template>
 	<div class="flex space-x-8 bg-blue-300">
-		<Sections class="border border-black border-dashed" :children="children" />
+		<Sections :children="children" />
 	</div>
 </template>
 
@@ -8,7 +8,7 @@
 import { defineProps } from 'vue'
 
 const props = defineProps({
-	children: String
+	children: Array
 });
 </script>
 
