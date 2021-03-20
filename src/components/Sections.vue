@@ -1,26 +1,25 @@
 <template>
 	<component
-		v-for="child in childComponents"
-		:is="child.component"
-		:key="child.name"
-		:name="child.name"
+		v-bind="$attrs"
+		v-for="cc in childComponents"
+		:is="cc.component"
+		:key="cc.name"
+		:children="cc.children"
 	></component>
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
-import { defineAsyncComponent } from 'vue'
-const routes = useRoute()
-const currentRoute = routes.matched.filter(x => x.path == routes.path)[0]
+import { defineAsyncComponent, defineProps } from 'vue'
+import { useRoute } from 'vue-router';
+import { findChildren, getChildComponents } from '../routeHelper'
 
-// Making sure :is works with sync and async components.
-const childComponents = currentRoute.children.map(x => {
-	if (typeof x.component == 'function') {
-		return { name: x.path, component: defineAsyncComponent({ loader: x.component }) }
-	}
-	return { name: x.path, component: x.component }
-})
+const props = defineProps({
+	children: Array
+});
+
+const route = useRoute();
+const currentRoute = route.matched.filter((x) => x.path == route.path)[0];
+const childRoutes = props.children != null ? props.children : findChildren(currentRoute, route.path)
+const childComponents = getChildComponents(childRoutes)
+console.log(childComponents)
 </script>
-
-<style scoped>
-</style>

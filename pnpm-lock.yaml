@@ -5,8 +5,8 @@ dependencies:
   vue: 3.0.7
   vue-router: 4.0.5_vue@3.0.7
 devDependencies:
-  '@iconify/json': 1.1.318
-  '@tailwindcss/jit': 0.1.3_postcss@8.2.8+tailwindcss@2.0.4
+  '@iconify/json': 1.1.319
+  '@tailwindcss/jit': 0.1.4_postcss@8.2.8+tailwindcss@2.0.4
   '@vitejs/plugin-vue': 1.1.5_@vue+compiler-sfc@3.0.7
   '@vue/compiler-sfc': 3.0.7_vue@3.0.7
   autoprefixer: 10.2.5_postcss@8.2.8
@@ -25,8 +25,8 @@ devDependencies:
   tailwindcss: 2.0.4_caf414ac65a978d0d57907a0ec9fb41e
   vite: 2.1.2
   vite-plugin-components: 0.8.3_vite@2.1.2
-  vite-plugin-icons: 0.3.2_ec32aa0a384b7bfeb6d61a351c2229de
-  vite-plugin-md: 0.6.1_fafbf20b1687bbd645b7e80be3fea033
+  vite-plugin-icons: 0.3.2_e20397e32bb18cf89774aa94db508490
+  vite-plugin-md: 0.6.2_fafbf20b1687bbd645b7e80be3fea033
   vite-plugin-pages: 0.7.2_vite@2.1.2+vue@3.0.7
   vite-plugin-vue-layouts: 0.2.2_vite@2.1.2
 lockfileVersion: 5.2
@@ -87,10 +87,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==
-  /@iconify/json/1.1.318:
+  /@iconify/json/1.1.319:
     dev: true
     resolution:
-      integrity: sha512-t66mtNPASeG/MQm3CWIJSr9jy8nXWNVs1L3auWc41xHqS114/dGkSlgu1LkMPUgBdyIB5AD4bjZrl50QuEf44Q==
+      integrity: sha512-wOfBhDboA08oj71+EaSyZ38q61aO9f/vShBwnuk+VPZ3CZQHPeZdmbtsYfTCutPfwp4BukYjZbL40YzBz0D4UA==
   /@nodelib/fs.scandir/2.1.4:
     dependencies:
       '@nodelib/fs.stat': 2.0.4
@@ -121,12 +121,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-czfvEdY+J2Ogfd6RUSr/ZSUmDxTujr34M++YLnp2cCPC3oJ4kFvFMaRXA6cEXKw7F1hJuapdjXRjsXIEXGgORg==
-  /@tailwindcss/jit/0.1.3_postcss@8.2.8+tailwindcss@2.0.4:
+  /@tailwindcss/jit/0.1.4_postcss@8.2.8+tailwindcss@2.0.4:
     dependencies:
       chokidar: 3.5.1
       dlv: 1.1.3
       fast-glob: 3.2.5
       lodash.topath: 4.5.2
+      normalize-path: 3.0.0
       object-hash: 2.1.1
       postcss: 8.2.8
       postcss-selector-parser: 6.0.4
@@ -137,7 +138,7 @@ packages:
       postcss: ^8.2.6
       tailwindcss: ^2.0.3
     resolution:
-      integrity: sha512-7VAvHKNLJxbGWRKxo2Z+beiodag7vWPx8b/+Egd5fve4zFihsngeNt6RwQFnll+almjppRYefRC5Py5v5K+6vg==
+      integrity: sha512-4IGNNBR00dvZ79iQiXNwNWj5UX9lzXW6UWg6eg42rbSox/UlO7sLwyl0tBuaHa32zWAguHfmF1Yptn1y6iF4AQ==
   /@tailwindcss/typography/0.4.0_tailwindcss@2.0.4:
     dependencies:
       lodash.castarray: 4.4.0
@@ -273,7 +274,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
-  /ajv/7.2.1:
+  /ajv/7.2.3:
     dependencies:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
@@ -281,7 +282,7 @@ packages:
       uri-js: 4.4.1
     dev: true
     resolution:
-      integrity: sha512-+nu0HDv7kNSOua9apAVc979qd932rrZeb3WOvoiD31A/p1mIE5/9bN2027pE2rOPYEdS3UHzsvof4hY+lM9/WQ==
+      integrity: sha512-idv5WZvKVXDqKralOImQgPM9v6WOdLNa0IY3B3doOjw/YxRGT8I+allIJ6kd7Uaj+SF1xZUSU+nPM5aDNBVtnw==
   /ansi-colors/4.1.1:
     dev: true
     engines:
@@ -407,7 +408,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001203
       colorette: 1.2.2
-      electron-to-chromium: 1.3.692
+      electron-to-chromium: 1.3.693
       escalade: 3.1.1
       node-releases: 1.1.71
     dev: true
@@ -671,10 +672,10 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==
-  /electron-to-chromium/1.3.692:
+  /electron-to-chromium/1.3.693:
     dev: true
     resolution:
-      integrity: sha512-Ix+zDUAXWZuUzqKdhkgN5dP7ZM+IwMG4yAGFGDLpGJP/3vNEEwuHG1LIhtXUfW0FFV0j38t5PUv2n/3MFSRviQ==
+      integrity: sha512-vUdsE8yyeu30RecppQtI+XTz2++LWLVEIYmzeCaCRLSdtKZ2eXqdJcrs85KwLiPOPVc6PELgWyXBsfqIvzGZag==
   /emoji-regex/8.0.0:
     dev: true
     resolution:
@@ -1931,7 +1932,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
-  /rollup/2.42.0:
+  /rollup/2.42.1:
     dev: true
     engines:
       node: '>=10.0.0'
@@ -1939,7 +1940,7 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     resolution:
-      integrity: sha512-P9bJnaZ2P0hawoJo+Jto8YZZqil9URogNVE4KJeyj6wrUSDIbdMvmj7CsyEFwdXu/I5SiWEzB1hfmLeMldH6ww==
+      integrity: sha512-/y7M2ULg06JOXmMpPzhTeQroJSchy8lX8q6qrjqil0jmLz6ejCWbQzVnWTsdmMQRhfU0QcwtiW8iZlmrGXWV4g==
   /run-parallel/1.2.0:
     dependencies:
       queue-microtask: 1.2.2
@@ -2086,7 +2087,7 @@ packages:
       integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   /table/6.0.7:
     dependencies:
-      ajv: 7.2.1
+      ajv: 7.2.3
       lodash: 4.17.21
       slice-ansi: 4.0.0
       string-width: 4.2.2
@@ -2219,9 +2220,9 @@ packages:
       vite: ^2.0.0-beta.69
     resolution:
       integrity: sha512-wqKt3DU7RzWJvE46qbZsi9E6TCaUwkOQZfRSDnRndKel72psJae02nD+qu/ObkRduqK9kdeGmAOcZw1qUkNUrg==
-  /vite-plugin-icons/0.3.2_ec32aa0a384b7bfeb6d61a351c2229de:
+  /vite-plugin-icons/0.3.2_e20397e32bb18cf89774aa94db508490:
     dependencies:
-      '@iconify/json': 1.1.318
+      '@iconify/json': 1.1.319
       '@iconify/json-tools': 1.0.10
       '@vue/compiler-sfc': 3.0.7_vue@3.0.7
       vue-template-es2015-compiler: 1.9.1
@@ -2232,7 +2233,7 @@ packages:
       vue-template-compiler: ^2.6.12
     resolution:
       integrity: sha512-6HDBO6aqJLaJ8lkT9FChAUtniRRzhDWbhNzJLfT7QdDcQ2kaapReksngNEA1+tNlFd5Auey4VGS2VjI3V1KkvA==
-  /vite-plugin-md/0.6.1_fafbf20b1687bbd645b7e80be3fea033:
+  /vite-plugin-md/0.6.2_fafbf20b1687bbd645b7e80be3fea033:
     dependencies:
       '@vue/compiler-sfc': 3.0.7_vue@3.0.7
       gray-matter: 4.0.2
@@ -2243,7 +2244,7 @@ packages:
       '@vue/compiler-sfc': ^3.0.5
       vite: ^2.0.0-beta.1
     resolution:
-      integrity: sha512-dJ06wlic1Gprb+PLpTpwkoufm+/5wtBUwSIMvMa9mql34eqY+DZpOdz7s2FpdRAe/6XSRFH4oHVp0xfUnZp52Q==
+      integrity: sha512-4Imnqh/fHklvigz5MMt8WiwLwAmcD7aM8R6S7LeFrBF3TbfVhQ88EDTXvfarqCVQNx/Tt5rKdjrfYBZlt/E6hA==
   /vite-plugin-pages/0.7.2_vite@2.1.2+vue@3.0.7:
     dependencies:
       '@vue/compiler-sfc': 3.0.7_vue@3.0.7
@@ -2282,7 +2283,7 @@ packages:
       esbuild: 0.9.5
       postcss: 8.2.8
       resolve: 1.20.0
-      rollup: 2.42.0
+      rollup: 2.42.1
     dev: true
     engines:
       node: '>=12.0.0'
@@ -2398,9 +2399,9 @@ packages:
     resolution:
       integrity: sha512-MoQoNhTFI400tkaeod+X0Vety1KD2L9dUa6pa1CVcyfcATjC/iDxoMLvqZ6U3D8c5KzxBrU2HnJH+PfaXOqI7w==
 specifiers:
-  '@iconify/json': ^1.1.318
+  '@iconify/json': ^1.1.319
   '@tailwindcss/forms': ^0.2.1
-  '@tailwindcss/jit': ^0.1.3
+  '@tailwindcss/jit': ^0.1.4
   '@tailwindcss/typography': ^0.4.0
   '@vitejs/plugin-vue': ^1.1.5
   '@vue/compiler-sfc': ^3.0.7
@@ -2422,7 +2423,7 @@ specifiers:
   vite: ^2.1.2
   vite-plugin-components: ^0.8.3
   vite-plugin-icons: ^0.3.2
-  vite-plugin-md: ^0.6.1
+  vite-plugin-md: ^0.6.2
   vite-plugin-pages: ^0.7.2
   vite-plugin-vue-layouts: ^0.2.2
   vue: ^3.0.7

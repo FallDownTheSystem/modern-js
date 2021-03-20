@@ -1,6 +1,6 @@
 <template>
-	<div class="flex space-x-8 bg-blue-300">
-		<Sections class="border border-black border-dashed" :children="children" />
+	<div class="w-full bg-red-200 bg-opacity-75">
+		<Slide :children="children" />
 	</div>
 </template>
 
