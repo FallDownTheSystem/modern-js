@@ -5,5 +5,4 @@
 			<router-view />
 		</div>
 	</main>
-	<SiteFooter />
 </template>

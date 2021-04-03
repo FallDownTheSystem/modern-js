@@ -4,3 +4,33 @@
 :root {
 	scroll-behavior: smooth;
 }
+
+.post__layout {
+	display: grid;
+	grid-template-columns: 1fr 16rem 2rem 19rem 2rem 19rem 2rem 16rem 1fr;
+	width: 100%;
+}
+
+.post__layout > * {
+	grid-column: 4 / span 3;
+}
+
+html {
+	--scrollbar: theme('colors.gray.900');
+	--thumb: theme('colors.gray.700');
+}
+body::-webkit-scrollbar {
+	width: 11px;
+}
+body {
+	scrollbar-width: thin;
+	scrollbar-color: var(--thumb) var(--scrollbar);
+}
+body::-webkit-scrollbar-track {
+	background: var(--scrollbar);
+}
+body::-webkit-scrollbar-thumb {
+	background-color: var(--thumb);
+	border-radius: 6px;
+	border: 3px solid var(--scrollbar);
+}

@@ -48,12 +48,12 @@ export default defineConfig({
 		}),
 		layouts(),
 		markdown({
-			wrapperClasses: 'prose prose-lg',
+			wrapperClasses: 'post__layout prose prose-lg',
 			wrapperComponent: 'Markdown',
 			headEnabled: true,
 			markdownItOptions: {
 				html: true,
-				linkify: true,
+				linkify: false,
 				breaks: true,
 				lineNumbers: false,
 				highlight

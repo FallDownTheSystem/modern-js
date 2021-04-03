@@ -1,5 +1,5 @@
 <template>
-	<slot :children="children" :frontmatter="frontmatter"></slot>
+	<slot :children="children" :frontmatter="frontmatter" v-bind="$attrs"></slot>
 </template>
 
 <script setup>
