@@ -2,7 +2,7 @@
 
 ## Development
 
-### Class custom container
+### Class container
 - Create a custom container that adds all classes given as argument(s) to a container
 - Classes:
   - Widths
@@ -20,7 +20,7 @@
     - danger
 - How does this work with chain?
 
-### Chain custom container
+### Chain container
 - Chains all the arguments as multiple wrapping containers
 
 ### Read more component

@@ -20,7 +20,7 @@ function createContainer(name) {
 				if (token.nesting === 1) {
 					// Explicitly escape Vue syntax
 					return `<div ${pre ? 'v-pre' : ''} class="${name} custom-block">
-						<p class="custom-block-title">${info || defaultTitle}</p>
+						<p class="custom-block-title">${info}</p>
 						`;
 				} else {
 					return `</div>\n`;
