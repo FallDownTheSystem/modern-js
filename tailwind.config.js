@@ -102,9 +102,9 @@ module.exports = {
 							blockquote: {
 								fontWeight: '500',
 								fontStyle: 'italic',
-								color: theme('colors.gray.100', defaultTheme.colors.gray[100]),
+								color: theme('colors.gray.200', defaultTheme.colors.gray[200]),
 								borderLeftWidth: '0.25rem',
-								borderLeftColor: theme('colors.gray.800', defaultTheme.colors.gray[800]),
+								borderLeftColor: theme('colors.gray.700', defaultTheme.colors.gray[700]),
 								quotes: '"\\201C""\\201D""\\2018""\\2019"'
 							},
 							'blockquote p:first-of-type::before': {
@@ -130,7 +130,7 @@ module.exports = {
 								fontWeight: '600'
 							},
 							'figure figcaption': {
-								color: theme('colors.gray.500', defaultTheme.colors.gray[500])
+								color: theme('colors.gray.400', defaultTheme.colors.gray[400])
 							},
 							code: {
 								color: theme('colors.gray.100', defaultTheme.colors.gray[100]),

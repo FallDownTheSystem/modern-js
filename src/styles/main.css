@@ -5,16 +5,71 @@
 	scroll-behavior: smooth;
 }
 
+/* Grid layout */
 .post__layout {
 	display: grid;
-	grid-template-columns: 1fr 16rem 2rem 19rem 2rem 19rem 2rem 16rem 1fr;
+	grid-template-columns: 1fr 2rem 14rem 2rem 19rem 2rem 19rem 2rem 14rem 2rem 1fr;
 	width: 100%;
 }
 
 .post__layout > * {
-	grid-column: 4 / span 3;
+	grid-column: 5 / span 3;
 }
 
+.default {
+	grid-column: 5 / span 3 !important;
+}
+
+.box {
+	grid-column: 4 / span 5 !important;
+}
+
+.wide {
+	grid-column: 3 / span 7 !important;
+}
+
+.wide-box {
+	grid-column: 2 / span 9 !important;
+}
+
+.center-child > *:first-of-type {
+	margin-left: auto !important;
+	margin-right: auto !important;
+	width: max-content !important;
+}
+
+.center-children > * {
+	margin-left: auto !important;
+	margin-right: auto !important;
+	width: max-content !important;
+}
+
+/* Containers */
+
+.aside {
+	@apply rounded-xl bg-gray-800 p-8;
+}
+
+/* Two column layout */
+
+.two-col {
+	display: grid;
+	grid-template-columns: 1fr 2rem 1fr;
+}
+
+.two-col > *:first-of-type {
+	grid-column: 1;
+}
+
+.two-col > *:last-of-type {
+	grid-column: 3;
+}
+
+.two-col h2 {
+	margin-top: 0 !important;
+}
+
+/* Scroll bar */
 html {
 	--scrollbar: theme('colors.gray.900');
 	--thumb: theme('colors.gray.700');

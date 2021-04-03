@@ -28,7 +28,7 @@ export default {
 
 <style>
 .title {
-	grid-column: 2 / span 7 !important;
+	grid-column: 2 / span 9 !important;
 }
 .title .title__header {
 	margin-bottom: 4rem !important;

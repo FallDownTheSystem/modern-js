@@ -7,7 +7,7 @@ title: About
 <route>
 {
 	meta: {
-		title: "Introduction to Vue",
+		title: "An Introduction to Vue",
 		description: "A short introduction to JavaScript frameworks",
 		order: 50,
 	}
@@ -34,6 +34,8 @@ The `@tailwindcss/typography` plugin is our attempt to give you what you _actual
 
 It adds a new `prose` class that you can slap on any block of vanilla HTML content and turn it into a beautiful, well-formatted document:
 
+<div class="wide center-child">
+
 ```html
 <article class="prose">
   <h1>Garlic bread with cheese: What the science tells us</h1>
@@ -49,6 +51,8 @@ It adds a new `prose` class that you can slap on any block of vanilla HTML conte
   <!-- ... -->
 </article>
 ```
+
+</div>
 
 For more information about how to use the plugin and the features it includes, [read the documentation](https://github.com/tailwindcss/typography/blob/master/README.md).
 

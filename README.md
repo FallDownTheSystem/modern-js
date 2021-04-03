@@ -2,48 +2,47 @@
 
 ## Development
 
-**Home page navigation links**
-- Stacked
-- Arrow Icon
-- How to order, based on date?
+### Class custom container
+- Create a custom container that adds all classes given as argument(s) to a container
+- Classes:
+  - Widths
+    - default
+    - box
+    - wide
+    - wide-box
+  - Layouts
+    - two-col
+  - Boxes
+    - aside
+    - tip
+    - info
+    - warning
+    - danger
+- How does this work with chain?
 
-**Width custom container**
-- Add gutters for wide grid layout as well
-- Create generic classes for the 4 layout widths
-  - Default
-  - Box
-  - Wide
-  - WideBox
+### Chain custom container
+- Chains all the arguments as multiple wrapping containers
 
-**Aside custom container**
-- Create a custom container that adds the gray background box
+### Read more component
+- Custom container
 
-**Info custom container**
-- Read more functionality
-
-**Warning container**
-
-**Danger container**
-
-**SideBySide custom container**
-
-**Slide component**
+### Slide component
 - Each direct child with a 'slide' class are programmatically hidden, except the first
 - Show number of slides in the top right corner, absolute position, relative parent
 - Add left and right buttons, bottom left
 - Custom container
 
-**Post side navigation**
+### Post side navigation
 - Live update position
 - TWUI, for example
 
-**Section mechanic**
+### Section mechanic
 - Smooth scroll (JS)
 - Automatic links to all headings (see VitePress for example)
 - Jump to the next heading or slide
 - If the distance from the current position to the next jump is longer than 100vh, then jump distance / 100vh intervals (maybe a little less than 100vh)
 
-**404 layout**
+### 404 layout**
 
 ## Content
 

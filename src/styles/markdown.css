@@ -20,7 +20,7 @@ div[class*='language-'] {
 	@apply shadow-xl;
 }
 
-.bg-gray-800 div[class*='language-'] {
+.aside div[class*='language-'] {
 	background-color: theme('colors.gray.700');
 }
 
@@ -86,7 +86,7 @@ li > div[class*='language-'] {
 	overflow: hidden;
 }
 
-.bg-gray-800 .highlight-lines .highlighted {
+.aside .highlight-lines .highlighted {
 	background-color: hsla(0, 0%, 0%, 0.45);
 }
 

@@ -30,9 +30,9 @@
 					<h2
 						class="text-3xl font-serif font-bold tracking-wide mb-2"
 					>{{ link?.meta?.title ?? link.name }}</h2>
-					<p class="italic text-gray-200">{{ link?.meta?.description }}</p>
+					<p class="italic text-gray-300">{{ link?.meta?.description }}</p>
 				</div>
-				<i-heroicons-outline:arrow-right class="w-8 h-8 group-hover:text-gray-300 text-gray-700" />
+				<i-heroicons-outline:arrow-right class="w-8 h-8 group-hover:text-gray-300 text-gray-600" />
 			</div>
 		</router-link>
 	</div>
