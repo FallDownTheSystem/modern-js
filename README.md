@@ -18,10 +18,6 @@
     - info
     - warning
     - danger
-- How does this work with chain?
-
-### Chain container
-- Chains all the arguments as multiple wrapping containers
 
 ### Read more component
 - Custom container

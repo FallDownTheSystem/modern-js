@@ -17,6 +17,51 @@ title: About
 
 <Title title="This a test page with a long title" description="This is a test description" />
 
+
+:::: c tip mb-2
+
+This is a container
+
+{{ frontmatter.description }}
+
+::: c box aside mb-2 v-pre
+
+This is a container
+
+{{ frontmatter.description }}
+
+:::
+
+::::
+
+
+:::: c wide-box two-col aside
+
+::: c
+
+## First half
+Ni hao
+
+:::
+
+::: c
+
+## Second half
+Arigato gozaimasu
+
+:::
+
+::::
+
+
+::: c tip slides
+
+Whats up
+
+:::
+
+
+
 <p class="lead">
 Until now, trying to style an article, document, or blog post with Tailwind has been a tedious
 task that required a keen eye for typography and a lot of complex custom CSS.
@@ -228,22 +273,7 @@ What I've written here is probably long enough, but adding this final sentence c
 😆
 🤗🤩🥰🚀
 
-:::: tip
 
-This is a tip
-{{ frontmatter.title }}
-
-::: tip v-pre
-This is a tip inside a tip without vue syntax
-{{ frontmatter.description }}
-:::
-
-::: tip v-pre
-This is a tip inside a tip without vue syntax
-{{ frontmatter.description }}
-:::
-
-::::
 
 
 ## Code examples!

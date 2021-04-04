@@ -7,3 +7,6 @@
 	</main>
 	<SiteFooter />
 </template>
+
+<script setup>
+</script>
