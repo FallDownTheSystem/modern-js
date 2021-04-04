@@ -59,7 +59,7 @@ function createContainer(name) {
 				// Remove the container class and v-pre from the info
 				if (nesting === 1) {
 					tags.push(tag);
-					return `<${tag}${pre ? ' v-pre' : ''} v-bind='${JSON.stringify(props)}' class="custom-block ${classes.join(' ')}">
+					return `<${tag}${pre ? ' v-pre' : ''} v-bind='${JSON.stringify(props)}' class="${classes.join(' ')}">
 					${content}`;
 				} else {
 					return `</${tags.pop()}>`;

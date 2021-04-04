@@ -13,7 +13,7 @@
 		enter-to-class="opacity-100 translate-y-0"
 	>
 		<div v-if="open" class="transition-all duration-300 transform">
-			<slot></slot>
+			<slot v-bind="$attrs"></slot>
 		</div>
 	</transition>
 </template>

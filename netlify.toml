@@ -2,8 +2,8 @@
 NODE_VERSION = "15"
 
 [build]
-publish = "dist"
-command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
+publish = "dist/"
+command = "npm run build"
 
 [[redirects]]
 from = "/*"
