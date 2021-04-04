@@ -43,7 +43,7 @@ function createContainer(name) {
 						case 'warn':
 						case 'tip': {
 							tag = 'Alert';
-							if (args.length > 1) {
+							if (args.length > 0) {
 								props.title = args.pop();
 							}
 							props.type = arg;

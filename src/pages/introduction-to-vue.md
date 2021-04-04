@@ -91,25 +91,25 @@ Slide 3
 Hello!
 :::
 
-::: c box warn "Hello" mb-8
-Hello!
+::: c box mb-8 warn "Warning"
+Hello without a title :(
 :::
 
-::: c box tip "Hello" mb-8
-Hello!
-:::
-
-
-::: c box info "Hello" mb-8
-Hello!
+::: c box tip Hello mb-8
+Hello without quotes!
 :::
 
 
-::: c box note "Hello" mb-8
-Hello!
+::: c box info "Hello again" mb-8
+Hello with double quotes!
 :::
 
-:::: c box danger "Hello" mb-8
+
+::: c box note 'Hello in single quotes' mb-8
+Hello?
+:::
+
+:::: c box danger "Hello with a read more" mb-8
 By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you really are just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
 
 ::: c more

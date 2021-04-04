@@ -1,5 +1,8 @@
 <template>
-	<div ref="root">
+	<div ref="root" class="relative">
+		<div
+			class="absolute right-8 top-4 text-sm text-gray-500"
+		>{{ slideIndex + 1 }} / {{ slides.length }}</div>
 		<slot></slot>
 		<div class="flex justify-between items-center content-center mb-2">
 			<button
