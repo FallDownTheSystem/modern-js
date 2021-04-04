@@ -18,48 +18,53 @@ title: About
 <Title title="This a test page with a long title" description="This is a test description" />
 
 
-:::: c tip mb-2
+:::: c wide-box aside slides mb-16
 
-This is a container
+This a slides component example
 
-{{ frontmatter.description }}
+::: c slide
+Slide 1
+:::
 
-::: c box aside mb-2 v-pre
+::: c slide
+Slide 2
+:::
 
-This is a container
-
-{{ frontmatter.description }}
-
+::: c slide
+Slide 3
 :::
 
 ::::
 
-
-:::: c wide-box two-col aside
-
-::: c
-
-## First half
-Ni hao
-
+::: c box aside mb-8
+Hello!
 :::
 
-::: c
-
-## Second half
-Arigato gozaimasu
-
+::: c box warn "Hello" mb-8
+Hello!
 :::
 
+::: c box tip "Hello" mb-8
+Hello!
+:::
+
+
+::: c box info "Hello" mb-8
+Hello!
+:::
+
+
+::: c box note "Hello" mb-8
+Hello!
+:::
+
+:::: c box danger "Hello" mb-8
+By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you really are just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+
+::: c more
+By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you really are just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+:::
 ::::
-
-
-::: c tip slides
-
-Whats up
-
-:::
-
 
 
 <p class="lead">

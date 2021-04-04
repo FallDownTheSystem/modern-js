@@ -1,15 +1,23 @@
 <template>
-	<div class="bg-blue-900">
-		I'm a slide component
+	<div>
 		<slot></slot>
 	</div>
 </template>
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { defineProps, computed } from 'vue'
+import { computed, onMounted } from 'vue'
 
 ref: slideIndex = 0;
+
+let slides = [];
+
+onMounted(() => {
+	slides = [...document.getElementsByClassName('slide')];
+	for (const slide of slides) {
+		slide.style.backgroundColor = 'red';
+	}
+})
 
 // const start = computed(() => slideIndex == 0);
 // const end = computed(() => slideIndex == childComponents.length - 1);

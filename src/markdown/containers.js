@@ -4,8 +4,7 @@ export const containerPlugin = (md) => {
 	md.use(...createContainer('c'));
 };
 
-let closingTags = [];
-let lastOpened = 0;
+let tags = [];
 
 function createContainer(name) {
 	return [
@@ -16,15 +15,15 @@ function createContainer(name) {
 				const { info, nesting } = tokens[idx];
 				const re = /("[^"\\]*(?:\\[\S\s][^"\\]*)*"|'[^'\\]*(?:\\[\S\s][^'\\]*)*'|\/[^\/\\]*(?:\\[\S\s][^\/\\]*)*\/[gimy]*(?=\s|$)|(?:\\\s|\S)+)/g;
 				// Take everything except the name of the container and reverse it to treat it as a stack
-				const args = [...info.trim().slice(name.length).trim().matchAll(re)].map((x) => x[0]).reverse();
+				const args = [...info.trim().slice(name.length).trim().matchAll(re)]
+					.map((x) => x[0].replaceAll(/^['"]|['"]$/g, ''))
+					.reverse();
 				// Explicitly escape Vue syntax
 				let pre = false;
 				let classes = [];
-				let openingTags = [];
-
-				if (nesting === 1) {
-					lastOpened = 1;
-				}
+				let content = '';
+				let props = {};
+				let tag = 'div';
 
 				while (args.length > 0) {
 					const arg = args.pop();
@@ -33,10 +32,24 @@ function createContainer(name) {
 							pre = true;
 							break;
 						case 'slides':
-							openingTags.push(`<Slides>`);
-							lastOpened++;
-							closingTags.push(`</Slides>`);
+							tag = 'Slides';
 							break;
+						case 'more':
+							tag = 'More';
+							break;
+						case 'info':
+						case 'note':
+						case 'danger':
+						case 'warn':
+						case 'tip': {
+							tag = 'Alert';
+							if (args.length > 1) {
+								props.title = args.pop();
+							}
+							props.type = arg;
+							classes.push(arg);
+							break;
+						}
 						default:
 							classes.push(arg);
 							break;
@@ -44,13 +57,13 @@ function createContainer(name) {
 				}
 
 				// Remove the container class and v-pre from the info
+				console.log(tag, info, nesting);
 				if (nesting === 1) {
-					// The default wrapper
-					openingTags.unshift(`<div${pre ? ' v-pre' : ''} class="custom-block ${classes.join(' ')}">`);
-					closingTags.unshift(`</div>`);
-					return openingTags.join('\n');
+					tags.push(tag);
+					return `<${tag}${pre ? ' v-pre' : ''} v-bind='${JSON.stringify(props)}' class="custom-block ${classes.join(' ')}">
+					${content}`;
 				} else {
-					return closingTags.splice(0, lastOpened).reverse().join('\n');
+					return `</${tags.pop()}>`;
 				}
 			}
 		}

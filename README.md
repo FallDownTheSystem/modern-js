@@ -2,39 +2,23 @@
 
 ## Development
 
-### Class container
-- Create a custom container that adds all classes given as argument(s) to a container
-- Classes:
-  - Widths
-    - default
-    - box
-    - wide
-    - wide-box
-  - Layouts
-    - two-col
-  - Boxes
-    - aside
-    - tip
-    - info
-    - warning
-    - danger
-
-### Read more component
-- Custom container
+- Style links
+  - Alert links as well
+- Add css nesting
 
 ### Slide component
 - Each direct child with a 'slide' class are programmatically hidden, except the first
 - Show number of slides in the top right corner, absolute position, relative parent
 - Add left and right buttons, bottom left
-- Custom container
 
 ### Post side navigation
+- Automatic links to all headings (see VitePress for example)
 - Live update position
-- TWUI, for example
+  - Intersection observer?
+- Automatically generated from h2 tags?
 
 ### Section mechanic
 - Smooth scroll (JS)
-- Automatic links to all headings (see VitePress for example)
 - Jump to the next heading or slide
 - If the distance from the current position to the next jump is longer than 100vh, then jump distance / 100vh intervals (maybe a little less than 100vh)
 

@@ -1,69 +1,64 @@
-.custom-block.tip,
-.custom-block.warning,
-.custom-block.danger {
-	margin: 1rem 0;
-	border-left: 0.5rem solid;
-	padding: 0.1rem 1.5rem;
+.aside {
+	@apply rounded-xl bg-gray-800 p-8 pb-2 text-gray-100;
 }
 
-.custom-block.tip {
-	@apply bg-green-900 bg-opacity-25;
-	border-color: #42b983;
+.aside h2:first-of-type,
+.aside p:first-of-type {
+	margin-top: 0 !important;
 }
 
-.custom-block.warning {
-	border-color: #e7c000;
-	color: #6b5900;
-	background-color: rgba(255, 229, 100, 0.3);
+.tip,
+.info,
+.note,
+.warn,
+.danger {
+	@apply rounded-xl pl-5 pr-8 pt-4 text-gray-100 border-l-[0.75rem];
 }
 
-.custom-block.warning .custom-block-title {
-	color: #b29400;
+.tip svg,
+.info svg,
+.note svg,
+.warn svg,
+.danger svg {
+	@apply -mr-4;
 }
 
-.custom-block.warning a {
-	color: var(--c-text);
+.tip {
+	@apply bg-emerald-800 border-emerald-600 bg-opacity-25;
 }
 
-.custom-block.danger {
-	border-color: #c00;
-	color: #4d0000;
-	background-color: theme('colors.red.900');
+.info {
+	@apply bg-blue-800 border-blue-600 bg-opacity-25;
 }
 
-.custom-block.danger .custom-block-title {
-	color: #900;
+.note {
+	@apply bg-purple-800 border-purple-600 bg-opacity-25;
 }
 
-.custom-block.danger a {
-	color: var(--c-text);
+.warn {
+	@apply bg-yellow-800 border-yellow-600 bg-opacity-25;
 }
 
-.custom-block.details {
-	position: relative;
-	display: block;
-	border-radius: 2px;
-	margin: 1.6em 0;
-	padding: 1.6em;
-	background-color: #eee;
+.danger {
+	@apply bg-rose-800 border-rose-600 bg-opacity-25;
 }
 
-.custom-block.details h4 {
-	margin-top: 0;
+.tip a {
+	@apply text-emerald-600;
 }
 
-.custom-block.details figure:last-child,
-.custom-block.details p:last-child {
-	margin-bottom: 0;
-	padding-bottom: 0;
+.info a {
+	@apply text-blue-600;
 }
 
-.custom-block.details summary {
-	outline: none;
-	cursor: pointer;
+.note a {
+	@apply text-purple-600;
 }
 
-.custom-block-title {
-	margin-bottom: -0.4rem;
-	font-weight: 600;
+.warn a {
+	@apply text-yellow-600;
+}
+
+.danger a {
+	@apply text-rose-600;
 }
