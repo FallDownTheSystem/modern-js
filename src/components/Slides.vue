@@ -1,11 +1,11 @@
 <template>
-	<div>
+	<div ref="root">
 		<slot></slot>
 		<div class="flex justify-between items-center content-center mb-2">
 			<button
 				type="button"
 				@click="back"
-				class="p-1 hover:shadow-md transition-all duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded disabled:"
+				class="p-1 hover:shadow-md transition-shadow duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded disabled:"
 				:disabled="slideIndex === 0"
 			>
 				<svg
@@ -23,7 +23,7 @@
 			</button>
 			<button
 				type="button"
-				class="p-1 hover:shadow-md transition-all duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded"
+				class="p-1 hover:shadow-md transition-shadow duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded"
 				@click="forward"
 				:disabled="slideIndex === slides.length - 1"
 			>
@@ -46,18 +46,18 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
 ref: slideIndex = 0;
 
 ref: slides = [];
 
-
+const root = ref(null);
 
 onMounted(() => {
-	slides = [...document.getElementsByClassName('slide')];
+	slides = [...root.value.querySelectorAll('.slide')];
 	for (const slide of slides.slice(1)) {
-		slide.classList.toggle('hidden');
+		slide.classList.toggle('!hidden');
 	}
 })
 
@@ -65,17 +65,17 @@ onMounted(() => {
 
 const forward = () => {
 	if (slideIndex < slides.length - 1) {
-		slides[slideIndex].classList.toggle('hidden');
+		slides[slideIndex].classList.toggle('!hidden');
 		slideIndex++
-		slides[slideIndex].classList.toggle('hidden');
+		slides[slideIndex].classList.toggle('!hidden');
 	}
 }
 
 const back = () => {
 	if (slideIndex > 0) {
-		slides[slideIndex].classList.toggle('hidden');
+		slides[slideIndex].classList.toggle('!hidden');
 		slideIndex--
-		slides[slideIndex].classList.toggle('hidden');
+		slides[slideIndex].classList.toggle('!hidden');
 	}
 }
 </script>

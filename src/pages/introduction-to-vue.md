@@ -17,8 +17,59 @@ title: About
 
 <Title title="This a test page with a long title" description="This is a test description" />
 
+::::: c slides aside mb-8 wide-box
 
-:::: c wide-box aside slides mb-16
+:::: c two-col slide
+::: c
+## Side by Side
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus egestas sed sed risus pretium quam vulputate dignissim. Id volutpat lacus laoreet non curabitur gravida. Molestie a iaculis at erat. Pulvinar mattis nunc sed blandit libero volutpat sed cras ornare. Semper quis lectus nulla at volutpat diam. Mi tempus imperdiet nulla malesuada pellentesque elit.
+:::
+::: c
+## Hello
+
+```js {4} ln
+export default {
+	data () {
+		return {
+			msg: 'Highlighted!'
+		}
+	}
+}
+```
+:::
+::::
+
+:::: c two-col slide
+::: c
+## Side by Side
+
+Vel facilisis volutpat est velit egestas dui id ornare arcu. Tortor at risus viverra adipiscing at in tellus integer. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Sapien et ligula ullamcorper malesuada. Dui ut ornare lectus sit amet est. Porttitor lacus luctus accumsan tortor posuere ac ut consequat. In hendrerit gravida rutrum quisque non tellus orci ac. Diam sit amet nisl suscipit adipiscing bibendum.
+:::
+::: c
+## Hello 2
+
+```js {5} ln
+export default {
+	data () {
+		return {
+			test: "We're in a new slide :)",
+			msg: 'Highlighted!'
+		}
+	}
+}
+```
+:::
+::::
+
+:::::
+
+::: c wide
+For years parents have espoused the health benefits of eating garlic bread with cheese to their children, with the food earning such an iconic status in our culture that kids will often dress up as warm, cheesy loaf for Halloween.
+:::
+
+
+:::: c box aside slides mb-16
 
 This a slides component example
 
