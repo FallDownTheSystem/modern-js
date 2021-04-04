@@ -8,28 +8,28 @@
 /* Grid layout */
 .post__layout {
 	display: grid;
-	grid-template-columns: 1fr 2rem 14rem 2rem 19rem 2rem 19rem 2rem 14rem 2rem 1fr;
+	grid-template-columns: 1fr 2rem 14rem 2rem 40rem 2rem 14rem 2rem 1fr;
 	width: 100%;
 }
 
 .post__layout > * {
-	grid-column: 5 / span 3;
+	grid-column: 5 / span 1;
 }
 
 .default {
-	grid-column: 5 / span 3 !important;
+	grid-column: 5 / span 1 !important;
 }
 
 .box {
-	grid-column: 4 / span 5 !important;
+	grid-column: 4 / span 3 !important;
 }
 
 .wide {
-	grid-column: 3 / span 7 !important;
+	grid-column: 3 / span 5 !important;
 }
 
 .wide-box {
-	grid-column: 2 / span 9 !important;
+	grid-column: 2 / span 7 !important;
 }
 
 .center-child > *:first-of-type {
