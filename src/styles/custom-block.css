@@ -7,6 +7,15 @@
 	margin-top: 0 !important;
 }
 
+.tip p:last-of-type,
+.info p:last-of-type,
+.note p:last-of-type,
+.warn p:last-of-type,
+.danger p:last-of-type,
+.aside p:last-of-type {
+	margin-bottom: 1rem !important;
+}
+
 .tip,
 .info,
 .note,

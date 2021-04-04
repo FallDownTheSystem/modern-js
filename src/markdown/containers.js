@@ -15,7 +15,9 @@ function createContainer(name) {
 				const { info, nesting } = tokens[idx];
 				const re = /("[^"\\]*(?:\\[\S\s][^"\\]*)*"|'[^'\\]*(?:\\[\S\s][^'\\]*)*'|\/[^\/\\]*(?:\\[\S\s][^\/\\]*)*\/[gimy]*(?=\s|$)|(?:\\\s|\S)+)/g;
 				// Take everything except the name of the container and reverse it to treat it as a stack
-				const args = [...info.trim().slice(name.length).trim().matchAll(re)].map((x) => x[0].replace(/^['"]|['"]$/g, '')).reverse();
+				const args = [...info.trim().slice(name.length).trim().matchAll(re)]
+					.map((x) => x[0].replaceAll(/^['"]|['"]$/g, ''))
+					.reverse();
 				// Explicitly escape Vue syntax
 				let pre = false;
 				let classes = [];
