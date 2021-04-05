@@ -60,7 +60,7 @@ import { onMounted, onUpdated, ref, computed } from 'vue'
 
 ref: index = 0;
 ref: sections = [];
-ref: current = '#what-if-we-stack-headings'
+ref: current = '#'
 
 const root = ref(null);
 
