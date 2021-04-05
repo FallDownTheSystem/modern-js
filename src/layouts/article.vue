@@ -67,7 +67,6 @@ const root = ref(null);
 const parseHeading = (x) => {
 	const title = x.innerText.replace('#', '').trim();
 	const obj = { title, hash: x.children[0]?.hash ?? '#', type: x.tagName, pos: x.getBoundingClientRect().top };
-	console.log(obj);
 	return obj;
 }
 

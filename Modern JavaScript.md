@@ -127,3 +127,66 @@ Extensions to types, such as arrays, strings, numbers, and objects
 
 - Example running rollup.js
 - Example SKK
+
+================================================================
+
+### History of JavaScript
+  - Origin of JavaScript, competing implementations
+  - The EcmaScript specification
+  - Different version of EcmaScript
+  - Stuck in the Dark Ages (Internet Explorer)
+  - Moving past IE (Age of Enlightment)
+    - Polyfills
+    - Transpilers
+    - ES6
+  - Why does JavaScript suck?
+    - Backwards compatibility
+
+### New ES features
+  - Extensions to existing types/classes
+  - New types
+  - Functional style
+  - New syntax / language features
+  - Syntactic sugar
+  - New Web APIs
+
+### Moving on from jQuery to vanilla JS
+  - Selectors (querying elements)
+  - Handling events
+  - Modifying the DOM
+    - Changing styles / classes
+    - Creating and inserting elements
+    - Changing text content
+  - AJAX
+
+### Modern JavaScript development (tools)
+  - Bundlers
+    - Extending functionality
+      - Plugins for other files types
+    - Modules
+      - History
+      - Native ES modules
+        - How Vite takes advantage of ESM
+  - Package management
+    - Dependencies
+    - Node
+    - NPM
+      - Scripts
+  - Transpilers
+    - Babel
+    - TypeScript
+
+### Introduction to Vue (and JavaScript frameworks)
+  - Reactive data (declarative rendering)
+    - Interpolation
+    - Conditionals and loops
+  - Components
+    - Data flow, binding and events
+  - Composition API
+  - Single File Components
+  - Single Page Applications
+    - Routing
+    - State management
+      - Vuex
+        - When to use
+        - Vue 3 Composition API to the rescue
