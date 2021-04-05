@@ -29,7 +29,7 @@
 									'w-1.5 h-1.5': h.type == 'H3',
 									'w-1 h-1': h.type == 'H4',
 									'bg-pink-600': current == h.hash,
-									'bg-gray-500 group-hover:bg-gray-200': current != h.hash
+									'bg-gray-500 group-hover:bg-gray-300': current != h.hash
 								}"
 							></span>
 						</span>
@@ -56,8 +56,7 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { onMounted, onUpdated, ref, nextTick, computed } from 'vue'
-import { debounce, functionsIn } from 'lodash-es'
+import { onMounted, onUpdated, ref, computed } from 'vue'
 
 ref: index = 0;
 ref: sections = [];
