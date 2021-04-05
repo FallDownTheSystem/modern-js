@@ -32,7 +32,7 @@
 		<router-link
 			v-for="link in children"
 			:to="{ name: link.name }"
-			class="group hover:bg-gray-800 text-gray-100 rounded-xl py-6 px-8 w-full"
+			class="group hover:bg-gray-800 focus:outline-none focus:bg-gray-800 text-gray-100 rounded-xl py-6 px-8 w-full"
 		>
 			<div class="flex items-center content-center justify-between space-x-8">
 				<div>
@@ -41,7 +41,9 @@
 					>{{ link?.meta?.title ?? link.name }}</h2>
 					<p class="italic text-gray-300">{{ link?.meta?.description }}</p>
 				</div>
-				<i-heroicons-outline:arrow-right class="w-8 h-8 group-hover:text-gray-300 text-gray-600" />
+				<i-heroicons-outline:arrow-right
+					class="w-8 h-8 group-hover:text-gray-300 group-focus:text-gray-300 text-gray-600"
+				/>
 			</div>
 		</router-link>
 	</div>

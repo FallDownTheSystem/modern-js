@@ -1,5 +1,6 @@
 <template>
 	<div class="relative">
+		<SiteHeader />
 		<nav
 			class="flex justify-center fixed text-white pl-4 top-1/2 transform -translate-y-1/2"
 			aria-label="Progress"
@@ -9,7 +10,7 @@
 					<!-- Current Step -->
 					<a
 						:href="h.hash"
-						class="flex items-start group"
+						class="flex items-start group outline-none"
 						:class="{ 'ml-3': h.type == 'H3', 'ml-6': h.type == 'H4' }"
 						aria-current="step"
 					>
@@ -29,22 +30,21 @@
 									'w-1.5 h-1.5': h.type == 'H3',
 									'w-1 h-1': h.type == 'H4',
 									'bg-pink-600': current == h.hash,
-									'bg-gray-500 group-hover:bg-gray-300': current != h.hash
+									'bg-gray-500 group-hover:bg-gray-300 group-focus:bg-gray-300': current != h.hash
 								}"
 							></span>
 						</span>
 						<span
 							class="ml-3 text-sm font-medium truncate w-56"
 							:class="{
-								'text-pink-600': current == h.hash,
-								'text-gray-500 group-hover:text-gray-300': current != h.hash
+								'text-pink-600 group-focus:underline': current == h.hash,
+								'text-gray-500 group-hover:text-gray-300 group-focus:text-gray-300': current != h.hash
 							}"
 						>{{ h.title }}</span>
 					</a>
 				</li>
 			</ol>
 		</nav>
-		<SiteHeader />
 		<main ref="root">
 			<div id="content" class="flex flex-col items-center content-center">
 				<router-view />
@@ -56,7 +56,7 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { onMounted, onUpdated, ref, computed } from 'vue'
+import { onMounted, onUnmounted, onUpdated, ref, computed } from 'vue'
 
 ref: index = 0;
 ref: sections = [];
@@ -92,6 +92,8 @@ const updateSections = () => {
 	sections = [...root.value.querySelectorAll('h1, h2, h3, h4, .slides')]
 }
 
+let timer = null;
+
 onMounted(() => {
 
 	document.addEventListener('scroll', function(e) {
@@ -113,13 +115,17 @@ onMounted(() => {
 	observer.observe(root.value, { attributes: false, childList: true, subtree: true });
 
 	// Watch for changes for 2 seconds and update the god damned headings, then stop so we don't waste resources
-	setTimeout(() => {
+	timer = setTimeout(() => {
 		observer.disconnect();
 		updateSections();
 	}, 2000)
 
 })
 
-
+onUnmounted(() => {
+	if (timer) {
+		clearTimeout(timer);
+	}
+})
 
 </script>
