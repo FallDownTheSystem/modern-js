@@ -88,6 +88,10 @@ const headings = computed(() => sections.filter(x => x.closest('.slides') == nul
 
 const jumps = computed(() => sections.map(x => x));
 
+const updateSections = () => {
+	sections = [...root.value.querySelectorAll('h1, h2, h3, h4, .slides')]
+}
+
 onMounted(() => {
 
 	document.addEventListener('scroll', function(e) {
@@ -101,7 +105,7 @@ onMounted(() => {
 	const observer = new MutationObserver((mutationsList, observer) => {
 		for (const mutation of mutationsList) {
 			if (mutation.type === 'childList') {
-				sections = [...root.value.querySelectorAll('h1, h2, h3, h4, .slides')]
+				updateSections();
 			}
 		}
 	});
@@ -111,6 +115,7 @@ onMounted(() => {
 	// Watch for changes for 2 seconds and update the god damned headings, then stop so we don't waste resources
 	setTimeout(() => {
 		observer.disconnect();
+		updateSections();
 	}, 2000)
 
 })
