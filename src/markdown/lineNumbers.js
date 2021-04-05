@@ -19,7 +19,6 @@ export const lineNumberPlugin = (md) => {
 			.join('');
 
 		const lineNumbersWrapperCode = `<div class="line-numbers-wrapper">${lineNumbersCode}</div>`;
-
 		const finalCode = rawCode
 			.replace(/<\/div>$/, `${lineNumbersWrapperCode}</div>`)
 			.replace(/"(language-\w+)"/, '"$1 line-numbers-mode"');

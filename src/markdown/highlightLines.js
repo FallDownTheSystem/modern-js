@@ -10,14 +10,15 @@ export const highlightLinePlugin = (md) => {
 		const token = tokens[idx];
 		const rawInfo = token.info;
 
+		const langName = rawInfo.replace(RE, '').replace('ln', '').trim();
+		token.lineNumbers = rawInfo.replace(RE, '').replace(langName, '').trim() === 'ln';
+		token.info = langName;
+
 		if (!rawInfo || !RE.test(rawInfo)) {
 			return fence(...args);
 		}
 
-		const langName = rawInfo.replace(RE, '').replace('ln', '').trim();
 		// ensure the next plugin get the correct lang.
-		token.info = langName;
-		token.lineNumbers = rawInfo.replace(RE, '').replace(langName, '').trim() === 'ln';
 
 		const lineNumbers = RE.exec(rawInfo)[1]
 			.split(',')
