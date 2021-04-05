@@ -1,14 +1,14 @@
 <template>
-	<div ref="root" class="relative">
+	<div ref="root" class="relative slides">
 		<div
-			class="absolute right-8 top-4 text-sm text-gray-500"
+			class="absolute right-8 top-4 text-sm text-gray-400"
 		>{{ slideIndex + 1 }} / {{ slides.length }}</div>
 		<slot></slot>
 		<div class="flex justify-between items-center content-center mb-2">
 			<button
 				type="button"
 				@click="back"
-				class="p-1 hover:shadow-md transition-shadow duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded disabled:"
+				class="p-1 hover:shadow-md transition-shadow duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded disabled:"
 				:disabled="slideIndex === 0"
 			>
 				<svg
@@ -26,7 +26,7 @@
 			</button>
 			<button
 				type="button"
-				class="p-1 hover:shadow-md transition-shadow duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded"
+				class="p-1 hover:shadow-md transition-shadow duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded"
 				@click="forward"
 				:disabled="slideIndex === slides.length - 1"
 			>

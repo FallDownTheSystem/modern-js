@@ -10,6 +10,7 @@ title: About
 		title: "An Introduction to Vue",
 		description: "A short introduction to JavaScript frameworks",
 		order: 50,
+		layout: "article"
 	}
 }
 </route>
@@ -89,24 +90,34 @@ Slide 3
 
 ::: c box aside mb-8
 Hello!
+[Link](https://github.com/)
+
 :::
 
 ::: c box mb-8 warn "Warning"
 Hello without a title :(
+[Link](https://github.com/)
+
 :::
 
 ::: c box tip Hello mb-8
 Hello without quotes!
+[Link](https://github.com/)
+
 :::
 
 
 ::: c box info "Hello again" mb-8
 Hello with double quotes!
+[Link](https://github.com/)
+
 :::
 
 
 ::: c box note 'Hello in single quotes' mb-8
 Hello?
+[Link](https://github.com/)
+
 :::
 
 :::: c box danger "Hello with a read more" mb-8
@@ -114,6 +125,8 @@ By default, Tailwind removes all of the default browser styling from paragraphs,
 
 ::: c more
 By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you really are just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+[Link](https://github.com/)
+
 :::
 ::::
 

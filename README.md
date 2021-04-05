@@ -2,20 +2,10 @@
 
 ## Development
 
-- Style links
-  - Alert links as well
-- Add css nesting
-
-### Slide component
-- Each direct child with a 'slide' class are programmatically hidden, except the first
-- Show number of slides in the top right corner, absolute position, relative parent
-- Add left and right buttons, bottom left
-
 ### Post side navigation
-- Automatic links to all headings (see VitePress for example)
+- Automatically generated list of headings
 - Live update position
   - Intersection observer?
-- Automatically generated from h2 tags?
 
 ### Section mechanic
 - Smooth scroll (JS)

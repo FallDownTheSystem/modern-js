@@ -1,7 +1,16 @@
 <template>
 	<div class="prose prose-lg mb-16">
 		<Title>
-			Modern JavaScript
+			<div class="h-40 group">
+				Modern
+				<span class="inline-block">
+					<span class="group-hover:hidden">JavaScript</span>
+					<span
+						class="text-black font-display font-bold px-[8.5px] pb-2 bg-js hidden group-hover:inline-block"
+					>JavaScript</span>
+				</span>
+			</div>
+
 			<template v-slot:description>
 				<div>
 					<i>

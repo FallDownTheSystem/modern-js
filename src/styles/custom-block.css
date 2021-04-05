@@ -1,19 +1,13 @@
 .aside {
 	@apply rounded-xl bg-gray-800 p-8 pb-2 text-gray-100;
-}
 
-.aside h2:first-of-type,
-.aside p:first-of-type {
-	margin-top: 0 !important;
-}
-
-.tip p:last-of-type,
-.info p:last-of-type,
-.note p:last-of-type,
-.warn p:last-of-type,
-.danger p:last-of-type,
-.aside p:last-of-type {
-	margin-bottom: 1rem !important;
+	& h2:first-of-type,
+	& p:first-of-type {
+		@apply mt-0;
+	}
+	& p:last-of-type {
+		@apply mb-4;
+	}
 }
 
 .tip,
@@ -22,52 +16,47 @@
 .warn,
 .danger {
 	@apply rounded-xl pl-5 pr-8 pt-4 text-gray-100 border-l-[0.75rem];
-}
 
-.tip svg,
-.info svg,
-.note svg,
-.warn svg,
-.danger svg {
-	@apply -mr-4;
+	& p:last-of-type {
+		@apply mb-4;
+	}
+
+	& svg {
+		@apply -mr-4;
+	}
 }
 
 .tip {
 	@apply bg-emerald-800 border-emerald-600 bg-opacity-25;
+	& a {
+		@apply text-emerald-600;
+	}
 }
 
 .info {
 	@apply bg-blue-800 border-blue-600 bg-opacity-25;
+	& a {
+		@apply text-blue-600;
+	}
 }
 
 .note {
 	@apply bg-purple-800 border-purple-600 bg-opacity-25;
+	& a {
+		@apply text-purple-600;
+	}
 }
 
 .warn {
 	@apply bg-yellow-800 border-yellow-600 bg-opacity-25;
+	& a {
+		@apply text-yellow-600;
+	}
 }
 
 .danger {
 	@apply bg-rose-800 border-rose-600 bg-opacity-25;
-}
-
-.tip a {
-	@apply text-emerald-600;
-}
-
-.info a {
-	@apply text-blue-600;
-}
-
-.note a {
-	@apply text-purple-600;
-}
-
-.warn a {
-	@apply text-yellow-600;
-}
-
-.danger a {
-	@apply text-rose-600;
+	& a {
+		@apply text-rose-600;
+	}
 }

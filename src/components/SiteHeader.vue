@@ -1,6 +1,6 @@
 <template>
 	<div class="flex content-center items-center p-8 space-x-8 mb-32">
-		<router-link :to="{ name: 'index' }" class="text-gray-50 hover:text-gray-400">
+		<router-link :to="{ name: 'index' }" class="text-gray-50 hover:text-pink-600">
 			<i-heroicons-outline:code class="w-7 h-7" />
 		</router-link>
 		<div class="bg-gray-400 w-full h-[1px]"></div>
@@ -8,7 +8,7 @@
 			href="https://github.com/FallDownTheSystem/modern-js"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="text-gray-50 hover:text-gray-400"
+			class="text-gray-50 hover:text-pink-600"
 		>
 			<i-mdi:github class="w-7 h-7" />
 		</a>

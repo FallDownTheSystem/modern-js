@@ -14,6 +14,7 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
+				js: '#f7df1e',
 				...colors,
 				gray: {
 					50: 'hsl(210, 24%, 98%)',
@@ -30,7 +31,8 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-				serif: ['Playfair Display', ...defaultTheme.fontFamily.serif]
+				serif: ['Playfair Display', ...defaultTheme.fontFamily.serif],
+				display: ['Neutra Text']
 			},
 			typography: (theme) => ({
 				DEFAULT: {
@@ -42,9 +44,12 @@ module.exports = {
 								color: theme('colors.gray.400', defaultTheme.colors.gray[400])
 							},
 							a: {
-								color: theme('colors.gray.100', defaultTheme.colors.gray[100]),
-								textDecoration: 'underline',
-								fontWeight: '500'
+								color: theme('colors.pink.600', defaultTheme.colors.pink[600]),
+								textDecoration: 'none',
+								fontWeight: '500',
+								'&:hover': {
+									textDecoration: 'underline'
+								}
 							},
 							strong: {
 								color: theme('colors.gray.100', defaultTheme.colors.gray[100]),

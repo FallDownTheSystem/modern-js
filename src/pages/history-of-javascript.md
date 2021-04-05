@@ -4,6 +4,7 @@
 		title: "The History of JavaScript",
 		description: "A brief look into the origins of JavaScript",
 		order: 10,
+		layout: "article"
 	}
 }
 </route>

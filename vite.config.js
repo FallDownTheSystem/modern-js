@@ -8,7 +8,10 @@ import layouts from 'vite-plugin-vue-layouts';
 import markdown from 'vite-plugin-md';
 import anchorPlugin from 'markdown-it-anchor';
 import emojiPlugin from 'markdown-it-emoji';
+import { slugify } from './src/markdown/slugify';
 import { highlight } from './src/markdown/highlight';
+import { modifyHeading } from './src/markdown/heading';
+import { linkPlugin } from './src/markdown/link';
 import { highlightLinePlugin } from './src/markdown/highlightLines';
 import { lineNumberPlugin } from './src/markdown/lineNumbers';
 import { containerPlugin } from './src/markdown/containers';
@@ -53,7 +56,7 @@ export default defineConfig({
 			headEnabled: true,
 			markdownItOptions: {
 				html: true,
-				linkify: false,
+				linkify: true,
 				breaks: true,
 				lineNumbers: false,
 				highlight
@@ -64,7 +67,19 @@ export default defineConfig({
 					.use(lineNumberPlugin)
 					.use(containerPlugin)
 					.use(emojiPlugin)
-					.use(anchorPlugin);
+					.use(modifyHeading)
+					.use(linkPlugin, {
+						target: '_blank',
+						rel: 'noopener noreferrer'
+					})
+					.use(anchorPlugin, {
+						slugify,
+						permalink: true,
+						permalinkBefore: true,
+						permalinkSymbol: '#',
+						permalinkClass: 'header-anchor w-6 opacity-0 hover:opacity-100 group-hover:opacity-100 absolute -left-6',
+						permalinkAttrs: () => ({ 'aria-hidden': true })
+					});
 			}
 		}),
 		components({

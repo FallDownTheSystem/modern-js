@@ -1,8 +1,14 @@
-@import './markdown.css';
+@import './code.css';
 @import './custom-block.css';
 
+@font-face {
+	font-family: 'Neutra Text';
+	font-weight: bold;
+	src: url('../assets/NeutraText-Bold.otf') format('opentype');
+}
+
 :root {
-	/* scroll-behavior: smooth; */
+	scroll-behavior: smooth;
 }
 
 /* Grid layout */
@@ -10,10 +16,9 @@
 	display: grid;
 	grid-template-columns: 1fr 2rem 14rem 2rem 40rem 2rem 14rem 2rem 1fr;
 	width: 100%;
-}
-
-.post__layout > * {
-	grid-column: 5 / span 1;
+	& > * {
+		grid-column: 5 / span 1;
+	}
 }
 
 .default {
@@ -49,14 +54,12 @@
 .two-col {
 	display: grid;
 	grid-template-columns: 1fr 2rem 1fr;
-}
-
-.two-col > *:first-of-type {
-	grid-column: 1;
-}
-
-.two-col > *:last-of-type {
-	grid-column: 3;
+	& > *:first-of-type {
+		grid-column: 1;
+	}
+	& > *:last-of-type {
+		grid-column: 3;
+	}
 }
 
 /* Scroll bar */
