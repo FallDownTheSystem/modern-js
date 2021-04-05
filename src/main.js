@@ -17,19 +17,6 @@ const router = createRouter({
 		if (savedPosition) {
 			return savedPosition;
 		} else if (to.hash) {
-			// setTimeout(() => {
-			// 	const element = document.querySelector(to.hash);
-			// 	const offset = 40;
-			// 	const bodyRect = document.body.getBoundingClientRect().top;
-			// 	const elementRect = element.getBoundingClientRect().top;
-			// 	const elementPosition = elementRect - bodyRect;
-			// 	const offsetPosition = elementPosition - offset;
-
-			// 	window.scrollTo({
-			// 		top: offsetPosition,
-			// 		behavior: 'smooth'
-			// 	});
-			// }, 0);
 			return { el: to.hash, behavior: 'smooth' };
 		} else {
 			return { left: 0, top: 0, behavior: 'auto' };

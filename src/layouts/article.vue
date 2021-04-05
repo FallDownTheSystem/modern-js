@@ -20,12 +20,12 @@
 							<span
 								v-if="current == h.hash"
 								class="absolute rounded-full bg-pink-900"
-								:class="{ 'h-4 w-4': h.type == 'H2', 'h-3 w-3': h.type == 'H3', 'h-2 w-2': h.type == 'H4' }"
+								:class="{ 'h-4 w-4': h.type == 'H2' || h.type == 'H1', 'h-3 w-3': h.type == 'H3', 'h-2 w-2': h.type == 'H4' }"
 							></span>
 							<span
 								class="relative block rounded-full"
 								:class="{
-									'w-2 h-2': h.type == 'H2',
+									'w-2 h-2': h.type == 'H2' || h.type == 'H1',
 									'w-1.5 h-1.5': h.type == 'H3',
 									'w-1 h-1': h.type == 'H4',
 									'bg-pink-600': current == h.hash,
@@ -66,11 +66,24 @@ const root = ref(null);
 
 const parseHeading = (x) => {
 	const title = x.innerText.replace('#', '').trim();
-	const obj = { title, hash: x.children[0]?.hash ?? title, type: x.tagName };
-	console.dir(x);
+	const obj = { title, hash: x.children[0]?.hash ?? '#', type: x.tagName, pos: x.getBoundingClientRect().top };
 	console.log(obj);
 	return obj;
 }
+
+// setTimeout(() => {
+// 	const element = document.querySelector(to.hash);
+// 	const offset = 40;
+// 	const bodyRect = document.body.getBoundingClientRect().top;
+// 	const elementRect = element.getBoundingClientRect().top;
+// 	const elementPosition = elementRect - bodyRect;
+// 	const offsetPosition = elementPosition - offset;
+
+// 	window.scrollTo({
+// 		top: offsetPosition,
+// 		behavior: 'smooth'
+// 	});
+// }, 0);
 
 const headings = computed(() => sections.filter(x => x.closest('.slides') == null).map(x => parseHeading(x)));
 
@@ -78,10 +91,18 @@ const jumps = computed(() => sections.map(x => x));
 
 onMounted(() => {
 
+	document.addEventListener('scroll', function(e) {
+		for (const heading of headings.value) {
+			if (heading.pos < (window.scrollY + (window.innerHeight / 3))) {
+				current = heading.hash;
+			}
+		}
+	});
+
 	const observer = new MutationObserver((mutationsList, observer) => {
 		for (const mutation of mutationsList) {
 			if (mutation.type === 'childList') {
-				sections = [...root.value.querySelectorAll('h2, h3, h4, .slides')]
+				sections = [...root.value.querySelectorAll('h1, h2, h3, h4, .slides')]
 			}
 		}
 	});
@@ -92,6 +113,7 @@ onMounted(() => {
 	setTimeout(() => {
 		observer.disconnect();
 	}, 2000)
+
 })
 
 

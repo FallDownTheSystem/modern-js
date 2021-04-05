@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col mb-16 title items-center content-center">
-		<h1 class="font-serif text-center title__header">
+		<h1 class="font-serif text-center title__header" :id="slugify(title)">
 			<slot>{{ title }}</slot>
 		</h1>
 		<p class="text-center title__description text-gray-50">
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { slugify } from '../markdown/slugify'
 export default {
 	props: {
 		title: {
@@ -20,6 +21,9 @@ export default {
 			required: false,
 			type: String,
 		}
+	},
+	methods: {
+		slugify
 	}
 }
 
