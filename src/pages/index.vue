@@ -1,12 +1,12 @@
 <template>
 	<div class="prose prose-lg mb-16">
+		<div class="font-display invisible h-0 w-0 absolute" aria-hidden="true">Preloading font</div>
 		<Title>
 			<div class="h-40 group">
 				Modern
 				<span class="inline-block">
-					<span class="group-hover:hidden">JavaScript</span>
 					<span
-						class="text-black font-display font-bold px-[8.5px] pb-2 bg-js hidden group-hover:inline-block"
+						class="group-hover:text-black group-hover:font-display group-hover:font-bold group-hover:px-[8.5px] group-hover:pb-2 group-hover:bg-js"
 					>JavaScript</span>
 				</span>
 			</div>
