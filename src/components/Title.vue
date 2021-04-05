@@ -16,6 +16,7 @@ export default {
 		title: {
 			required: false,
 			type: String,
+			default: "title"
 		},
 		description: {
 			required: false,
