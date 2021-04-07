@@ -8,7 +8,7 @@ title: About
 {
 	meta: {
 		title: "An Introduction to Vue",
-		description: "A short introduction to JavaScript frameworks",
+		description: "An exhibition of JavaScript frameworks through the increasingly popular framework Vue.",
 		order: 50,
 		layout: "article"
 	}

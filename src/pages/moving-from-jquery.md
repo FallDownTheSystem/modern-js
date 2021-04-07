@@ -2,7 +2,7 @@
 {
 	meta: {
 		title: "Moving on from jQuery",
-		description: "How to transition from jQuery to vanilla JS",
+		description: "A case for how modern JavaScript has outgrown the need for jQuery.",
 		order: 30,
 		layout: "article"
 	}

@@ -2,7 +2,7 @@
 {
 	meta: {
 		title: "New ECMAScript Features",
-		description: "New features in JavaScript released since ES5",
+		description: "A listing of new features added to JavaScript since the 6th edition of ECMAScript.",
 		order: 20,
 		layout: "article"
 	}

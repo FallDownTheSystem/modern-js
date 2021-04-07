@@ -101,64 +101,71 @@ Extensions to types, such as arrays, strings, numbers, and objects
 
 
 ## Moving on from jQuery to vanilla JS
-  - Selectors (querying elements)
-  - Handling events
-  - Modifying the DOM
-    - Changing styles / classes
-    - Creating and inserting elements
-    - Changing text content
+- What is jQuery
   - AJAX
+- What is Vanilla JS
+- Why would you want to stop using jQuery?
+  - Performance
+  - Overhead
+  - Frameworks
+- Selectors (querying elements)
+- Handling events
+- Modifying the DOM
+  - Changing styles / classes
+  - Creating and inserting elements
+  - Changing text content
+- AJAX
 
 https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/
 
 ## Modern JavaScript development (tools)
-  - The old way
-    - https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70
-  - Bundlers
-    - Rollup, webpack, parcel, esbuild, others (snowpack?)
-    - Extending functionality
-      - Plugins for other files types
-      - CSS
-        - CSS, SASS, LESS, POSTCSS
-    - Modules
-      - History
-        - CJS
-        - AMD
-        - UMD
-        - ESM
-          - How Vite takes advantage of ESM
-  - Package management
-    - Dependencies
-    - Node
-    - NPM
-      - Scripts
-      - Alternative package managers
-      - BundlePhobia
-  - Transpilers
-    - Babel
-    - TypeScript
+- The old way
+  - https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70
+- Bundlers
+  - Rollup, webpack, parcel, esbuild, others (snowpack?)
+  - Extending functionality
+    - Plugins for other files types
+    - CSS
+      - CSS, SASS, LESS, POSTCSS
+  - Modules
+    - History
+      - CJS
+      - AMD
+      - UMD
+      - ESM
+        - How Vite takes advantage of ESM
+- Package management
+  - Dependencies
+  - Node
+  - NPM
+    - Scripts
+    - Alternative package managers
+    - BundlePhobia
+- Transpilers
+  - Babel
+  - TypeScript
 - Example running rollup.js
 
 ## Introduction to Vue (and JavaScript frameworks)
-  - Frameworks
-    - What is a framework? Inversion of Control
-  - React
-  - Angular
-  - Vue
-    - Vue CLI
-    - Vite
-    - Vue ecosystem
-  - And a million others
-  - Reactive data (declarative rendering)
-    - Interpolation
-    - Conditionals and loops
-  - Components
-    - Data flow, binding and events
-  - Composition API
-  - Single File Components
-  - Single Page Applications
-    - Routing
-    - State management
-      - Vuex
-        - When to use
-        - Vue 3 Composition API to the rescue
+- Frameworks
+  - What is a framework? Inversion of Control
+- React
+- Angular
+- Vue
+  - Vue CLI
+  - Vite
+  - Vue ecosystem
+- And a million others
+- Reactive data (declarative rendering)
+  - Interpolation
+  - Conditionals and loops
+- Components
+  - Data flow, binding and events
+- Composition API
+- Single File Components
+- Single Page Applications
+  - Routing
+  - State management
+    - Vuex
+      - When to use
+      - Vue 3 Composition API to the rescue
