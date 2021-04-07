@@ -7,7 +7,6 @@ import pages from 'vite-plugin-pages';
 import layouts from 'vite-plugin-vue-layouts';
 import markdown from 'vite-plugin-md';
 import anchorPlugin from 'markdown-it-anchor';
-import emojiPlugin from 'markdown-it-emoji';
 import { slugify } from './src/markdown/slugify';
 import { highlight } from './src/markdown/highlight';
 import { modifyHeading } from './src/markdown/heading';
@@ -15,7 +14,6 @@ import { linkPlugin } from './src/markdown/link';
 import { highlightLinePlugin } from './src/markdown/highlightLines';
 import { lineNumberPlugin } from './src/markdown/lineNumbers';
 import { containerPlugin } from './src/markdown/containers';
-import { componentPlugin } from './src/markdown/component';
 import { preWrapperPlugin } from './src/markdown/preWrapper';
 
 export default defineConfig({
@@ -66,7 +64,6 @@ export default defineConfig({
 					.use(preWrapperPlugin)
 					.use(lineNumberPlugin)
 					.use(containerPlugin)
-					.use(emojiPlugin)
 					.use(modifyHeading)
 					.use(linkPlugin, {
 						target: '_blank',

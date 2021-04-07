@@ -14,7 +14,7 @@
 /* Grid layout */
 .post__layout {
 	display: grid;
-	grid-template-columns: 1fr 2rem 14rem 2rem 40rem 2rem 14rem 2rem 1fr;
+	grid-template-columns: 1fr 2rem 0rem 2rem 40rem 2rem 0rem 2rem 1fr;
 	width: 100%;
 	& > * {
 		grid-column: 5 / span 1;
@@ -63,6 +63,16 @@
 }
 
 @screen xl {
+	/* Grid layout */
+	.post__layout {
+		display: grid;
+		grid-template-columns: 1fr 2rem 14rem 2rem 40rem 2rem 14rem 2rem 1fr;
+		width: 100%;
+		& > * {
+			grid-column: 5 / span 1;
+		}
+	}
+
 	.wide {
 		grid-column: 3 / span 5 !important;
 	}
