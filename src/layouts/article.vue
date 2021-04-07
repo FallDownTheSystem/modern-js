@@ -2,7 +2,7 @@
 	<div class="relative">
 		<SiteHeader />
 		<nav
-			class="flex justify-center fixed text-white pl-4 top-1/2 transform -translate-y-1/2"
+			class="hidden full:flex justify-center fixed text-white pl-4 top-1/2 transform -translate-y-1/2"
 			aria-label="Progress"
 		>
 			<ol class="space-y-4">
@@ -100,6 +100,8 @@ onMounted(() => {
 		for (const heading of headings.value) {
 			if (heading.pos < (window.scrollY + (window.innerHeight / 3))) {
 				current = heading.hash;
+			} else {
+				break;
 			}
 		}
 	});

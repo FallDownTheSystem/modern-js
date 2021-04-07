@@ -18,7 +18,11 @@ title: About
 
 <Title title="This a test page with a long title" description="This is a test description" />
 
-::::: c slides aside mb-8 wide-box
+::: c tag Custom mb-16
+## I can go inside your custom component
+:::
+
+::::: c tag Slides aside mb-8 wide-box
 
 :::: c two-col slide
 ::: c
@@ -70,7 +74,7 @@ For years parents have espoused the health benefits of eating garlic bread with 
 :::
 
 
-:::: c box aside slides mb-16
+:::: c box aside tag Slides mb-16
 
 This a slides component example
 
@@ -120,10 +124,10 @@ Hello?
 
 :::
 
-:::: c box danger "Hello with a read more" mb-8
+:::: c box danger "Hello with a read tag more" mb-8
 By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you really are just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
 
-::: c more
+::: c tag More
 By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you really are just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
 [Link](https://github.com/)
 

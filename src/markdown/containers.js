@@ -31,11 +31,10 @@ function createContainer(name) {
 						case 'v-pre':
 							pre = true;
 							break;
-						case 'slides':
-							tag = 'Slides';
-							break;
-						case 'more':
-							tag = 'More';
+						case 'tag':
+							if (args.length > 0) {
+								tag = args.pop();
+							}
 							break;
 						case 'info':
 						case 'note':

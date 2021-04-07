@@ -7,16 +7,15 @@
 		"serve": "vite preview"
 	},
 	"dependencies": {
-		"@tailwindcss/forms": "^0.2.1",
+		"@tailwindcss/forms": "0.3.2",
 		"@tailwindcss/typography": "^0.4.0",
 		"@vueuse/head": "^0.5.1",
 		"lodash-es": "^4.17.21",
 		"vue": "^3.0.11",
-		"vue-router": "^4.0.5"
+		"vue-router": "^4.0.6"
 	},
 	"devDependencies": {
-		"@iconify/json": "^1.1.325",
-		"@tailwindcss/jit": "^0.1.18",
+		"@iconify/json": "^1.1.326",
 		"@vitejs/plugin-vue": "^1.2.1",
 		"@vue/compiler-sfc": "^3.0.11",
 		"autoprefixer": "^10.2.5",
@@ -34,7 +33,7 @@
 		"postcss-nested": "^5.0.5",
 		"prettier": "^2.2.1",
 		"prismjs": "^1.23.0",
-		"tailwindcss": "^2.0.4",
+		"tailwindcss": "^2.1.1",
 		"vite": "^2.1.5",
 		"vite-plugin-components": "^0.8.3",
 		"vite-plugin-icons": "0.4.0",

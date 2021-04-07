@@ -11,6 +11,7 @@ const round = (num) =>
 module.exports = {
 	purge: ['./index.html', './vite.config.js', './src/**/*.{js,vue,md}'],
 	darkMode: false, // or 'media' or 'class'
+	mode: 'jit',
 	theme: {
 		extend: {
 			colors: {
@@ -28,6 +29,9 @@ module.exports = {
 					800: 'hsl(215, 11%, 17%)',
 					900: 'hsl(218, 12%, 11%)'
 				}
+			},
+			screens: {
+				full: '1880px'
 			},
 			fontFamily: {
 				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
