@@ -2,11 +2,11 @@
 	<div class="prose prose-lg mb-16">
 		<div class="font-display invisible h-0 w-0 absolute" aria-hidden="true">Preloading font</div>
 		<Title>
-			<div class="h-40 group">
+			<div class="group">
 				Modern
-				<span class="inline-block">
+				<span>
 					<span
-						class="group-hover:text-black group-hover:font-display group-hover:font-bold group-hover:px-[8.5px] group-hover:pb-2 group-hover:bg-js"
+						class="inline-block group-hover:-mb-4 group-hover:text-black group-hover:font-display group-hover:font-bold group-hover:px-[8.5px] group-hover:pb-2 group-hover:bg-js"
 					>
 						JavaScript
 					</span>
