@@ -7,7 +7,7 @@
 //   3. <!--beforeend-->
 //   4. <!--afterend-->
 
-export const preWrapperPlugin = (md) => {
+export const preWrapperPlugin = md => {
 	const fence = md.renderer.rules.fence;
 	md.renderer.rules.fence = (...args) => {
 		const [tokens, idx] = args;

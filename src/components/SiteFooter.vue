@@ -1,9 +1,6 @@
 <template>
 	<div class="flex content-center items-center p-8 space-x-8 mt-64">
-		<router-link
-			:to="{ name: 'index' }"
-			class="text-gray-50 hover:text-pink-600 focus:text-pink-600 focus:outline-none"
-		>
+		<router-link :to="{ name: 'index' }" class="text-gray-50 hover:text-pink-600 focus:text-pink-600 text- focus:outline-none">
 			<i-heroicons-outline:code class="w-7 h-7" />
 		</router-link>
 		<div class="bg-gray-400 w-full h-[1px]"></div>
@@ -20,9 +17,6 @@
 	</div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped>
-</style>
+<style scoped></style>

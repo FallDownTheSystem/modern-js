@@ -1,23 +1,14 @@
 <template>
 	<div class="relative">
 		<SiteHeader />
-		<nav
-			class="hidden full:flex justify-center fixed text-white pl-4 top-1/2 transform -translate-y-1/2"
-			aria-label="Progress"
-		>
+		<nav class="hidden full:flex justify-center fixed text-white pl-4 top-1/2 transform -translate-y-1/2" aria-label="Progress">
 			<ol class="space-y-4">
 				<li>
-					<router-link
-						:to="{ name: 'index' }"
-						class="flex items-center group outline-none"
-						aria-current="step"
-					>
-						<i-tabler:arrow-narrow-left
-							class="w-5 h-5 text-gray-500 group-hover:text-gray-300 group-focus:text-gray-300"
-						/>
-						<span
-							class="ml-3 text-sm font-medium truncate w-56 text-gray-500 group-hover:text-gray-300 group-focus:text-gray-300"
-						>Home</span>
+					<router-link :to="{ name: 'index' }" class="flex items-center group outline-none" aria-current="step">
+						<i-tabler:arrow-narrow-left class="w-5 h-5 text-gray-500 group-hover:text-gray-300 group-focus:text-gray-300" />
+						<span class="ml-3 text-sm font-medium truncate w-56 text-gray-500 group-hover:text-gray-300 group-focus:text-gray-300">
+							Home
+						</span>
 					</router-link>
 				</li>
 				<li v-for="h in headings" :key="h.hash">
@@ -28,10 +19,7 @@
 						:class="{ 'ml-3': h.type == 'H3', 'ml-6': h.type == 'H4' }"
 						aria-current="step"
 					>
-						<span
-							class="flex-shrink-0 h-5 w-5 relative flex items-center justify-center"
-							aria-hidden="true"
-						>
+						<span class="flex-shrink-0 h-5 w-5 relative flex items-center justify-center" aria-hidden="true">
 							<span
 								v-if="current == h.hash"
 								class="absolute rounded-full bg-pink-900"
@@ -54,7 +42,9 @@
 								'text-pink-600 group-focus:underline': current == h.hash,
 								'text-gray-500 group-hover:text-gray-300 group-focus:text-gray-300': current != h.hash
 							}"
-						>{{ h.title }}</span>
+						>
+							{{ h.title }}
+						</span>
 					</a>
 				</li>
 			</ol>
@@ -69,34 +59,33 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
-import { onMounted, onUnmounted, onUpdated, ref, computed } from 'vue'
+import { useRoute } from 'vue-router';
+import { onMounted, onUnmounted, onUpdated, ref, computed } from 'vue';
 
 ref: index = 0;
 ref: sections = [];
-ref: current = '#'
+ref: current = '#';
 
 const root = ref(null);
 
-const parseHeading = (x) => {
+const parseHeading = x => {
 	const title = x.innerText.replace('#', '').trim();
 	const obj = { title, hash: x.children[0]?.hash ?? '#', type: x.tagName, pos: x.getBoundingClientRect().top + window.scrollY };
 	return obj;
-}
+};
 
 const headings = computed(() => sections.filter(x => x.closest('.slides') == null).map(x => parseHeading(x)));
 
 const updateSections = () => {
-	sections = [...root.value.querySelectorAll('h1, h2, h3, h4')]
-}
+	sections = [...root.value.querySelectorAll('h1, h2, h3, h4')];
+};
 
 let timer = null;
 
 onMounted(() => {
-
-	document.addEventListener('scroll', function(e) {
+	document.addEventListener('scroll', function (e) {
 		for (const heading of headings.value) {
-			if (heading.pos < (window.scrollY + (window.innerHeight / 2.1))) {
+			if (heading.pos < window.scrollY + window.innerHeight / 2.1) {
 				current = heading.hash;
 			} else {
 				break;
@@ -106,7 +95,7 @@ onMounted(() => {
 
 	setTimeout(() => {
 		updateSections();
-	}, 100)
+	}, 100);
 
 	const observer = new MutationObserver((mutationsList, observer) => {
 		for (const mutation of mutationsList) {
@@ -122,14 +111,12 @@ onMounted(() => {
 	timer = setTimeout(() => {
 		observer.disconnect();
 		updateSections();
-	}, 2000)
-
-})
+	}, 2000);
+});
 
 onUnmounted(() => {
 	if (timer) {
 		clearTimeout(timer);
 	}
-})
-
+});
 </script>

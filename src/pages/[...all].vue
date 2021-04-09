@@ -243,33 +243,9 @@
 					transform="translate(-63.054 -157.8845)"
 					fill="#2f2e41"
 				/>
-				<ellipse
-					cx="484.946"
-					cy="314.1155"
-					rx="17"
-					ry="22"
-					fill="none"
-					stroke="#3f3d56"
-					stroke-miterlimit="10"
-				/>
-				<ellipse
-					cx="577.446"
-					cy="314.6155"
-					rx="17"
-					ry="22"
-					fill="none"
-					stroke="#3f3d56"
-					stroke-miterlimit="10"
-				/>
-				<ellipse
-					cx="533.446"
-					cy="379.6155"
-					rx="31"
-					ry="18"
-					fill="none"
-					stroke="#3f3d56"
-					stroke-miterlimit="10"
-				/>
+				<ellipse cx="484.946" cy="314.1155" rx="17" ry="22" fill="none" stroke="#3f3d56" stroke-miterlimit="10" />
+				<ellipse cx="577.446" cy="314.6155" rx="17" ry="22" fill="none" stroke="#3f3d56" stroke-miterlimit="10" />
+				<ellipse cx="533.446" cy="379.6155" rx="31" ry="18" fill="none" stroke="#3f3d56" stroke-miterlimit="10" />
 				<path
 					d="M604,527.2a4.93658,4.93658,0,0,1-1.32,3.392A4.33873,4.33873,0,0,1,599.5,532h-10a4.66433,4.66433,0,0,1-4.5-4.8,4.90458,4.90458,0,0,1,.82-2.74134A47.02,47.02,0,0,1,592.5,524a47.66454,47.66454,0,0,1,11.13,1.28A5.06656,5.06656,0,0,1,604,527.2Z"
 					transform="translate(-63.054 -157.8845)"

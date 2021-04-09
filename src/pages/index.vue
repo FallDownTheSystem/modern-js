@@ -7,18 +7,20 @@
 				<span class="inline-block">
 					<span
 						class="group-hover:text-black group-hover:font-display group-hover:font-bold group-hover:px-[8.5px] group-hover:pb-2 group-hover:bg-js"
-					>JavaScript</span>
+					>
+						JavaScript
+					</span>
 				</span>
 			</div>
 
 			<template v-slot:description>
 				<div>
 					A series of posts describing how JavaScript came to be the language it is today,
-					<br />what new features got added to the language along the way,
-					<br />and what modern JavaScript development looks like.
-					<div
-						class="font-light text-sm mt-12 text-gray-400"
-					>Updated {{ new Date(2021, 3, 3).toLocaleDateString() }}</div>
+					<br />
+					what new features got added to the language along the way,
+					<br />
+					and what modern JavaScript development looks like.
+					<div class="font-light text-sm mt-12 text-gray-400">Updated {{ new Date(2021, 3, 3).toLocaleDateString() }}</div>
 				</div>
 			</template>
 		</Title>
@@ -32,14 +34,10 @@
 		>
 			<div class="flex items-center content-center justify-between space-x-8">
 				<div>
-					<h2
-						class="text-3xl font-serif font-bold tracking-wide mb-2"
-					>{{ link?.meta?.title ?? link.name }}</h2>
+					<h2 class="text-3xl font-serif font-bold tracking-wide mb-2">{{ link?.meta?.title ?? link.name }}</h2>
 					<p class="italic text-gray-300 w-[32rem]">{{ link?.meta?.description }}</p>
 				</div>
-				<i-heroicons-outline:arrow-right
-					class="w-8 h-8 group-hover:text-gray-300 group-focus:text-gray-300 text-gray-600"
-				/>
+				<i-heroicons-outline:arrow-right class="w-8 h-8 group-hover:text-gray-300 group-focus:text-gray-300 text-gray-600" />
 			</div>
 		</router-link>
 	</div>
@@ -47,13 +45,12 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
-import { defineAsyncComponent } from 'vue'
+import { useRoute } from 'vue-router';
+import { defineAsyncComponent } from 'vue';
 import { sortBy } from 'lodash-es';
-const routes = useRoute()
-const children = sortBy(routes
-	.matched.filter(x => x.path == routes.path)[0]
-	.children.filter(x => x.path !== '/' && x.name !== 'all'),
+const routes = useRoute();
+const children = sortBy(
+	routes.matched.filter(x => x.path == routes.path)[0].children.filter(x => x.path !== '/' && x.name !== 'all'),
 	'meta.order'
 );
 </script>

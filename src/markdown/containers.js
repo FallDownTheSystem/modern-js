@@ -1,6 +1,6 @@
 import container from 'markdown-it-container';
 
-export const containerPlugin = (md) => {
+export const containerPlugin = md => {
 	md.use(...createContainer('c'));
 };
 
@@ -14,9 +14,7 @@ function createContainer(name) {
 			render(tokens, idx) {
 				const { info, nesting } = tokens[idx];
 				const re = /("[^"\\]*(?:\\[\S\s][^"\\]*)*"|'[^'\\]*(?:\\[\S\s][^'\\]*)*'|\/[^\/\\]*(?:\\[\S\s][^\/\\]*)*\/[gimy]*(?=\s|$)|(?:\\\s|\S)+)/g;
-				const args = [...info.trim().slice(name.length).trim().matchAll(re)]
-					.map((x) => x[0].replaceAll(/^['"]|['"]$/g, ''))
-					.reverse();
+				const args = [...info.trim().slice(name.length).trim().matchAll(re)].map(x => x[0].replaceAll(/^['"]|['"]$/g, '')).reverse();
 				let pre = false;
 				let classes = [];
 				let props = {};

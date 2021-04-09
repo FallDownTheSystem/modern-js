@@ -1,8 +1,6 @@
 <template>
 	<div ref="root" class="relative slides">
-		<div
-			class="absolute right-8 top-4 text-sm text-gray-400"
-		>{{ slideIndex + 1 }} / {{ slides.length }}</div>
+		<div class="absolute right-8 top-4 text-sm text-gray-400">{{ slideIndex + 1 }} / {{ slides.length }}</div>
 		<slot></slot>
 		<div class="flex justify-between items-center content-center mb-2">
 			<button
@@ -13,6 +11,13 @@
 			>
 				<i-heroicons-solid:chevron-left class="h-6 w-6" />
 			</button>
+			<span>test</span>
+			<span>test</span>
+			<p>
+				Hello
+				<span>This is a message</span>
+				about flies!
+			</p>
 			<button
 				type="button"
 				class="p-1 hover:shadow-md transition-shadow duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded"
@@ -26,8 +31,8 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
-import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router';
+import { onMounted, ref } from 'vue';
 
 ref: slideIndex = 0;
 
@@ -40,23 +45,23 @@ onMounted(() => {
 	for (const slide of slides.slice(1)) {
 		slide.classList.toggle('!hidden');
 	}
-})
+});
 
 // const currentComponent = computed(() => childComponents[slideIndex]);
 
 const forward = () => {
 	if (slideIndex < slides.length - 1) {
 		slides[slideIndex].classList.toggle('!hidden');
-		slideIndex++
+		slideIndex++;
 		slides[slideIndex].classList.toggle('!hidden');
 	}
-}
+};
 
 const back = () => {
 	if (slideIndex > 0) {
 		slides[slideIndex].classList.toggle('!hidden');
-		slideIndex--
+		slideIndex--;
 		slides[slideIndex].classList.toggle('!hidden');
 	}
-}
+};
 </script>

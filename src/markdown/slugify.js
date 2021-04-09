@@ -3,7 +3,7 @@ import { remove } from 'diacritics';
 const rControl = /[\u0000-\u001f]/g;
 const rSpecial = /[\s~`!@#$%^&*()\-_+=[\]{}|\\;:"'<>,.?/]+/g;
 
-export const slugify = (str) => {
+export const slugify = str => {
 	return (
 		remove(str)
 			// Remove control characters

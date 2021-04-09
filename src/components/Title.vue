@@ -10,26 +10,24 @@
 </template>
 
 <script>
-import { slugify } from '../markdown/slugify'
+import { slugify } from '../markdown/slugify';
 export default {
 	props: {
 		title: {
 			required: false,
 			type: String,
-			default: "title"
+			default: 'title'
 		},
 		description: {
 			required: false,
-			type: String,
+			type: String
 		}
 	},
 	methods: {
 		slugify
 	}
-}
-
+};
 </script>
-
 
 <style>
 .title {

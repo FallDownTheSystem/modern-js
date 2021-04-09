@@ -3,7 +3,7 @@
 const RE = /{([\d,-]+)}/;
 const wrapperRE = /^<pre .*?><code>/;
 
-export const highlightLinePlugin = (md) => {
+export const highlightLinePlugin = md => {
 	const fence = md.renderer.rules.fence;
 	md.renderer.rules.fence = (...args) => {
 		const [tokens, idx, options] = args;
@@ -22,7 +22,7 @@ export const highlightLinePlugin = (md) => {
 
 		const lineNumbers = RE.exec(rawInfo)[1]
 			.split(',')
-			.map((v) => v.split('-').map((v) => parseInt(v, 10)));
+			.map(v => v.split('-').map(v => parseInt(v, 10)));
 
 		const code = options.highlight ? options.highlight(token.content, langName) : token.content;
 

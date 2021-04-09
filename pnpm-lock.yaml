@@ -11,7 +11,7 @@ specifiers:
   chalk: ^4.1.0
   diacritics: ^1.3.0
   escape-html: ^1.0.3
-  eslint: ^7.23.0
+  eslint: ^7.24.0
   eslint-config-prettier: ^8.1.0
   eslint-plugin-vue: ^7.8.0
   lodash-es: ^4.17.21
@@ -26,9 +26,9 @@ specifiers:
   tailwindcss: ^2.1.1
   vite: ^2.1.5
   vite-plugin-components: ^0.8.3
-  vite-plugin-icons: 0.4.0
+  vite-plugin-icons: 0.5.0
   vite-plugin-md: ^0.6.3
-  vite-plugin-pages: 0.8.0
+  vite-plugin-pages: 0.9.3
   vite-plugin-vue-layouts: ^0.2.2
   vue: ^3.0.11
   vue-router: ^4.0.6
@@ -49,9 +49,9 @@ devDependencies:
   chalk: 4.1.0
   diacritics: 1.3.0
   escape-html: 1.0.3
-  eslint: 7.23.0
-  eslint-config-prettier: 8.1.0_eslint@7.23.0
-  eslint-plugin-vue: 7.8.0_eslint@7.23.0
+  eslint: 7.24.0
+  eslint-config-prettier: 8.1.0_eslint@7.24.0
+  eslint-plugin-vue: 7.8.0_eslint@7.24.0
   markdown-it: 12.0.4
   markdown-it-anchor: 7.1.0_markdown-it@12.0.4
   markdown-it-container: 3.0.0
@@ -63,9 +63,9 @@ devDependencies:
   tailwindcss: 2.1.1_0bca15301caac8bc71ea0ad94045571f
   vite: 2.1.5
   vite-plugin-components: 0.8.3_vite@2.1.5
-  vite-plugin-icons: 0.4.0_456bf7085a5024258d6898a735bee12d
+  vite-plugin-icons: 0.5.0_456bf7085a5024258d6898a735bee12d
   vite-plugin-md: 0.6.3_vite@2.1.5
-  vite-plugin-pages: 0.8.0_69006f3110eb5ede444e6409e42386e2
+  vite-plugin-pages: 0.9.3_69006f3110eb5ede444e6409e42386e2
   vite-plugin-vue-layouts: 0.2.2_vite@2.1.5
 
 packages:
@@ -649,11 +649,6 @@ packages:
     resolution: {integrity: sha1-6S7f2tplN9SE1zwBcv0eugxJdv8=}
     dev: true
 
-  /directory-tree/2.2.7:
-    resolution: {integrity: sha512-fgTad/YdV6Y2njsCRK4fl4ZUlGhmb5xj1qrZUIMjvnrKvghVqh8dkB+OUssjYVvb/Q2L+5+8XG0l5uTGI9/8iQ==}
-    engines: {node: '>=4.2'}
-    dev: true
-
   /dlv/1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
     dev: true
@@ -753,26 +748,26 @@ packages:
     engines: {node: '>=0.8.0'}
     dev: true
 
-  /eslint-config-prettier/8.1.0_eslint@7.23.0:
+  /eslint-config-prettier/8.1.0_eslint@7.24.0:
     resolution: {integrity: sha512-oKMhGv3ihGbCIimCAjqkdzx2Q+jthoqnXSP+d86M9tptwugycmTFdVR4IpLgq2c4SHifbwO90z2fQ8/Aio73yw==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
     dependencies:
-      eslint: 7.23.0
+      eslint: 7.24.0
     dev: true
 
-  /eslint-plugin-vue/7.8.0_eslint@7.23.0:
+  /eslint-plugin-vue/7.8.0_eslint@7.24.0:
     resolution: {integrity: sha512-OGrnPz+PuYL2HmVyBHxm4mRjxW2kfFCQE6Hw9G6qOHs/Pcu0srOlCCW0FMa8SLzIEqxl8WuKoBSPcMnrjUG2vw==}
     engines: {node: '>=8.10'}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0
     dependencies:
-      eslint: 7.23.0
+      eslint: 7.24.0
       eslint-utils: 2.1.0
       natural-compare: 1.4.0
       semver: 7.3.5
-      vue-eslint-parser: 7.6.0_eslint@7.23.0
+      vue-eslint-parser: 7.6.0_eslint@7.24.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -802,8 +797,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint/7.23.0:
-    resolution: {integrity: sha512-kqvNVbdkjzpFy0XOszNwjkKzZ+6TcwCQ/h+ozlcIWwaimBBuhlQ4nN6kbiM2L+OjDcznkTJxzYfRFH92sx4a0Q==}
+  /eslint/7.24.0:
+    resolution: {integrity: sha512-k9gaHeHiFmGCDQ2rEfvULlSLruz6tgfA8DEn+rY9/oYPFFTlz55mM/Q/Rij1b2Y42jwZiK3lXvNTw6w6TXzcKQ==}
     engines: {node: ^10.12.0 || >=12.0.0}
     hasBin: true
     dependencies:
@@ -923,7 +918,7 @@ packages:
       '@nodelib/fs.walk': 1.2.6
       glob-parent: 5.1.2
       merge2: 1.4.1
-      micromatch: 4.0.2
+      micromatch: 4.0.3
       picomatch: 2.2.2
     dev: true
 
@@ -1037,10 +1032,6 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       is-glob: 4.0.1
-    dev: true
-
-  /glob-to-regexp/0.4.1:
-    resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
     dev: true
 
   /glob/7.1.6:
@@ -1507,9 +1498,9 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
-  /micromatch/4.0.2:
-    resolution: {integrity: sha512-y7FpHSbMUMoyPbYUSzO6PaZ6FyRnQOpHuKwbo1G+Knck95XVU4QAiKdGEnj5wwoS7PlOgthX/09u5iFJ+aYf5Q==}
-    engines: {node: '>=8'}
+  /micromatch/4.0.3:
+    resolution: {integrity: sha512-ueuSaP4i67F/FAUac9zzZ0Dz/5KeKDkITYIS/k4fps+9qeh1SkeH6gbljcqz97mNBOsaWZ+iv2UobMKK/yD+aw==}
+    engines: {node: '>=8.6'}
     dependencies:
       braces: 3.0.2
       picomatch: 2.2.2
@@ -2167,8 +2158,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-icons/0.4.0_456bf7085a5024258d6898a735bee12d:
-    resolution: {integrity: sha512-IBXx2+cYEXqOMwZd+DsNYisJgWOc4uHDTs4oWz/XeiN0mIelDYDW+TmtxKt0Vl2tz6rFh6iyjOuW+KZocCRsGw==}
+  /vite-plugin-icons/0.5.0_456bf7085a5024258d6898a735bee12d:
+    resolution: {integrity: sha512-YsnoYixkp0HVIx6SvQWTyXXiWBCfc9gtKx3iqyPmN4fsE5hf7NvPp1LKiIazilP+zRUvHEyNeEbH4y6wUX8jMw==}
     peerDependencies:
       '@iconify/json': '*'
       '@vue/compiler-sfc': ^3.0.2
@@ -2190,8 +2181,8 @@ packages:
       vite: 2.1.5
     dev: true
 
-  /vite-plugin-pages/0.8.0_69006f3110eb5ede444e6409e42386e2:
-    resolution: {integrity: sha512-g7XJjF1DW7aUaiKfD7yprIoDLFGVlyVa/FznvDHogII6uUi0Y0RdU4R/CA3oDo+97Fpgz3l91Ri5tIDFyuLjJw==}
+  /vite-plugin-pages/0.9.3_69006f3110eb5ede444e6409e42386e2:
+    resolution: {integrity: sha512-sgBZELDm5/A53PX88pEZj8hItvQhIEjbtNSVlPUHmITxqDZsiC/zM7AhNePyOUA6HMf0XO4SDSV6HqFFRyV7zg==}
     peerDependencies:
       vite: ^2.0.0
       vue: ^3.0.0
@@ -2201,9 +2192,7 @@ packages:
       chalk: 4.1.0
       debug: 4.3.2
       deep-equal: 2.0.5
-      directory-tree: 2.2.7
       fast-glob: 3.2.5
-      glob-to-regexp: 0.4.1
       json5: 2.2.0
       vite: 2.1.5
       vue: 3.0.11
@@ -2241,14 +2230,14 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vue-eslint-parser/7.6.0_eslint@7.23.0:
+  /vue-eslint-parser/7.6.0_eslint@7.24.0:
     resolution: {integrity: sha512-QXxqH8ZevBrtiZMZK0LpwaMfevQi9UL7lY6Kcp+ogWHC88AuwUPwwCIzkOUc1LR4XsYAt/F9yHXAB/QoD17QXA==}
     engines: {node: '>=8.10'}
     peerDependencies:
       eslint: '>=5.0.0'
     dependencies:
       debug: 4.3.1
-      eslint: 7.23.0
+      eslint: 7.24.0
       eslint-scope: 5.1.1
       eslint-visitor-keys: 1.3.0
       espree: 6.2.1

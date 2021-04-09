@@ -83,10 +83,10 @@ export default defineConfig({
 		}),
 		components({
 			extensions: ['vue', 'md'],
-			customLoaderMatcher: (id) => id.endsWith('.md'),
+			customLoaderMatcher: id => id.endsWith('.md'),
 			customComponentResolvers: ViteIconsResolver(),
 			dirs: ['src/components', 'src/pages']
 		}),
-		icons({ defaultStyle: '' })
+		icons()
 	]
 });
