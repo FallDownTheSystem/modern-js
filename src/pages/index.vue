@@ -13,16 +13,12 @@
 
 			<template v-slot:description>
 				<div>
-					<i>
-						A series of posts describing how JavaScript came to be the language it is today,
-						<br />what new features got added to the language along the way,
-						<br />and what modern JavaScript development looks like.
-					</i>
-					<br />
-					<br />
-					<span
-						class="font-light text-sm text-gray-400"
-					>Updated {{ new Date(2021, 3, 3).toLocaleDateString() }}</span>
+					A series of posts describing how JavaScript came to be the language it is today,
+					<br />what new features got added to the language along the way,
+					<br />and what modern JavaScript development looks like.
+					<div
+						class="font-light text-sm mt-12 text-gray-400"
+					>Updated {{ new Date(2021, 3, 3).toLocaleDateString() }}</div>
 				</div>
 			</template>
 		</Title>
