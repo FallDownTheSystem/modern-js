@@ -7,7 +7,7 @@
 			<i-heroicons-outline:code class="w-7 h-7" />
 		</router-link>
 		<div class="bg-gray-400 w-full h-[1px]"></div>
-		<p class="min-w-max text-gray-200 font-light">(•‿•)ﾉ Hi!</p>
+		<p class="min-w-max text-white">(•‿•)ﾉ Hi!</p>
 		<div class="bg-gray-400 w-full h-[1px]"></div>
 		<a
 			href="https://github.com/FallDownTheSystem/modern-js"

@@ -66,42 +66,42 @@
 
 @font-face {
 	font-family: 'JetBrains Mono';
-	src: url('../assets/JetBrainsMono-Thin.woff2') format('woff2');
-	font-weight: 300;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'JetBrains Mono';
-	src: url('../assets/JetBrainsMono-ThinItalic.woff2') format('woff2');
-	font-weight: 300;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: 'JetBrains Mono';
 	src: url('../assets/JetBrainsMono-Light.woff2') format('woff2');
-	font-weight: 200;
+	font-weight: 300;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'JetBrains Mono';
 	src: url('../assets/JetBrainsMono-LightItalic.woff2') format('woff2');
-	font-weight: 200;
+	font-weight: 300;
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'JetBrains Mono';
 	src: url('../assets/JetBrainsMono-ExtraLight.woff2') format('woff2');
-	font-weight: 100;
+	font-weight: 200;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'JetBrains Mono';
 	src: url('../assets/JetBrainsMono-ExtraLightItalic.woff2') format('woff2');
+	font-weight: 200;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('../assets/JetBrainsMono-Thin.woff2') format('woff2');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('../assets/JetBrainsMono-ThinItalic.woff2') format('woff2');
 	font-weight: 100;
 	font-style: italic;
 }
@@ -179,28 +179,28 @@
 
 @font-face {
 	font-family: 'Centra No. 1';
-	src: url('../assets/CentraNo1-Thin.woff') format('woff');
-	font-weight: 300;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Centra No. 1';
-	src: url('../assets/CentraNo1-ThinItalic.woff') format('woff');
-	font-weight: 300;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: 'Centra No. 1';
 	src: url('../assets/CentraNo1-Light.woff') format('woff');
-	font-weight: 200;
+	font-weight: 300;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Centra No. 1';
 	src: url('../assets/CentraNo1-LightItalic.woff') format('woff');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Centra No. 1';
+	src: url('../assets/CentraNo1-Thin.woff') format('woff');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Centra No. 1';
+	src: url('../assets/CentraNo1-ThinItalic.woff') format('woff');
 	font-weight: 200;
 	font-style: italic;
 }
