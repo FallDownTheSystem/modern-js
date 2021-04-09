@@ -6,11 +6,45 @@
 			aria-label="Progress"
 		>
 			<ol class="space-y-4">
+				<li>
+					<router-link
+						:to="{ name: 'index' }"
+						class="flex items-center group outline-none"
+						aria-current="step"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+							role="img"
+							class="w-5 h-5 text-gray-500 group-hover:text-gray-300 group-focus:text-gray-300"
+							width="32"
+							height="32"
+							preserveAspectRatio="xMidYMid meet"
+							viewBox="0 0 24 24"
+						>
+							<g
+								class="icon-tabler"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="M5 12h14" />
+								<path d="M5 12l4 4" />
+								<path d="M5 12l4-4" />
+							</g>
+						</svg>
+						<span
+							class="ml-3 text-sm font-medium truncate w-56 text-gray-500 group-hover:text-gray-300 group-focus:text-gray-300"
+						>Home</span>
+					</router-link>
+				</li>
 				<li v-for="h in headings" :key="h.hash">
 					<!-- Current Step -->
 					<a
 						:href="h.hash"
-						class="flex items-start group outline-none"
+						class="flex items-center group outline-none"
 						:class="{ 'ml-3': h.type == 'H3', 'ml-6': h.type == 'H4' }"
 						aria-current="step"
 					>
