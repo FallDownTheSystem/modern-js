@@ -18,6 +18,7 @@ specifiers:
   markdown-it: ^12.0.4
   markdown-it-anchor: ^7.1.0
   markdown-it-container: ^3.0.0
+  markdown-it-task-lists: ^2.1.1
   postcss: ^8.2.9
   postcss-nested: ^5.0.5
   prettier: ^2.2.1
@@ -54,6 +55,7 @@ devDependencies:
   markdown-it: 12.0.4
   markdown-it-anchor: 7.1.0_markdown-it@12.0.4
   markdown-it-container: 3.0.0
+  markdown-it-task-lists: 2.1.1
   postcss: 8.2.9
   postcss-nested: 5.0.5_postcss@8.2.9
   prettier: 2.2.1
@@ -1473,6 +1475,10 @@ packages:
 
   /markdown-it-container/3.0.0:
     resolution: {integrity: sha512-y6oKTq4BB9OQuY/KLfk/O3ysFhB3IMYoIWhGJEidXt1NQFocFK2sA2t0NYZAMyMShAGL6x5OPIbrmXPIqaN9rw==}
+    dev: true
+
+  /markdown-it-task-lists/2.1.1:
+    resolution: {integrity: sha512-TxFAc76Jnhb2OUu+n3yz9RMu4CwGfaT788br6HhEDlvWfdeJcLUsxk1Hgw2yJio0OXsxv7pyIPmvECY7bMbluA==}
     dev: true
 
   /markdown-it/12.0.4:

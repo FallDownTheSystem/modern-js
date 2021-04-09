@@ -7,6 +7,7 @@ import pages from 'vite-plugin-pages';
 import layouts from 'vite-plugin-vue-layouts';
 import markdown from 'vite-plugin-md';
 import anchorPlugin from 'markdown-it-anchor';
+import taskListsPlugin from 'markdown-it-task-lists';
 import { slugify } from './src/markdown/slugify';
 import { highlight } from './src/markdown/highlight';
 import { modifyHeading } from './src/markdown/heading';
@@ -65,6 +66,7 @@ export default defineConfig({
 					.use(lineNumberPlugin)
 					.use(containerPlugin)
 					.use(modifyHeading)
+					.use(taskListsPlugin)
 					.use(linkPlugin, {
 						target: '_blank',
 						rel: 'noopener noreferrer'
@@ -74,7 +76,7 @@ export default defineConfig({
 						permalink: true,
 						permalinkBefore: true,
 						permalinkSymbol: '#',
-						permalinkClass: 'header-anchor w-6 opacity-0 hover:opacity-100 group-hover:opacity-100 absolute -left-6',
+						permalinkClass: 'header-anchor w-[1em] opacity-0 hover:opacity-100 group-hover:opacity-100 absolute left-[-1em]',
 						permalinkAttrs: () => ({ 'aria-hidden': true })
 					});
 			}

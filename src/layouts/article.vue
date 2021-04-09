@@ -70,26 +70,10 @@ const parseHeading = (x) => {
 	return obj;
 }
 
-// setTimeout(() => {
-// 	const element = document.querySelector(to.hash);
-// 	const offset = 40;
-// 	const bodyRect = document.body.getBoundingClientRect().top;
-// 	const elementRect = element.getBoundingClientRect().top;
-// 	const elementPosition = elementRect - bodyRect;
-// 	const offsetPosition = elementPosition - offset;
-
-// 	window.scrollTo({
-// 		top: offsetPosition,
-// 		behavior: 'smooth'
-// 	});
-// }, 0);
-
 const headings = computed(() => sections.filter(x => x.closest('.slides') == null).map(x => parseHeading(x)));
 
-const jumps = computed(() => sections.map(x => x));
-
 const updateSections = () => {
-	sections = [...root.value.querySelectorAll('h1, h2, h3, h4, .slides')]
+	sections = [...root.value.querySelectorAll('h1, h2, h3, h4')]
 }
 
 let timer = null;
@@ -98,13 +82,17 @@ onMounted(() => {
 
 	document.addEventListener('scroll', function(e) {
 		for (const heading of headings.value) {
-			if (heading.pos < (window.scrollY + (window.innerHeight / 3))) {
+			if (heading.pos < (window.scrollY + (window.innerHeight / 2.1))) {
 				current = heading.hash;
 			} else {
 				break;
 			}
 		}
 	});
+
+	setTimeout(() => {
+		updateSections();
+	}, 100)
 
 	const observer = new MutationObserver((mutationsList, observer) => {
 		for (const mutation of mutationsList) {

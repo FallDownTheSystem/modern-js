@@ -117,6 +117,8 @@ Extensions to types, such as arrays, strings, numbers, and objects
 - AJAX
 
 https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/
+https://flaviocopes.com/jquery/
+http://youmightnotneedjquery.com/
 
 ## Modern JavaScript development (tools)
 - The old way

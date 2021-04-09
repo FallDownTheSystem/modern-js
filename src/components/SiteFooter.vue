@@ -1,5 +1,5 @@
 <template>
-	<div class="flex content-center items-center p-8 space-x-8 mt-32">
+	<div class="flex content-center items-center p-8 space-x-8 mt-64">
 		<router-link
 			:to="{ name: 'index' }"
 			class="text-gray-50 hover:text-pink-600 focus:text-pink-600 focus:outline-none"

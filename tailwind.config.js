@@ -54,6 +54,9 @@ module.exports = {
 								fontWeight: '500',
 								'&:hover': {
 									textDecoration: 'underline'
+								},
+								strong: {
+									color: theme('colors.pink.600', defaultTheme.colors.pink[600])
 								}
 							},
 							strong: {
@@ -156,8 +159,8 @@ module.exports = {
 								color: theme('colors.gray.100', defaultTheme.colors.gray[100])
 							},
 							pre: {
-								color: theme('colors.gray.800', defaultTheme.colors.gray[800]),
-								backgroundColor: theme('colors.gray.200', defaultTheme.colors.gray[200]),
+								color: theme('colors.gray.200', defaultTheme.colors.gray[200]),
+								backgroundColor: theme('colors.gray.800', defaultTheme.colors.gray[800]),
 								overflowX: 'auto'
 							},
 							'pre code': {
