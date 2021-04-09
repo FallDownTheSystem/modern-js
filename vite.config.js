@@ -87,6 +87,6 @@ export default defineConfig({
 			customComponentResolvers: ViteIconsResolver(),
 			dirs: ['src/components', 'src/pages']
 		}),
-		icons()
+		icons({ defaultStyle: '' })
 	]
 });
