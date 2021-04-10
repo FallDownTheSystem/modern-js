@@ -1,8 +1,8 @@
 const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
-const rem = (px) => `${round(px / 16)}rem`;
+const rem = px => `${round(px / 16)}rem`;
 const em = (px, base) => `${round(px / base)}em`;
-const round = (num) =>
+const round = num =>
 	num
 		.toFixed(7)
 		.replace(/(\.[0-9]+?)0+$/, '$1')
@@ -39,7 +39,7 @@ module.exports = {
 				mono: ["'JetBrains Mono'", ...defaultTheme.fontFamily.mono],
 				display: ["'Neutra Text'"]
 			},
-			typography: (theme) => ({
+			typography: theme => ({
 				DEFAULT: {
 					css: [
 						{
@@ -62,6 +62,14 @@ module.exports = {
 							strong: {
 								color: theme('colors.gray.100', defaultTheme.colors.gray[100]),
 								fontWeight: '600'
+							},
+							sub: {
+								lineHeight: '1.25',
+								color: theme('colors.gray.400', defaultTheme.colors.gray[400])
+							},
+							sup: {
+								lineHeight: '1.25',
+								color: theme('colors.gray.400', defaultTheme.colors.gray[400])
 							},
 							'ol[type="A"]': {
 								'--list-counter-style': 'upper-alpha'
