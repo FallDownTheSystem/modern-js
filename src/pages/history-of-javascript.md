@@ -38,11 +38,9 @@ The rush job that was JavaScript wouldn't be the only pain point for future deve
 
 Although JScript was based on JavaScript, their implementations differend, and the browsers had different support for other features as well, leading to browser wars where some sites would work best on a specific browser.
 
-::: c box info "Note"
 Other implementations included [ActionScript](https://en.wikipedia.org/wiki/ActionScript), developed by Macromedia (later dissolved into Adobe Systems). Used in the Adobe Flash Player platform.
-:::
 
-Competiting implementations between browsers are a cause headache for developers to this date, but things aren't nearly as bad, thanks to the creation of a language specification for JavaScript.
+Competiting implementations between browsers are a cause headache for developers to this date, but things aren't nearly as bad as back then, thanks to the creation of a language specification for JavaScript.
 
 ::: c box note "More reading"
 This is just a glimpse into JavaScript's history. If you're interested in learning [more](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) there [are](https://thenewstack.io/brendan-eich-on-creating-javascript-in-10-days-and-what-hed-do-differently-today/) better [articles](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) for [that](https://en.wikipedia.org/wiki/JavaScript#History).
@@ -71,3 +69,4 @@ In 1996 Netscape submitted JavaScript to [ECMA International](https://en.wikiped
     - Browser interoperability
   - JavaScript now
     - Popularity (of TypeScript)
+    - Not without it's flaws

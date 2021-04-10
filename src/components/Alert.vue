@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col">
+	<div class="flex flex-col my-4">
 		<div class="flex justify-between">
 			<span class="text-xl font-bold mt-0.5">{{ title }}</span>
 			<i-heroicons-outline:information-circle v-if="type == 'info'" class="w-8 h-8 ml-8 text-blue-600 flex-shrink-0" />
