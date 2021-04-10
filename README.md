@@ -1,23 +1,5 @@
 # Modern JavaScript
 
-## History of JavaScript
-  - Origin of JavaScript, competing implementations
-    - JavaScript the name
-  - The EcmaScript specification
-  - Different version of EcmaScript
-  - Stuck in the Dark Ages (Internet Explorer)
-  - Moving past IE (Age of Enlightment)
-    - Polyfills
-      - Feature checking
-      - How to polyfill properly
-      - Services: polyfill.io
-    - Transpilers
-    - ES6
-    - Can I use
-  - Why does JavaScript suck?
-    - Backwards compatibility
-
-
 ## New ES features
   - Extensions to existing types/classes
   - New types
@@ -34,7 +16,6 @@ https://devhints.io/es6
 https://github.com/sudheerj/ECMAScript-features
 https://dev.to/sinhapiyush/modern-javascript-1jk3
 https://dev.to/sinhapiyush/modern-javascript-ii-2h34
-
 
 
 ### New methods
@@ -114,7 +95,7 @@ Extensions to types, such as arrays, strings, numbers, and objects
   - Changing styles / classes
   - Creating and inserting elements
   - Changing text content
-- AJAX
+- Dropping support for IE
 
 https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/
 https://flaviocopes.com/jquery/

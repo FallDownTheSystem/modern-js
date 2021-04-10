@@ -3,7 +3,7 @@
 		<h1 class="font-serif text-center title__header" :id="slugify(title)">
 			<slot>{{ title }}</slot>
 		</h1>
-		<p class="text-center title__description text-gray-50">
+		<p class="text-center title__description text-gray-300">
 			<slot name="description">{{ description }}</slot>
 		</p>
 	</div>

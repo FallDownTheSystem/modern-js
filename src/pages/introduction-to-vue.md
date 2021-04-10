@@ -16,7 +16,7 @@ title: About
 </route>
 
 
-<Title title="This a test page with a long title" description="This is a test description" />
+<Title :title="$route.meta.title" :description="$route.meta.description" />
 
 ::: c tag Custom mb-16
 ## I can go inside your custom component
