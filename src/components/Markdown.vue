@@ -5,11 +5,11 @@
 <script setup>
 import { defineProps, onMounted, defineEmit } from 'vue';
 
-const emit = defineEmit();
-
 const props = defineProps({
 	frontmatter: Object
 });
+
+const emit = defineEmit(['mounted']);
 
 onMounted(() => {
 	emit('mounted');

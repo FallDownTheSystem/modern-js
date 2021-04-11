@@ -46,13 +46,17 @@
 
 <script setup>
 import { useRoute } from 'vue-router';
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, defineEmit } from 'vue';
 import { sortBy } from 'lodash-es';
 const routes = useRoute();
 const children = sortBy(
 	routes.matched.filter(x => x.path == routes.path)[0].children.filter(x => x.path !== '/' && x.name !== 'all'),
 	'meta.order'
 );
+
+// We have to define the emit here as well, even though the index page doesn't emit anything.
+// Seems to be a bug, maybe related to the vite plugin vue layouts or vite plugin pages?
+const emit = defineEmit(['mounted']);
 </script>
 
 <route lang="yaml">
