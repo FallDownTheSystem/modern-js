@@ -4,11 +4,11 @@
 		<Transition
 			appear
 			enter-from-class="opacity-0 -translate-x-64"
-			enter-active-class="delay-100"
+			enter-active-class="delay-200"
 			enter-to-class="opacity-100 translate-x-0"
 		>
 			<nav
-				class="transition-all transform duration-500 hidden full:flex justify-center fixed text-white pl-4 top-1/2 transform -translate-y-1/2"
+				class="transition-all transform duration-300 hidden full:flex justify-center fixed text-white pl-4 top-1/2 transform -translate-y-1/2"
 				aria-label="Progress"
 			>
 				<ol class="space-y-4">
