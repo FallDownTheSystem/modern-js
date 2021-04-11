@@ -59,7 +59,10 @@ const children = sortBy(
 const emit = defineEmit(['mounted']);
 </script>
 
-<route lang="yaml">
-meta:
-  layout: home
+<route>
+{
+	meta: {
+		layout: "home"
+	}
+}
 </route>

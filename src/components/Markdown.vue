@@ -12,8 +12,6 @@ const props = defineProps({
 const emit = defineEmit(['mounted']);
 
 onMounted(() => {
-	setTimeout(() => {
-		emit('mounted');
-	}, 50);
+	emit('mounted');
 });
 </script>
