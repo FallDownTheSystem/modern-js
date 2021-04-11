@@ -1,12 +1,17 @@
 <template>
-	<slot :children="children" :frontmatter="frontmatter" v-bind="$attrs"></slot>
+	<slot :frontmatter="frontmatter" v-bind="$attrs"></slot>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, onMounted, defineEmit } from 'vue';
+
+const emit = defineEmit();
 
 const props = defineProps({
-	children: Array,
 	frontmatter: Object
+});
+
+onMounted(() => {
+	emit('mounted');
 });
 </script>

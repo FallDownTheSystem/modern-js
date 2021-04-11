@@ -30,12 +30,6 @@ export default defineConfig({
 		pages({
 			extensions: ['vue', 'md'],
 			importMode(path) {
-				// Load about page synchronously, all other pages are async.
-				const depth = path.split('/').length;
-				if (path == '/src/pages/index.vue' || depth > 4) {
-					return 'sync';
-				}
-
 				return 'async';
 			},
 			extendRoute(route) {
@@ -85,7 +79,7 @@ export default defineConfig({
 			extensions: ['vue', 'md'],
 			customLoaderMatcher: id => id.endsWith('.md'),
 			customComponentResolvers: ViteIconsResolver(),
-			dirs: ['src/components', 'src/pages']
+			dirs: ['src/components']
 		}),
 		icons()
 	]

@@ -11,13 +11,6 @@
 			>
 				<i-heroicons-solid:chevron-left class="h-6 w-6" />
 			</button>
-			<span>test</span>
-			<span>test</span>
-			<p>
-				Hello
-				<span>This is a message</span>
-				about flies!
-			</p>
 			<button
 				type="button"
 				class="p-1 hover:shadow-md transition-shadow duration-50 disabled:shadow-none focus:outline-none focus:ring-2 ring-gray-400 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 text-gray-300 hover:text-gray-100 disabled:text-gray-500 rounded"

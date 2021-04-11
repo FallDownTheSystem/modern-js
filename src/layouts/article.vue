@@ -57,7 +57,7 @@
 
 		<main ref="root">
 			<div id="content" class="flex flex-col items-center content-center">
-				<router-view />
+				<router-view @mounted="updateSections" />
 			</div>
 		</main>
 		<SiteFooter />
@@ -80,13 +80,11 @@ const parseHeading = x => {
 	return obj;
 };
 
-const headings = computed(() => sections.filter(x => x.closest('.slides') == null).map(x => parseHeading(x)));
-
 const updateSections = () => {
 	sections = [...root.value.querySelectorAll('h1, h2, h3, h4')];
 };
 
-let timer = null;
+const headings = computed(() => sections.filter(x => x.closest('.slides') == null).map(x => parseHeading(x)));
 
 onMounted(() => {
 	document.addEventListener('scroll', function (e) {
@@ -98,31 +96,5 @@ onMounted(() => {
 			}
 		}
 	});
-
-	setTimeout(() => {
-		updateSections();
-	}, 100);
-
-	const observer = new MutationObserver((mutationsList, observer) => {
-		for (const mutation of mutationsList) {
-			if (mutation.type === 'childList') {
-				updateSections();
-			}
-		}
-	});
-
-	observer.observe(root.value, { attributes: false, childList: true, subtree: true });
-
-	// Watch for changes for 2 seconds and update the god damned headings, then stop so we don't waste resources
-	timer = setTimeout(() => {
-		observer.disconnect();
-		updateSections();
-	}, 2000);
-});
-
-onUnmounted(() => {
-	if (timer) {
-		clearTimeout(timer);
-	}
 });
 </script>
