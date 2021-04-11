@@ -31,7 +31,7 @@ export default {
 
 <style>
 .title {
-	grid-column: 2 / span 7 !important;
+	max-width: 76rem !important;
 }
 .title .title__header {
 	margin-bottom: 4rem !important;

@@ -13,10 +13,11 @@ code .token.inserted {
 
 div[class*='language-'] {
 	position: relative;
-	margin: 1rem -1.5rem;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
 	background-color: theme('colors.gray.800');
 	overflow-x: auto;
-	@apply shadow-xl;
+	@apply shadow-lg;
 }
 
 .aside div[class*='language-'] {
@@ -30,7 +31,6 @@ li > div[class*='language-'] {
 
 @media (min-width: 420px) {
 	div[class*='language-'] {
-		margin: 1rem 0;
 		border-radius: 6px;
 	}
 	li > div[class*='language-'] {

@@ -1,5 +1,5 @@
 <template>
-	<div class="prose prose-lg mb-16">
+	<div class="prose mb-16">
 		<div class="font-display invisible h-0 w-0 absolute" aria-hidden="true">Preloading font</div>
 		<Title>
 			<div class="group">

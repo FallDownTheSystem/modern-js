@@ -154,7 +154,6 @@ In 2005, Jesse James Garrett released a white paper in which he coined the term 
 AJAX was a revolutionary way to develop web applications, and many libraries were built around the concept of AJAX. Looking at an XMLHTTPRequest, it's clear to see why more straightforward APIs were developed around the concept.
 
 ```js
-
 // Initialize the HTTP request.
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'send-ajax-data.php');
@@ -180,24 +179,22 @@ xhr.send(null);
 
 One such library was jQuery. Although jQuery wasn't built around AJAX, it does support AJAX.
 
-> jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and **AJAX**.
+## Coping with Internet Explorer
 
-jQuery is an immensely popular JavaScript library (used in almost 80% of the top 10 million most popular websites in **2020** 🤯). Really jQuery warrants its own article, which is what the third article in this series is all about. But what I want to examine first is **why** jQuery was, and still is, so popular.
-
-
-## The dark ages
-
-Internet Explorer's long reign in the 2000s has lingered well into the 2010s, and the effect of IE's dominance can still be seen today, even after Firefox and Chrome took the vast majority of the market share back.
+The effects of Internet Explorer's long reign in the 2000s have lingered well into the 2010s, and the results of IE's dominance can still be seen today, even after Firefox and Chrome took the vast majority of the market share back.
 
 The number of web applications and users, especially business users still on Internet Explorer, has meant that developers have had to support the outdated browser for decades. This may not have been such a big deal, except that the latest version of Internet Explorer, IE 11, only implements ES5. That means that all features since ES5 can not be used.
 
-The key factors that made jQuery such an appealing library were:
-- jQuery made it easy to do tedious things such as
-  - DOM manipulation
-  - Animations
-  - AJAX
-- jQuery provided an API that worked on most browsers, making cross-browser compatibility much easier
-- JavaScript has no standard library and jQuery provided solutions to common challenges
+### jQuery
+
+> jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and **AJAX**.
+
+jQuery is an immensely popular JavaScript library (used in almost 80% of the top 10 million most popular websites in **2020** 🤯). jQuery warrants its own article, which is exactly what the third article in this series is all about. But for now what I want to examine is **why** jQuery was, and still is, so popular.
+
+Some of the key factors that made jQuery such an appealing library were that
+- jQuery made it easy to do tedious things such as DOM manipulation, animations, and AJAX.
+- jQuery provided an API that worked on most browsers, making cross-browser compatibility much easier.
+- JavaScript has no standard library and jQuery provided solutions to common challenges.
 
 Above we saw how verbose an XMLHTTPRequest can be. Here's the same request done with jQuery:
 
@@ -209,9 +206,9 @@ $.get("send-ajax-data.php", function(data) {
 });
 ```
 
-For the most part, jQuery let developers use existing JavaScript features with cleaner APIs. What about newer features? Features released in ES6 couldn't be used in Internet Explorer, and jQuery doesn't solve that problem.
+For the most part, jQuery let developers use existing JavaScript features with these kinds of cleaner APIs. What about newer features? Features released in ES6 couldn't be used in Internet Explorer, and jQuery doesn't solve that problem.
 
-## Polyfills
+### Polyfills
 
 [Polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) is a "shim for a browser API", meaning code that implements a feature on browsers that do not support the feature. Polyfills are a way to use newer features in older browsers, with some limitations.
 
@@ -221,7 +218,7 @@ This way, new features can be supported without overriding the existing implemen
 
 So what if we want to use the latest syntax?
 
-## Transpilers
+### Transpilers
 
 A transpiler is a source-to-source compiler. In our case, we're interested in a transpiler that takes JavaScript code and turns it back into JavaScript code, but with syntax constructs supported by older browsers. This way, we can use new syntax and compile it into something that more senior browser support.
 
@@ -239,15 +236,10 @@ var _element$index;
 
 ## Summary
 
-Hopefully, now you understand why JavaScript sucks, or at least why it used to.
+JavaScript's rushed initial design and unfortunate design choices, combined with cross-brows incompatibility issues and the fact that you can't break the web (backward compatibility), have led to JavaScript being disliked by many. Yet, the language has persevered.
 
+In the 2020 [Stack Overflow's developer survey](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved), 58.3% of developers reported % that they are developing with the language and are interested in continuing to develop with it. This is pretty middle of the pack but far from being dreaded or hated.
 
+Even more surprisingly, TypeScript, a statically typed superset of JavaScript that is transpiled into JavaScript, was *"loved"* by 67.1% of developers. The second most high ranking.
 
-- Why JavaScript sucks
-  - Rushed initial design
-  - Backwards compatibility
-  - Browser interoperability
-
-- JavaScript now
-  - Popularity (of TypeScript)
-  - Not without it's flaws
+JavaScript isn't without its flaws, but things have gotten a lot better with the annual releases since ES2015 and with modern tools that help us build and manage more complex web applications.

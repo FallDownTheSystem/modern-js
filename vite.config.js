@@ -44,7 +44,7 @@ export default defineConfig({
 		}),
 		layouts(),
 		markdown({
-			wrapperClasses: 'post__layout prose prose-lg',
+			wrapperClasses: 'post__layout !mx-auto prose',
 			wrapperComponent: 'Markdown',
 			headEnabled: true,
 			markdownItOptions: {
