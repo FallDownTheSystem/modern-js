@@ -45,7 +45,7 @@ This is just a glimpse into JavaScript's history. If you're interested in learni
 
 ## The ECMA Specification
 
-In 1996 Netscape submitted JavaScript to [ECMA International](https://en.wikipedia.org/wiki/Ecma_International) (originally the European Computer Manufacturers Association) to create a language specification that all browsers could adhere to. In 1997 the first ECMAScript language specification, ECMA-262 was created.
+In 1996 Netscape submitted JavaScript to [ECMA International](https://en.wikipedia.org/wiki/Ecma_International) (originally the European Computer Manufacturers Association) to create a language specification that all browsers could adhere to. In 1997 the first ECMAScript language specification, ECMA-262, was created.
 
 ::: c box info "Naming convention"
 The standards specification document is called ECMA-262.
@@ -68,13 +68,13 @@ A new version of the specification wouldn't be published until 2009, ten years a
 - Adds some new features, such as getters and setters, library support for JSON, and more complete reflection on object properties.
 :::
 
-One reason for the long delay between the 4th and the 5th edition was that by the early 2000s, Internet Explorer had gained a 95% market share, making JScript the de facto standard. With Internet Explorer's domination of the market share, they didn't need to collaborate on the ECMAScript specification. Not until new browsers managed to take significant market share back from Internet Explorer. Notably, Netscape's successor, Mozilla Firefox, released in 2004, and Google's Chrome released in 2008.
+One reason for the long delay between the 4th and the 5th edition was that by the early 2000s, Internet Explorer (IE) had gained a 95% market share, making JScript the de facto standard. With Internet Explorer's domination of the market share, they didn't need to collaborate on the ECMAScript specification. Not until new browsers managed to take significant market share back from Internet Explorer. Notably, Netscape's successor, Mozilla Firefox, released in 2004, and Google's Chrome released in 2008.
 
 It would be another 6 years between ES5 and ES6. The 6th Edition of ECMAScript, later renamed to ECMAScript 2015, contained many proposed features from ES4. The complete list of new features is extensive, and we'll go through a lot of them in the following article, which lists the key features from all ECMAScript specifications since ECMAScript 2015. This is the start of what I refer to as *modern* JavaScript.
 
 ## JavaScript innovations
 
-Before moving on to modern JavaScript, I'd like to point out a few key innovations in the world of JavaScript that have had a massive impact on what JavaScript is today. Firstly of them being [JSON](https://en.wikipedia.org/wiki/JSON) and second one [AJAX](https://en.wikipedia.org/wiki/Ajax_(programming)).
+Before moving on to modern JavaScript, I'd like to point out a few key innovations in the world of JavaScript that have had a massive impact on what JavaScript is today. First one of them being [JSON](https://en.wikipedia.org/wiki/JSON) and the second one [AJAX](https://en.wikipedia.org/wiki/Ajax_(programming)).
 
 ### JavaScript Object Notation
 
@@ -145,7 +145,7 @@ JSON was developed in the early 2000s by Douglas Crockford and has since taken o
 Comparing JSON to XML
 </sub>
 
-This article isn't about JSON vs. XML or REST vs. SOAP, but it's worth mentioning, considering our next chapter.
+We're not here to talk about JSON or XML, but I figured they were worth mentioning, considering our next chapter.
 
 ### Asynchronous JavaScript and XML
 
@@ -182,21 +182,67 @@ One such library was jQuery. Although jQuery wasn't built around AJAX, it does s
 
 > jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and **AJAX**.
 
-jQuery is an immensely popular JavaScript library (used in almost 80% of the top 10 million most popular websites in **2020** 🤯). The third article in this series is all about jQuery. But what I want to examine now is **why** jQuery was and is so popular.
+jQuery is an immensely popular JavaScript library (used in almost 80% of the top 10 million most popular websites in **2020** 🤯). Really jQuery warrants its own article, which is what the third article in this series is all about. But what I want to examine first is **why** jQuery was, and still is, so popular.
+
 
 ## The dark ages
-- IE's reign of a decade
-- Stuck supporting IE
-  - Business moves slow
-- ES6 not supported
-- Polyfills
-- Transpilers
-  - Babel
-  - TypeScript
-- jQuery
-- Can I use
+
+Internet Explorer's long reign in the 2000s has lingered well into the 2010s, and the effect of IE's dominance can still be seen today, even after Firefox and Chrome took the vast majority of the market share back.
+
+The number of web applications and users, especially business users still on Internet Explorer, has meant that developers have had to support the outdated browser for decades. This may not have been such a big deal, except that the latest version of Internet Explorer, IE 11, only implements ES5. That means that all features since ES5 can not be used.
+
+The key factors that made jQuery such an appealing library were:
+- jQuery made it easy to do tedious things such as
+  - DOM manipulation
+  - Animations
+  - AJAX
+- jQuery provided an API that worked on most browsers, making cross-browser compatibility much easier
+- JavaScript has no standard library and jQuery provided solutions to common challenges
+
+Above we saw how verbose an XMLHTTPRequest can be. Here's the same request done with jQuery:
+
+```js
+$.get("send-ajax-data.php", function(data) {
+	console.log(data);
+}).fail(function(xhr) {
+	console.log('Error: ' + xhr.status); 
+});
+```
+
+For the most part, jQuery let developers use existing JavaScript features with cleaner APIs. What about newer features? Features released in ES6 couldn't be used in Internet Explorer, and jQuery doesn't solve that problem.
+
+## Polyfills
+
+[Polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) is a "shim for a browser API", meaning code that implements a feature on browsers that do not support the feature. Polyfills are a way to use newer features in older browsers, with some limitations.
+
+A polyfill works by taking an existing API and implementing the same interface, but in a way that is supported by the old browser. A polyfill only adds the polyfilled implementation if the feature isn't already supported by the browser.
+
+This way, new features can be supported without overriding the existing implementation on compatible browsers. But polyfills can't implement all features; for example, polyfills can't add new syntax to the language.
+
+So what if we want to use the latest syntax?
+
+## Transpilers
+
+A transpiler is a source-to-source compiler. In our case, we're interested in a transpiler that takes JavaScript code and turns it back into JavaScript code, but with syntax constructs supported by older browsers. This way, we can use new syntax and compile it into something that more senior browser support.
+
+The major downside is that this requires an additional step, a build step. We're going to talk more about build tools and modern JavaScript development in the 4th article.
+
+The most popular JavaScript compiler is [Babel](https://babeljs.io/). Here's an example of how the Nullish Coalescing operator `??` gets compiled into browser-compatible JavaScript.
+
+```js
+element.index ?? -1;
+
+// Gets compiled into
+var _element$index;
+(_element$index = element.index) != null ? _element$index : -1;
+```
 
 ## Summary
+
+Hopefully, now you understand why JavaScript sucks, or at least why it used to.
+
+
+
 - Why JavaScript sucks
   - Rushed initial design
   - Backwards compatibility
