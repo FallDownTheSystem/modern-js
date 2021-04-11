@@ -46,7 +46,7 @@
 
 <script setup>
 import { useRoute } from 'vue-router';
-import { defineAsyncComponent, defineEmit } from 'vue';
+import { defineEmit } from 'vue';
 import { sortBy } from 'lodash-es';
 const routes = useRoute();
 const children = sortBy(
