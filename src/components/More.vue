@@ -4,11 +4,11 @@
 			<span>Read more</span>
 			<i-heroicons-solid:chevron-down class="w-6 h-6 text-white mt-1" />
 		</div>
-		<transition name="test" enter-from-class="opacity-0 translate-y-8" enter-to-class="opacity-100 translate-y-0">
+		<Transition name="test" enter-from-class="opacity-0 translate-y-8" enter-to-class="opacity-100 translate-y-0">
 			<div v-if="open" class="transition-all duration-300 transform">
 				<slot></slot>
 			</div>
-		</transition>
+		</Transition>
 	</div>
 </template>
 

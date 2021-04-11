@@ -12,11 +12,7 @@
 <Title :title="$route.meta.title" :description="$route.meta.description" />
 
 
-This article isn't actually about the history of JavaScript. I mean, it is, and it isn't. Really this post has two goals:
-1. To introduce you to some basic terminology around JavaScript.
-2. To explain what I mean by *Modern* JavaScript.
-
-The first goal will come naturally as you progress along with the article, but to achieve the second goal, we're going to have to go through some of JavaScript's history. By understanding JavaScript's history, I hope you'll come to see why there's a divide between the *old*, frequently criticized, and even hated JavaScript and *Modern*, shockingly (😲) popular JavaScript.
+This article isn't actually about the history of JavaScript. I mean, it is, and it isn't. Really the goal of this article is to explain what I mean by *Modern* JavaScript. To achieve the goal, we're going to have to go through some of JavaScript's history. By understanding JavaScript's history, I hope you'll come to see why there's a divide between the *old*, frequently criticized, and even hated JavaScript and *Modern*, shockingly (😲) popular JavaScript.
 
 ::: c note "Intended Audience" box
 This and the following articles are written with the assumption that you're at least slightly familiar with JavaScript. A basic understanding of the language and its standing on the web is going to be helpful.
@@ -32,7 +28,7 @@ All of this was happening fast. Really fast. The first version of JavaScript (Mo
 
 
 <sub>
-* Lack of an integer type, aggressive type coercion, and unfamiliar prototypical inheritance, to name a few.
+* Lack of an integer type, aggressive type coercion, lack of classes, and unfamiliar prototypical inheritance, to name a few.
 </sub>
 
 ## Competing implementations
@@ -54,30 +50,158 @@ In 1996 Netscape submitted JavaScript to [ECMA International](https://en.wikiped
 ::: c box info "Naming convention"
 The standards specification document is called ECMA-262.
 The language specification is called ECMAScript.
-The standards were previously referred to by their edition number, e.g., ECMAScript 5 or just ES5 for short. Nowadays, a new edition of the specification is released annually, and the name includes the year, e.g., ECMAScript 2015 (ES2015), the 6th edition of ECMAScript (ES6).
+The standards were previously referred to by their edition number, e.g., ECMAScript 5 or just ES5 for short.
+Nowadays, a new edition of the specification is released annually, and the name includes the year, e.g., ECMAScript 2015 (ES2015), which is the 6th edition of ECMAScript (ES6).
 :::
 
 ECMAScript 2 was released in 1998, a year after the original specification. The second edition only included editorial changes so that the specification conformed to the ISO/IEC 16262 international standard, which is the same standard but published under ISO/IEC.
 
-The third edition of ECMAScript was released a year after the second edition in 1999 and included actual changes to the language. ES3 added regular expressions, better string handling, new control statements, try/catch exception handling, tighter definition of errors, formatting for numeric output, and other enhancements.
+The third edition of ECMAScript was released a year after the second edition in 1999 and included actual changes to the language. ECMAScript 3 added regular expressions, better string handling, new control statements, try/catch exception handling, tighter definition of errors, formatting for numeric output, and other enhancements.
 
-So far, everything was going well; the different browsers were following the ECMAScript specification. But by the early 2000s, Internet Explorer had gained a 95% market share, making JScript the de facto standard. The work on the ES4 had already started but was quickly sidetracked as Microsoft stopped collaborating on the ECMAScript specification. The fourth edition of ECMAScript included major changes to the language that the stakeholders couldn't find common ground on, and the 4th edition of the specification would be abandoned in 2003.
+The proposed ECMAScript 4 specification included major changes to the language, some of which the stakeholders couldn't find common ground on. Long story short, the 4th edition of the specification would end up being abandoned.
 
-Work on the ECMAScript specifications wouldn't reach a new edition for a long time. Some parties tried to create a less ambitious specification, ECMAScript 3.1 until new browsers managed to take significant market share back from Internet Explorer. Notably, Netscape's successor, the Mozilla Firefox browser, released in 2004, and Google's Chrome released in 2008. 
+A new version of the specification wouldn't be published until 2009, ten years after the last version. ECMAScript 5 was a far less ambitious version focused on compatibility, originally named ECMAScript 3.1 and later renamed to the 5th edition of ECMAScript.
+::: c info "ECMAScript 5" box
+- Adds "strict mode," a subset intended to provide more thorough error checking and avoid error-prone constructs. 
+- Clarifies many ambiguities in the 3rd edition specification
+- Accommodates behavior of real-world implementations that differed consistently from that specification. 
+- Adds some new features, such as getters and setters, library support for JSON, and more complete reflection on object properties.
+:::
 
-  - ES5
-  - JSON
-  - AJAX
-  - Stuck supporting IE
-    - Polyfills
-    - Transpilers
-    - ES6
-    - jQuery
-    - Can I use
-  - Summary: Why does JavaScript suck?
-    - Rushed initial design
-    - Backwards compatibility
-    - Browser interoperability
-  - JavaScript now
-    - Popularity (of TypeScript)
-    - Not without it's flaws
+One reason for the long delay between the 4th and the 5th edition was that by the early 2000s, Internet Explorer had gained a 95% market share, making JScript the de facto standard. With Internet Explorer's domination of the market share, they didn't need to collaborate on the ECMAScript specification. Not until new browsers managed to take significant market share back from Internet Explorer. Notably, Netscape's successor, Mozilla Firefox, released in 2004, and Google's Chrome released in 2008.
+
+It would be another 6 years between ES5 and ES6. The 6th Edition of ECMAScript, later renamed to ECMAScript 2015, contained many proposed features from ES4. The complete list of new features is extensive, and we'll go through a lot of them in the following article, which lists the key features from all ECMAScript specifications since ECMAScript 2015. This is the start of what I refer to as *modern* JavaScript.
+
+## JavaScript innovations
+
+Before moving on to modern JavaScript, I'd like to point out a few key innovations in the world of JavaScript that have had a massive impact on what JavaScript is today. Firstly of them being [JSON](https://en.wikipedia.org/wiki/JSON) and second one [AJAX](https://en.wikipedia.org/wiki/Ajax_(programming)).
+
+### JavaScript Object Notation
+
+> JSON is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language.
+
+JSON was developed in the early 2000s by Douglas Crockford and has since taken over the world wide web. XML used to be the de facto standard in open data exchange, but JSON has since become the more popular choice. With JSON's simplicity and direct relation to JavaScript, I think it's clear to see why.
+
+
+::: c two-col wide
+
+```json
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "isAlive": true,
+  "age": 27,
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "New York",
+    "state": "NY",
+    "postalCode": "10021-3100"
+  },
+  "phoneNumbers": [
+    {
+      "type": "home",
+      "number": "212 555-1234"
+    },
+    {
+      "type": "office",
+      "number": "646 555-4567"
+    }
+  ],
+  "children": [],
+  "spouse": null
+}
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <firstName>John</firstName>
+   <lastName>Smith</lastName>
+   <isAlive>true</isAlive>
+   <age>27</age>
+   <address>
+      <city>New York</city>
+      <postalCode>10021-3100</postalCode>
+      <state>NY</state>
+      <streetAddress>21 2nd Street</streetAddress>
+   </address>
+   <phoneNumbers>
+      <element>
+         <number>212 555-1234</number>
+         <type>home</type>
+      </element>
+      <element>
+         <number>646 555-4567</number>
+         <type>office</type>
+      </element>
+   </phoneNumbers>
+   <children />
+   <spouse null="true" />
+</root>
+```
+:::
+
+<sub>
+Comparing JSON to XML
+</sub>
+
+This article isn't about JSON vs. XML or REST vs. SOAP, but it's worth mentioning, considering our next chapter.
+
+### Asynchronous JavaScript and XML
+
+In 2005, Jesse James Garrett released a white paper in which he coined the term AJAX and described a set of techniques on the client-side to asynchronously (without the need to reload the page) change the content of the page. Even though the term is called Asynchronous JavaScript and **XML**, the concept remains the same for JSON.
+
+AJAX was a revolutionary way to develop web applications, and many libraries were built around the concept of AJAX. Looking at an XMLHTTPRequest, it's clear to see why more straightforward APIs were developed around the concept.
+
+```js
+
+// Initialize the HTTP request.
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'send-ajax-data.php');
+
+// Track the state changes of the request.
+xhr.onreadystatechange = function () {
+	var DONE = 4; // readyState 4 means the request is done.
+	var OK = 200; // status 200 is a successful return.
+	if (xhr.readyState === DONE) {
+		if (xhr.status === OK) {
+			// 'This is the output.'
+			console.log(xhr.responseText); 
+		} else {
+			// An error occurred during the request.
+			console.log('Error: ' + xhr.status); 
+		}
+	}
+};
+
+// Send the request to send-ajax-data.php
+xhr.send(null);
+```
+
+One such library was jQuery. Although jQuery wasn't built around AJAX, it does support AJAX.
+
+> jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and **AJAX**.
+
+jQuery is an immensely popular JavaScript library (used in almost 80% of the top 10 million most popular websites in **2020** 🤯). The third article in this series is all about jQuery. But what I want to examine now is **why** jQuery was and is so popular.
+
+## The dark ages
+- IE's reign of a decade
+- Stuck supporting IE
+  - Business moves slow
+- ES6 not supported
+- Polyfills
+- Transpilers
+  - Babel
+  - TypeScript
+- jQuery
+- Can I use
+
+## Summary
+- Why JavaScript sucks
+  - Rushed initial design
+  - Backwards compatibility
+  - Browser interoperability
+
+- JavaScript now
+  - Popularity (of TypeScript)
+  - Not without it's flaws
