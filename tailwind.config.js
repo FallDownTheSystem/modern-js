@@ -34,7 +34,7 @@ module.exports = {
 				full: '1880px'
 			},
 			fontFamily: {
-				sans: ["'Centra No. 1'", "'Inter var'", ...defaultTheme.fontFamily.sans],
+				sans: ["'Centra No. 1'", ...defaultTheme.fontFamily.sans],
 				serif: ["'Playfair Display'", ...defaultTheme.fontFamily.serif],
 				mono: ["'JetBrains Mono'", ...defaultTheme.fontFamily.mono],
 				display: ["'Neutra Text'"]
