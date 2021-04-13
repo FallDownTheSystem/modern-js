@@ -62,22 +62,26 @@
 
 		<main ref="root">
 			<div id="content" class="flex flex-col items-center content-center">
-				<router-view @mounted="updateSections" />
+				<router-view @mounted="handleMounted" />
 			</div>
 		</main>
+		<ArticleNavigation :articleNav="articleNav" class="mt-64" />
 		<SiteFooter />
 	</div>
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { onMounted, onUnmounted, onUpdated, ref, computed } from 'vue';
+import { sortBy } from 'lodash-es';
 
-ref: index = 0;
 ref: sections = [];
 ref: current = '#';
+ref: articleNav = { prev: null, next: null };
 
 const root = ref(null);
+const router = useRouter();
+const route = useRoute();
 
 const parseHeading = x => {
 	const title = x.innerText.replace('#', '').trim();
@@ -85,8 +89,23 @@ const parseHeading = x => {
 	return obj;
 };
 
-const updateSections = () => {
+const handleMounted = () => {
 	sections = [...root.value.querySelectorAll('h1, h2, h3, h4')];
+
+	const routes = router.getRoutes();
+
+	const articles = sortBy(
+		routes.filter(x => x.path !== '/' && x.name !== 'all'),
+		'meta.order'
+	);
+
+	const currentRoute = route.matched.find(x => x.path !== '/');
+
+	if (articles && currentRoute) {
+		const index = articles.findIndex(x => x.path == currentRoute.path);
+		articleNav.next = index < articles.length - 1 ? articles[index + 1] : null;
+		articleNav.prev = index > 0 ? articles[index - 1] : null;
+	}
 };
 
 const headings = computed(() => sections.filter(x => x.closest('.slides') == null).map(x => parseHeading(x)));

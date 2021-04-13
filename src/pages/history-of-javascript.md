@@ -1,7 +1,7 @@
 <route>
 {
 	meta: {
-		title: "The History of JavaScript",
+		title: "History of JavaScript",
 		description: "A look into the origins of JavaScript and how the ECMAScript specification was born.",
 		order: 10,
 		layout: "article"
@@ -40,7 +40,7 @@ Although JScript was based on JavaScript, their implementations differed, and th
 With the interoperability issues between the browsers, some performance issues in JavaScript's early days, and with some of the questionable design decisions of the language, it's not hard to see why so many people have taken a disliking to the language. Competiting implementations are a cause headache for developers to this date, but things aren't nearly as bad as back then, thanks to the creation of a language specification for JavaScript.
 
 ::: c box note "More reading"
-This is just a glimpse into JavaScript's history. If you're interested in learning [more](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) there [are](https://thenewstack.io/brendan-eich-on-creating-javascript-in-10-days-and-what-hed-do-differently-today/) better [articles](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) for [that](https://en.wikipedia.org/wiki/JavaScript#History).
+This is just a glimpse into JavaScript's history. If you're interested in learning [more](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) there [are](https://thenewstack.io/brendan-eich-on-creating-javascript-in-10-days-and-what-hed-do-differently-today/) better [articles](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) for [that](https://auth0.com/blog/a-brief-history-of-javascript/).
 :::
 
 ## The ECMA Specification
@@ -238,7 +238,7 @@ var _element$index;
 
 JavaScript's rushed initial design and unfortunate design choices, combined with cross-brows incompatibility issues and the fact that you can't break the web (backward compatibility), have led to JavaScript being disliked by many. Yet, the language has persevered.
 
-In the 2020 [Stack Overflow's developer survey](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved), 58.3% of developers reported % that they are developing with the language and are interested in continuing to develop with it. This is pretty middle of the pack but far from being dreaded or hated.
+In the 2020 [Stack Overflow's developer survey](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved), 58.3% of developers reported that they are developing with the language and are interested in continuing to develop with it. This is pretty middle of the pack but far from being dreaded or hated.
 
 Even more surprisingly, TypeScript, a statically typed superset of JavaScript that is transpiled into JavaScript, was *"loved"* by 67.1% of developers. The second most high ranking.
 
