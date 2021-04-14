@@ -64,8 +64,8 @@ One reason for the long delay between the 4th and the 5th edition was that by th
 
 It would be another 6 years between ES5 and ES6. The 6th Edition of ECMAScript, later renamed to ECMAScript 2015, contained many proposed features from ES4. The complete list of new features is extensive, and we'll go through a lot of them in the following article, which lists the key features from all ECMAScript specifications since ECMAScript 2015. This is the start of what I refer to as *modern* JavaScript.
 
-::: c box note "More reading"
-This is just a glimpse into JavaScript's history. If you're interested in learning [more](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) there [are](https://thenewstack.io/brendan-eich-on-creating-javascript-in-10-days-and-what-hed-do-differently-today/) better [articles](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) for [that](https://auth0.com/blog/a-brief-history-of-javascript/).
+::: c box note "Read more"
+This is just a glimpse into JavaScript's history. If you're interested in learning [more](https://www.springboard.com/blog/history-of-javascript/) there [are](https://thenewstack.io/brendan-eich-on-creating-javascript-in-10-days-and-what-hed-do-differently-today/) better [articles](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) for [that](https://auth0.com/blog/a-brief-history-of-javascript/).
 :::
 
 ## JavaScript innovations
