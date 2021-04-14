@@ -1,7 +1,7 @@
 <route>
 {
 	meta: {
-		title: "History of JavaScript",
+		title: "The History of JavaScript",
 		description: "A look into the origins of JavaScript and how the ECMAScript specification was born.",
 		order: 10,
 		layout: "article"
@@ -20,30 +20,21 @@ This and the following articles are written with the assumption that you're at l
 
 ## The Origins of JavaScript
 
-JavaScript wasn't originally called JavaScript. The language started out in 1995 as *Mocha*, a scripting language developed for one of the earliest web browsers, [Netscape Navigator](https://en.wikipedia.org/wiki/Netscape_Navigator). Netscape's desire was to develop a client-side scripting language to enable dynamic behavior on the web-based on the [Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language)) language but to also include a proper programming language into the web. To develop the Scheme-like language, they hired Brendan Eich. To position themselves as the official browser for the anticipated Java platform, they collaborated with Sun Microsystems to embed [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) into Netscape's browser.
+In 1995 Netscape hired Brendan Eich to develop something they called *[Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language)) for the web*; a client-side scripting language to enable dynamic behavior on the web. This language started out as *Mocha* but would be later known as JavaScript. At the same time, Netscape had plans to support another language, [Java](https://en.wikipedia.org/wiki/Java_(programming_language)). To position themselves as the official browser for the anticipated Java platform, they collaborated with Sun Microsystems to embed Java into Netscape's browser.
 
-The partnership led to Mocha being renamed to LiveScript and shortly after to JavaScript. But JavaScript had little to do with Java, except that the syntax was partially inspired by Java. The name change was purely marketing to ride the wave of hype surround Java at the time. The internal struggle at Netscape between wanting the language to resemble Scheme and to be a companion scripting language for Java meant that there was no clear direction for JavaScript's design, and in the end, JavaScript ended up resembling neither Scheme nor Java.
+The partnership led to Mocha being renamed to LiveScript and shortly after to JavaScript. But JavaScript had little to do with Java, except that the syntax was partially inspired by Java rather than Scheme. The name change was purely marketing to ride the wave of hype surround Java at the time. Netscape's vision of JavaScript wasn't clear. There was an internal struggle between wanting the language to resemble Scheme and to be a companion scripting language for Java. This meant that there was no clear direction for JavaScript's design; in the end, JavaScript ended up resembling neither Scheme nor Java.
 
 All of this was happening fast. Really fast. The first version of JavaScript (Mocha) was developed in just ten days. The indecisive direction of the language's design and the rush to develop the language led to some questionable design decisions* that have caused many people to dislike JavaScript.
-
 
 <sub>
 * Lack of an integer type, aggressive type coercion, lack of classes, and unfamiliar prototypical inheritance, to name a few.
 </sub>
 
-## Competing implementations
-
-The rush job that was JavaScript wouldn't be the only pain point for future developers. In 1995 Microsoft released their new browser, [Internet Explorer](https://en.wikipedia.org/wiki/Internet_Explorer). Quickly after the release, Microsoft reverse-engineered Netscape's JavaScript implementation and created their own, called [JScript](https://en.wikipedia.org/wiki/JScript).
-
-Although JScript was based on JavaScript, their implementations differed, and the browsers had different support for other features as well, leading to browser wars where some sites would work best on a specific browser.
-
-With the interoperability issues between the browsers, some performance issues in JavaScript's early days, and with some of the questionable design decisions of the language, it's not hard to see why so many people have taken a disliking to the language. Competiting implementations are a cause headache for developers to this date, but things aren't nearly as bad as back then, thanks to the creation of a language specification for JavaScript.
-
-::: c box note "More reading"
-This is just a glimpse into JavaScript's history. If you're interested in learning [more](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) there [are](https://thenewstack.io/brendan-eich-on-creating-javascript-in-10-days-and-what-hed-do-differently-today/) better [articles](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) for [that](https://auth0.com/blog/a-brief-history-of-javascript/).
-:::
-
 ## The ECMA Specification
+
+In 1995 Microsoft released their new browser, [Internet Explorer](https://en.wikipedia.org/wiki/Internet_Explorer). Quickly after the release, Microsoft reverse-engineered Netscape's JavaScript implementation and created their own variation, called [JScript](https://en.wikipedia.org/wiki/JScript).
+
+Although JScript was based on JavaScript, their implementations differed, sometimes in a non-compatible way. This along with other browser specific feature differences lead to a lot of browser interoperability issues. But that wouldn't be the case for long, in theory at least.
 
 In 1996 Netscape submitted JavaScript to [ECMA International](https://en.wikipedia.org/wiki/Ecma_International) (originally the European Computer Manufacturers Association) to create a language specification that all browsers could adhere to. In 1997 the first ECMAScript language specification, ECMA-262, was created.
 
@@ -56,11 +47,12 @@ Nowadays, a new edition of the specification is released annually, and the name 
 
 ECMAScript 2 was released in 1998, a year after the original specification. The second edition only included editorial changes so that the specification conformed to the ISO/IEC 16262 international standard, which is the same standard but published under ISO/IEC.
 
-The third edition of ECMAScript was released a year after the second edition in 1999 and included actual changes to the language. ECMAScript 3 added regular expressions, better string handling, new control statements, try/catch exception handling, tighter definition of errors, formatting for numeric output, and other enhancements.
+The third edition of ECMAScript was released a year after the second edition in 1999 and included the first actual changes to the language. ECMAScript 3 added regular expressions, better string handling, new control statements, try/catch exception handling, tighter definition of errors, formatting for numeric output, and other enhancements.
 
 The proposed ECMAScript 4 specification included major changes to the language, some of which the stakeholders couldn't find common ground on. Long story short, the 4th edition of the specification would end up being abandoned.
 
-A new version of the specification wouldn't be published until 2009, ten years after the last version. ECMAScript 5 was a far less ambitious version focused on compatibility, originally named ECMAScript 3.1 and later renamed to the 5th edition of ECMAScript.
+A new version of the specification wouldn't be published until 2009, ten years after the last version. To appease all the stakeholders, ECMAScript 5 was a far less ambitious version focused on compatibility, originally named ECMAScript 3.1 and later renamed to the 5th edition of ECMAScript.
+
 ::: c info "ECMAScript 5" box
 - Adds "strict mode," a subset intended to provide more thorough error checking and avoid error-prone constructs. 
 - Clarifies many ambiguities in the 3rd edition specification
@@ -71,6 +63,10 @@ A new version of the specification wouldn't be published until 2009, ten years a
 One reason for the long delay between the 4th and the 5th edition was that by the early 2000s, Internet Explorer (IE) had gained a 95% market share, making JScript the de facto standard. With Internet Explorer's domination of the market share, they didn't need to collaborate on the ECMAScript specification. Not until new browsers managed to take significant market share back from Internet Explorer. Notably, Netscape's successor, Mozilla Firefox, released in 2004, and Google's Chrome released in 2008.
 
 It would be another 6 years between ES5 and ES6. The 6th Edition of ECMAScript, later renamed to ECMAScript 2015, contained many proposed features from ES4. The complete list of new features is extensive, and we'll go through a lot of them in the following article, which lists the key features from all ECMAScript specifications since ECMAScript 2015. This is the start of what I refer to as *modern* JavaScript.
+
+::: c box note "More reading"
+This is just a glimpse into JavaScript's history. If you're interested in learning [more](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) there [are](https://thenewstack.io/brendan-eich-on-creating-javascript-in-10-days-and-what-hed-do-differently-today/) better [articles](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) for [that](https://auth0.com/blog/a-brief-history-of-javascript/).
+:::
 
 ## JavaScript innovations
 
@@ -149,14 +145,14 @@ We're not here to talk about JSON or XML, but I figured they were worth mentioni
 
 ### Asynchronous JavaScript and XML
 
-In 2005, Jesse James Garrett released a white paper in which he coined the term AJAX and described a set of techniques on the client-side to asynchronously (without the need to reload the page) change the content of the page. Even though the term is called Asynchronous JavaScript and **XML**, the concept remains the same for JSON.
+In 2005, Jesse James Garrett released a white paper in which he coined the term AJAX and described a set of techniques on the client-side to asynchronously (dynamically) change the content of the page. Even though the term is called Asynchronous JavaScript and **XML**, the concept remains the same for JSON.
 
 AJAX was a revolutionary way to develop web applications, and many libraries were built around the concept of AJAX. Looking at an XMLHTTPRequest, it's clear to see why more straightforward APIs were developed around the concept.
 
 ```js
 // Initialize the HTTP request.
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'send-ajax-data.php');
+xhr.open('GET', 'http://www.example.org/example.txt');
 
 // Track the state changes of the request.
 xhr.onreadystatechange = function () {
@@ -173,48 +169,46 @@ xhr.onreadystatechange = function () {
 	}
 };
 
-// Send the request to send-ajax-data.php
-xhr.send(null);
+// Send the request to http://www.example.org/example.txt
+xhr.send();
 ```
 
-One such library was jQuery. Although jQuery wasn't built around AJAX, it does support AJAX.
+One such library was jQuery. Although jQuery wasn't built around AJAX, jQuery's support for AJAX and it's easy to use API for modifying the DOM made it a perfect library for creating more dynamic web **applications**.
 
 ## Coping with Internet Explorer
 
-The effects of Internet Explorer's long reign in the 2000s have lingered well into the 2010s, and the results of IE's dominance can still be seen today, even after Firefox and Chrome took the vast majority of the market share back.
+The effects of Internet Explorer's long reign in the 2000s have lingered well into the 2010s, and the results of IE's dominance can still be seen today, even after its market share has dropped to below 5% globally.
 
-The number of web applications and users, especially business users still on Internet Explorer, has meant that developers have had to support the outdated browser for decades. This may not have been such a big deal, except that the latest version of Internet Explorer, IE 11, only implements ES5. That means that all features since ES5 can not be used.
+The number of web applications and users, especially business users still on Internet Explorer, has meant that developers have had to support the outdated browser for decades. This may not have been such a big deal, except that the latest version of Internet Explorer, IE 11, only implements ES5. That means that all features released since ES5 can not be used 😢.
 
 ### jQuery
 
 > jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and **AJAX**.
 
-jQuery is an immensely popular JavaScript library (used in almost 80% of the top 10 million most popular websites in **2020** 🤯). jQuery warrants its own article, which is exactly what the third article in this series is all about. But for now what I want to examine is **why** jQuery was, and still is, so popular.
+jQuery is an immensely popular JavaScript library (used in almost 80% of the top 10 million most popular websites in **2020** 🤯). jQuery was developed in 2006 and is still in active development. Naturally, the next question is, why? Why is jQuery so popular, even a decade and a half later its initial release.
 
 Some of the key factors that made jQuery such an appealing library were that
 - jQuery made it easy to do tedious things such as DOM manipulation, animations, and AJAX.
-- jQuery provided an API that worked on most browsers, making cross-browser compatibility much easier.
-- JavaScript has no standard library and jQuery provided solutions to common challenges.
+- jQuery provided an API that worked on most browsers, making cross-browser compatibility much more effortless.
+- JavaScript has no standard library, and jQuery provided solutions to common challenges.
 
 Above we saw how verbose an XMLHTTPRequest can be. Here's the same request done with jQuery:
 
 ```js
-$.get("send-ajax-data.php", function(data) {
+$.get("http://www.example.org/example.txt", function(data) {
 	console.log(data);
 }).fail(function(xhr) {
 	console.log('Error: ' + xhr.status); 
 });
 ```
 
-For the most part, jQuery let developers use existing JavaScript features with these kinds of cleaner APIs. What about newer features? Features released in ES6 couldn't be used in Internet Explorer, and jQuery doesn't solve that problem.
+For the most part, jQuery let developers use existing JavaScript features with these kinds of cleaner APIs. But what about newer features? Features released in ES6 that couldn't be used in Internet Explorer? Well, jQuery doesn't solve that problem.
 
 ### Polyfills
 
 [Polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) is a "shim for a browser API", meaning code that implements a feature on browsers that do not support the feature. Polyfills are a way to use newer features in older browsers, with some limitations.
 
-A polyfill works by taking an existing API and implementing the same interface, but in a way that is supported by the old browser. A polyfill only adds the polyfilled implementation if the feature isn't already supported by the browser.
-
-This way, new features can be supported without overriding the existing implementation on compatible browsers. But polyfills can't implement all features; for example, polyfills can't add new syntax to the language.
+A polyfill works by taking an existing API and implementing the same interface, but in a way that is supported by the old browser. A polyfill only adds the polyfilled implementation if the feature isn't already supported by the browser. This way, new features can be supported without overriding the existing implementation on compatible browsers. But polyfills can't implement all features; for example, polyfills can't add new syntax to the language.
 
 So what if we want to use the latest syntax?
 
@@ -242,4 +236,4 @@ In the 2020 [Stack Overflow's developer survey](https://insights.stackoverflow.c
 
 Even more surprisingly, TypeScript, a statically typed superset of JavaScript that is transpiled into JavaScript, was *"loved"* by 67.1% of developers. The second most high ranking.
 
-JavaScript isn't without its flaws, but things have gotten a lot better with the annual releases since ES2015 and with modern tools that help us build and manage more complex web applications.
+JavaScript isn't without its flaws, but things have gotten better with the annual releases since ES2015 and with modern tools that help us build and manage more complex web applications.
