@@ -12,7 +12,7 @@ specifiers:
   diacritics: ^1.3.0
   escape-html: ^1.0.3
   eslint: ^7.24.0
-  eslint-config-prettier: ^8.1.0
+  eslint-config-prettier: ^8.2.0
   eslint-plugin-vue: ^7.9.0
   lodash-es: ^4.17.21
   markdown-it: ^12.0.4
@@ -50,7 +50,7 @@ devDependencies:
   diacritics: 1.3.0
   escape-html: 1.0.3
   eslint: 7.24.0
-  eslint-config-prettier: 8.1.0_eslint@7.24.0
+  eslint-config-prettier: 8.2.0_eslint@7.24.0
   eslint-plugin-vue: 7.9.0_eslint@7.24.0
   markdown-it: 12.0.4
   markdown-it-anchor: 7.1.0_markdown-it@12.0.4
@@ -418,7 +418,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001208
       colorette: 1.2.2
-      electron-to-chromium: 1.3.713
+      electron-to-chromium: 1.3.717
       escalade: 3.1.1
       node-releases: 1.1.71
     dev: true
@@ -660,8 +660,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /electron-to-chromium/1.3.713:
-    resolution: {integrity: sha512-HWgkyX4xTHmxcWWlvv7a87RHSINEcpKYZmDMxkUlHcY+CJcfx7xEfBHuXVsO1rzyYs1WQJ7EgDp2CoErakBIow==}
+  /electron-to-chromium/1.3.717:
+    resolution: {integrity: sha512-OfzVPIqD1MkJ7fX+yTl2nKyOE4FReeVfMCzzxQS+Kp43hZYwHwThlGP+EGIZRXJsxCM7dqo8Y65NOX/HP12iXQ==}
     dev: true
 
   /emoji-regex/8.0.0:
@@ -748,8 +748,8 @@ packages:
     engines: {node: '>=0.8.0'}
     dev: true
 
-  /eslint-config-prettier/8.1.0_eslint@7.24.0:
-    resolution: {integrity: sha512-oKMhGv3ihGbCIimCAjqkdzx2Q+jthoqnXSP+d86M9tptwugycmTFdVR4IpLgq2c4SHifbwO90z2fQ8/Aio73yw==}
+  /eslint-config-prettier/8.2.0_eslint@7.24.0:
+    resolution: {integrity: sha512-dWV9EVeSo2qodOPi1iBYU/x6F6diHv8uujxbxr77xExs3zTAlNXvVZKiyLsQGNz7yPV2K49JY5WjPzNIuDc2Bw==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -836,7 +836,7 @@ packages:
       semver: 7.3.5
       strip-ansi: 6.0.0
       strip-json-comments: 3.1.1
-      table: 6.0.9
+      table: 6.1.0
       text-table: 0.2.0
       v8-compile-cache: 2.3.0
     transitivePeerDependencies:
@@ -2017,8 +2017,8 @@ packages:
       has-flag: 4.0.0
     dev: true
 
-  /table/6.0.9:
-    resolution: {integrity: sha512-F3cLs9a3hL1Z7N4+EkSscsel3z55XT950AvB05bwayrNg5T1/gykXtigioTAjbltvbMSJvvhFCbnf6mX+ntnJQ==}
+  /table/6.1.0:
+    resolution: {integrity: sha512-T4G5KMmqIk6X87gLKWyU5exPpTjLjY5KyrFWaIjv3SvgaIUGXV7UEzGEnZJdTA38/yUS6f9PlKezQ0bYXG3iIQ==}
     engines: {node: '>=10.0.0'}
     dependencies:
       ajv: 8.1.0
