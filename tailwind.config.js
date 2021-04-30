@@ -64,12 +64,10 @@ module.exports = {
 								fontWeight: '600'
 							},
 							sub: {
-								display: 'block',
 								lineHeight: '1.25',
 								color: theme('colors.gray.400', defaultTheme.colors.gray[400])
 							},
 							sup: {
-								display: 'block',
 								lineHeight: '1.25',
 								color: theme('colors.gray.400', defaultTheme.colors.gray[400])
 							},
@@ -166,7 +164,7 @@ module.exports = {
 								content: '"`"'
 							},
 							'a code': {
-								color: theme('colors.gray.100', defaultTheme.colors.gray[100])
+								color: theme('colors.pink.600', defaultTheme.colors.pink[600])
 							},
 							pre: {
 								color: theme('colors.gray.200', defaultTheme.colors.gray[200]),

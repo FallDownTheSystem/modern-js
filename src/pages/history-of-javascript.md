@@ -26,9 +26,11 @@ The partnership led to Mocha being renamed to LiveScript and shortly after to Ja
 
 All of this was happening fast. Really fast. The first version of JavaScript (Mocha) was developed in just ten days. The indecisive direction of the language's design and the rush to develop the language led to some questionable design decisions* that have caused many people to dislike JavaScript.
 
+<p>
 <sub>
 * Lack of an integer type, aggressive type coercion, lack of classes, and unfamiliar prototypical inheritance, to name a few.
 </sub>
+</p>
 
 ## The ECMA Specification
 
@@ -39,10 +41,10 @@ Although JScript was based on JavaScript, their implementations differed, someti
 In 1996 Netscape submitted JavaScript to [ECMA International](https://en.wikipedia.org/wiki/Ecma_International) (originally the European Computer Manufacturers Association) to create a language specification that all browsers could adhere to. In 1997 the first ECMAScript language specification, ECMA-262, was created.
 
 ::: c box info "Naming convention"
-The standards specification document is called ECMA-262.
-The language specification is called ECMAScript.
-The standards were previously referred to by their edition number, e.g., ECMAScript 5 or just ES5 for short.
-Nowadays, a new edition of the specification is released annually, and the name includes the year, e.g., ECMAScript 2015 (ES2015), which is the 6th edition of ECMAScript (ES6).
+- The standards specification document is called ECMA-262.
+- The language specification is called ECMAScript.
+- The standards were previously referred to by their edition number, e.g., ECMAScript 5 or just ES5 for short.
+- Nowadays, a new edition of the specification is released annually, and the name includes the year, e.g., ECMAScript 2015 (ES2015), which is the 6th edition of ECMAScript (ES6).
 :::
 
 ECMAScript 2 was released in 1998, a year after the original specification. The second edition only included editorial changes so that the specification conformed to the ISO/IEC 16262 international standard, which is the same standard but published under ISO/IEC.
@@ -137,9 +139,11 @@ JSON was developed in the early 2000s by Douglas Crockford and has since taken o
 ```
 :::
 
-<sub>
+<p>
+<sup>
 Comparing JSON to XML
-</sub>
+</sup>
+</p>
 
 We're not here to talk about JSON or XML, but I figured they were worth mentioning, considering our next chapter.
 

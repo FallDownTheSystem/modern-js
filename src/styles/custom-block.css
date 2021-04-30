@@ -28,35 +28,40 @@
 
 .tip {
 	@apply bg-emerald-800 border-emerald-600 bg-opacity-25;
-	& a {
+	& a,
+	& a code {
 		@apply text-emerald-500;
 	}
 }
 
 .info {
 	@apply bg-blue-800 border-blue-600 bg-opacity-25;
-	& a {
+	& a,
+	& a code {
 		@apply text-blue-500;
 	}
 }
 
 .note {
 	@apply bg-purple-800 border-purple-600 bg-opacity-25;
-	& a {
+	& a,
+	& a code {
 		@apply text-purple-500;
 	}
 }
 
 .warn {
 	@apply bg-yellow-800 border-yellow-600 bg-opacity-25;
-	& a {
+	& a,
+	& a code {
 		@apply text-yellow-500;
 	}
 }
 
 .danger {
 	@apply bg-rose-800 border-rose-600 bg-opacity-25;
-	& a {
+	& a,
+	& a code {
 		@apply text-rose-500;
 	}
 }

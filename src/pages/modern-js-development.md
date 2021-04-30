@@ -9,6 +9,34 @@
 }
 </route>
 
+## Modern JavaScript development (tools)
+- The old way
+  - https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70
+- Bundlers
+  - Rollup, webpack, parcel, esbuild, others (snowpack?)
+  - Extending functionality
+    - Plugins for other files types
+    - CSS
+      - CSS, SASS, LESS, POSTCSS
+  - Modules
+    - History
+      - CJS
+      - AMD
+      - UMD
+      - ESM
+        - How Vite takes advantage of ESM
+- Package management
+  - Dependencies
+  - Node
+  - NPM
+    - Scripts
+    - Alternative package managers
+    - BundlePhobia
+- Transpilers
+  - Babel
+  - TypeScript
+- Example running rollup.js
+
 # Example
 
 A third of the distance across the Beach, the meadow ends and sand begins. This slopes gradually up for another third of the distance, to the foot of the sand hills, which seem tumbled into their places by some mighty power, sometimes three tiers of them deep, sometimes two, _and sometimes only one._ A third of the distance across the Beach, the meadow ends and sand begins.
