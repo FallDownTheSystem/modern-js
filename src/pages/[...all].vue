@@ -1,5 +1,13 @@
+<route>
+	{
+		meta: {
+			layout: "home"
+		}
+	}
+</route>
+
 <template>
-	<div class="grid place-items-center">
+	<div class="grid place-items-center w-full">
 		<a href="/" class="w-full px-8">
 			<svg
 				data-name="Layer 1"

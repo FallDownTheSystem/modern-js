@@ -52,7 +52,8 @@ function createContainer(name) {
 
 				if (nesting === 1) {
 					tags.push(tag);
-					return `<${tag}${pre ? ' v-pre' : ''} v-bind='${JSON.stringify(props)}' class="${classes.join(' ')}">`;
+					const classAttr = classes.length ? ` class="${classes.join(' ')}"` : '';
+					return `<${tag}${pre ? ' v-pre' : ''} v-bind='${JSON.stringify(props)}'${classAttr}>`;
 				} else {
 					return `</${tags.pop()}>`;
 				}

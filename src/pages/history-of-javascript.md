@@ -4,7 +4,6 @@
 		title: "The History of JavaScript",
 		description: "A look into the origins of JavaScript and how the ECMAScript specification was born.",
 		order: 10,
-		layout: "article"
 	}
 }
 </route>

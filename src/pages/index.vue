@@ -28,7 +28,7 @@
 	<div class="w-32 bg-gray-400 h-[1px] mb-16"></div>
 	<div class="flex flex-col space-y-4 items-start">
 		<router-link
-			v-for="link in children"
+			v-for="link in articles"
 			:to="{ name: link.name }"
 			class="group hover:bg-gray-800 focus:outline-none focus:bg-gray-800 text-gray-100 rounded-xl py-6 px-8 w-full"
 		>
@@ -45,18 +45,14 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router';
-import { defineEmit } from 'vue';
+import { useRouter } from 'vue-router';
 import { sortBy } from 'lodash-es';
-const routes = useRoute();
-const children = sortBy(
-	routes.matched.filter(x => x.path == routes.path)[0].children.filter(x => x.path !== '/' && x.name !== 'all'),
+const router = useRouter();
+const routes = router.getRoutes();
+const articles = sortBy(
+	routes.filter(x => x.name && x.meta && x.path !== '/' && x.name !== 'all'),
 	'meta.order'
 );
-
-// We have to define the emit here as well, even though the index page doesn't emit anything.
-// Seems to be a bug, maybe related to the vite plugin vue layouts or vite plugin pages?
-const emit = defineEmit(['mounted']);
 </script>
 
 <route>

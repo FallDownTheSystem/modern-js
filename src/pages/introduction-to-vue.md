@@ -10,7 +10,6 @@ title: About
 		title: "An Introduction to Vue",
 		description: "An introduction to JavaScript frameworks through the increasingly popular framework Vue.",
 		order: 50,
-		layout: "article"
 	}
 }
 </route>
