@@ -8,6 +8,8 @@
 }
 </route>
 
+https://stackoverflow.com/questions/44058726/is-the-fetch-api-an-ecmascript-feature#:~:text=No.,API%20are%20%22host%20objects%22.
+
 ## Moving on from jQuery to vanilla JS
 - What is jQuery
   - AJAX

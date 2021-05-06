@@ -84,7 +84,7 @@ const parseHeading = x => {
 
 const handleMounted = () => {
 	// Side nav
-	headings = [...root.value.querySelectorAll('h1, h2, h3, h4')].filter(x => x.closest('.slides') == null).map(x => parseHeading(x));
+	headings = [...root.value.querySelectorAll('h1, h2, h3')].filter(x => x.closest('.slides') == null).map(x => parseHeading(x));
 
 	// Bottom nav
 	const currentRoute = route.matched.find(x => x.path !== '/');

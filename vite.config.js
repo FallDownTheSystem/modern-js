@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import components from 'vite-plugin-components';
 import icons, { ViteIconsResolver } from 'vite-plugin-icons';
 import pages from 'vite-plugin-pages';
-import layouts from './src/third-party/vite-plugin-vue-layouts';
+import layouts from 'vite-plugin-vue-layouts';
 import markdown from 'vite-plugin-md';
 import anchorPlugin from 'markdown-it-anchor';
 import taskListsPlugin from 'markdown-it-task-lists';

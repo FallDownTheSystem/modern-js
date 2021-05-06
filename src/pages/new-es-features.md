@@ -10,9 +10,9 @@
 
 <Title :title="$route.meta.title" :description="$route.meta.description" />
 
-Now that we know a little bit about the history of JavaScript, we can move onto modern JavaScript. In my mind, modern JavaScript means two things, the new language features released since ES5 and the build tools and frameworks we use these days to create JavaScript applications.
+Now that we know a bit about the history of JavaScript, we can move onto modern JavaScript. In my mind, modern JavaScript means two things, the new language features released since ES5 and the build tools and frameworks we use these days to create JavaScript applications.
 
-In this article, we'll look at the new features introduced in the ECMAScript specifications. We're not going to look at every change and detail. Instead, we'll focus on new features, syntax, built-in types, and new methods to existing types. We'll also take a look at some new Web APIs. The article will also include some features that were in JavaScript before ES2015, but they're useful for explaining the new concepts.
+In this article, we'll look at the new features introduced in the ECMAScript specifications. We're not going to look at every change and detail. Instead, we'll focus on new features, syntax, built-in types, and new methods to existing types. We'll also take a look at some new Web APIs. The article also includes some pre ES2015 features since they help explain the new concepts.
 
 ::: c info "Credit" box
 The examples in this article are based on [MDN articles](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference), found from this [ECMAScript compatibility table](https://kangax.github.io/compat-table/es6/), with some key differences.
@@ -21,58 +21,259 @@ Rather than listing new features chronologically with each version, I'm grouping
 :::
 
 ## Syntax
-- Default function parameters
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters
-- Rest parameters
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
-- Spread
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
-- Destructuring
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
-- Object literal extensions
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#new_notations_in_ecmascript_2015
-- Trailing commas
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas
-- For..of loops
+Let's start by going through some of the new syntax introduced since ES5. These new syntax features make writing JavaScript less tedious and more concise. This isn't a complete list; some new syntax is also presented in other sections, but those sections are large enough to warrant their own chapters.
+
+#### Default function parameters
+
+Default function parameters allow named parameters to be initialized with default values if no value or undefined is passed.
+
+```js ln
+function multiply(a, b = 1) {
+	return a * b;
+}
+
+console.log(multiply(5, 2)); // 10
+console.log(multiply(5)); // 5
+```
+
+[MDN: Default parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters)
+
+#### Rest parameters
+The rest parameter syntax allows a function to accept an indefinite number of arguments as an array.
+
+```js ln
+function sum(...theArgs) {
+	// theArgs is an array
+	return theArgs.reduce((previous, current) => {
+		return previous + current;
+	});
+}
+
+console.log(sum(1, 2, 3)); // 6
+console.log(sum(1, 2, 3, 4)); // 10
+```
+
+The function parameters can include normal parameters, but only the last parameter can be a rest parameter.
+
+```js ln
+function myFun(a,  b, ...manyMoreArgs) {
+  console.log("a", a)
+  console.log("b", b)
+  console.log("manyMoreArgs", manyMoreArgs)
+}
+
+myFun("one", "two", "three", "four", "five", "six")
+
+// a, one
+// b, two
+// manyMoreArgs, ["three", "four", "five", "six"]
+```
+
+[MDN: Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
+
+#### Spread syntax
+
+Spread syntax `...` looks exactly like rest syntax. In a way, rest syntax is the opposite of spread syntax. Spread syntax *"expands"* an array into its elements, while rest syntax collects multiple elements and *"condenses"* them into a single element.
+
+```js ln
+function sum(x, y, z) {
+  return x + y + z;
+}
+
+const numbers = [1, 2, 3];
+console.log(sum(...numbers)); // 6
+```
+
+The spread syntax makes it easy to clone and concatenate arrays and objects.
+
+```js ln
+let arr1 = [0, 1, 2];
+let arr2 = [3, 4, 5];
+
+// Copies the array, same as arr1.slice()
+let arr3 = [...arr1];
+
+// Concatenas the arrays, same as arr1.concat(arr2);
+let arr3 = [...arr1, ...arr2];
+```
+
+The same works for objects.
+
+```js ln
+let obj1 = { foo: 'bar', x: 42 };
+let obj2 = { foo: 'baz', y: 13 };
+
+let clonedObj = { ...obj1 };
+// Object { foo: "bar", x: 42 }
+
+let mergedObj = { ...obj1, ...obj2 };
+// Object { foo: "baz", x: 42, y: 13 }
+```
+
+[MDN: Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
+#### Destructuring assignment
+
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+
+```js ln
+let [a, b] = [10, 20];
+
+console.log(a); // 10
+console.log(b); // 20
+```
+
+We can also combine destructuring with the rest parameters syntax.
+```js ln
+let [a, b, ...rest] = [10, 20, 30, 40, 50];
+
+console.log(rest); // Array [30,40,50]
+```
+
+Destruring also works for objects.
+
+```js ln
+let { a, b } = { c: 10, d: 20 };
+console.log(a); // 10
+console.log(b); // 20
+```
+
+Note that the property names have to match, but if we want to we can assign them to new variable names.
+
+```js ln
+const o = { p: 42, q: true };
+const { p: foo, q: bar } = o;
+
+console.log(foo); // 42
+console.log(bar); // true
+```
+
+A neat trick is to destructure values into existing variables, allowing us to swap the values of variables in a single expression.
+
+```js ln
+let a = 1;
+let b = 3;
+
+[a, b] = [b, a];
+console.log(a); // 3
+console.log(b); // 1
+```
+
+The destructuring syntax is really powerful. Considering that
+1. We can include default values in destructuring assignment.
+2. We can destructure directly in a function's parameter declaration.
+3. We can destructure nested objects/arrays.
+
+It means that we can use destructuring as a way to pass "options" objects as parameters to functions.
+
+::: c center-child wide
+```js ln
+function drawChart({size = 'big', coords = {x: 0, y: 0}, radius = 25} = {}) {
+  console.log(size, coords, radius);
+}
+
+drawChart({
+  coords: {x: 18, y: 30},
+  radius: 30
+  color: 'red'
+});
+```
+:::
+The passed object can have additional properties, the destructuring will only assign what is defined. In the same sense, the object doesn't need to include all the properties the parameter expects, if default values are provided for them.
+
+::: c note Note box
+In the function signature for drawChart above, the destructured left-hand side is assigned to an empty object literal on the right-hand side:
+`{size = 'big', coords = {x: 0, y: 0}, radius = 25} = {}`
+
+You could have also written the function without the right-hand side assignment. However, if you leave out the right-hand side assignment, the function will look for at least one argument to be supplied when invoked, whereas in its current form, you can call `drawChart()` without supplying any parameters. The current design is useful if you want to be able to call the function without supplying any parameters, the other can be useful when you want to ensure an object is passed to the function.
+:::
+
+[MDN: Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+#### Object literal extensions
+Objects properties have some new syntax, their keys can be declared using shorthands and using computed names.
+
+```js ln
+// Shorthand property names
+let a = 'foo', b = 42, someName = {};
+let o = { a, b, c }
+// Previously { a: a, b: b, someObj: someObj }
+
+// Shorthand method names
+let o = {
+	property(parameters) {}
+}
+// Previously { property: function(parameters) {} }
+
+// Computed property names
+let prop = 'foo';
+let o = {
+  [prop]: 'hey',
+  ['b' + 'ar']: 'there'
+}
+```
+[MDN: Object inititalizer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#new_notations_in_ecmascript_2015)
+
+Modern JavaScript also allows leaving trailing commas after object properties and function parameters. Previously trailing commas were only valid syntax in arrays.
+
+```js ln
+var object = {
+  foo: "bar",
+  baz: "qwerty",
+  age: 42,
+};
+
+function f(p,) {
+	console.log(p);
+}
+
+// array destructuring with a trailing comma
+[a, b,] = [1, 2];
+```
+[MDN: Trailing commas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas)
+
+#### For..of loops
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
-- Template literals
+#### Template literals
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-- Optional chaining ?.
+#### Optional chaining ?.
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
-- Nullish coalescing ??
+#### Nullish coalescing ??
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator
-- Logical assignment
+#### Logical assignment
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators
-- Numeric separators
+#### Exponentiation `(**)`
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Exponentiation
+#### Numeric separators
   - Octal and binary literals, hex literals
   - https://github.com/tc39/proposal-numeric-separator
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar
 
 ## Bindings
-- Const and let
+#### Const and let
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var
-- globalThis
+#### globalThis
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis
 
 ## Functions
-- Arrow functions
+#### Arrow functions
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-- Generators
+#### Generators
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield
-- Iterators
+#### Iterators
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#is_a_generator_object_an_iterator_or_an_iterable
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
   - Iterator extensions (ES.Next)
     - https://github.com/tc39/proposal-iterator-helpers
-- Async functions
+#### Async functions
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
   - https://github.com/tc39/proposal-top-level-await
-- Promise
+#### Promise
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
   - all
@@ -90,9 +291,9 @@ Rather than listing new features chronologically with each version, I'm grouping
   - Resolve & Reject
     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject
-- new.target
+#### new.target
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new.target
-- Classes
+#### Classes
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/class
   - Super
@@ -109,10 +310,12 @@ Rather than listing new features chronologically with each version, I'm grouping
 ## Built-ins
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
+Regular expressions have had a lot of updates as well, but we're not going to cover them in this article.
+
 ### Reflection
-- Proxy
+#### Proxy
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
-- Reflect
+#### Reflect
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect
 
 ### BigInt
@@ -125,7 +328,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 
 ### Collections and structured data
-- Indexed collections
+#### Indexed collections
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
   - Array
   - Int8Array
@@ -140,7 +343,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
   - BigInt64Array
   - BigUint64Array
 
-- Keyed collections
+#### Keyed collections
   - Map
     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
@@ -150,7 +353,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
   - WeakRef
     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef
 
-- Structured data
+#### Structured data
   - JSON
     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
   - ArrayBuffer
@@ -282,7 +485,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 - fround
 - cbrt
 - hypot
-- Expontential `**`
 
 ## Web APIs
 
