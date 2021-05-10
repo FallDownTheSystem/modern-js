@@ -10,18 +10,20 @@
 
 <Title :title="$route.meta.title" :description="$route.meta.description" />
 
-Now that we know a bit about the history of JavaScript, we can move onto modern JavaScript. In my mind, modern JavaScript means two things, the new language features released since ES5 and the build tools and frameworks we use these days to create JavaScript applications.
+Now that we know a little bit about the history of JavaScript, we can move onto modern JavaScript. In my mind, modern JavaScript means two things, the new language features released since ES5 and the build tools and frameworks we use these days to create JavaScript applications.
 
 In this article, we'll look at the new features introduced in the ECMAScript specifications. We're not going to look at every change and detail. Instead, we'll focus on new features, syntax, built-in types, and new methods to existing types. We'll also take a look at some new Web APIs. The article also includes some pre ES2015 features since they help explain the new concepts.
 
 ::: c info "Credit" box
-The examples in this article are based on [MDN articles](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference), found from this [ECMAScript compatibility table](https://kangax.github.io/compat-table/es6/), with some key differences.
+The examples in this article are based on and directly quoted from [MDN articles](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference), found from this [ECMAScript compatibility table](https://kangax.github.io/compat-table/es6/), with some key differences.
+
+This article is like a curated list of these articles, shortened and spliced for brevity and to only (mostly) contain features introduced since ES5.
 
 Rather than listing new features chronologically with each version, I'm grouping related features together. Modern browsers support almost all of the latest ES features. Hence, there's no reason to make a distinction between the different editions.
 :::
 
 ## Syntax
-Let's start by going through some of the new syntax introduced since ES5. These new syntax features make writing JavaScript less tedious and more concise. This isn't a complete list; some new syntax is also presented in other sections, but those sections are large enough to warrant their own chapters.
+Let's start by going through some of the new syntax introduced in ES2015+. These new syntax features make writing JavaScript less tedious and more concise. This isn't a complete list; some new syntax is also presented in other sections, but those sections are large enough to warrant their own chapters.
 
 #### Default function parameters
 
@@ -73,7 +75,7 @@ myFun("one", "two", "three", "four", "five", "six")
 
 #### Spread syntax
 
-Spread syntax `...` looks exactly like rest syntax. In a way, rest syntax is the opposite of spread syntax. Spread syntax *"expands"* an array into its elements, while rest syntax collects multiple elements and *"condenses"* them into a single element.
+Spread syntax `...` looks exactly like rest syntax. In a way, rest syntax is the opposite of spread syntax. Spread syntax *" expands "* an array into its elements, while rest syntax collects multiple elements and *" condenses "* them into a single element.
 
 ```js ln
 function sum(x, y, z) {
@@ -130,7 +132,7 @@ let [a, b, ...rest] = [10, 20, 30, 40, 50];
 console.log(rest); // Array [30,40,50]
 ```
 
-Destruring also works for objects.
+Destructuring also works for objects.
 
 ```js ln
 let { a, b } = { c: 10, d: 20 };
@@ -191,7 +193,7 @@ You could have also written the function without the right-hand side assignment.
 [MDN: Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 #### Object literal extensions
-Objects properties have some new syntax, their keys can be declared using shorthands and using computed names.
+With some new syntactic sugar for objects, an object's keys can now be declared using shorthands and computed names.
 
 ```js ln
 // Shorthand property names
@@ -233,79 +235,455 @@ function f(p,) {
 [MDN: Trailing commas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas)
 
 #### For..of loops
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
-#### Template literals
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-#### Optional chaining ?.
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
-#### Nullish coalescing ??
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator
-#### Logical assignment
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators
-#### Exponentiation `(**)`
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Exponentiation
-#### Numeric separators
-  - Octal and binary literals, hex literals
-  - https://github.com/tc39/proposal-numeric-separator
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar
+The `for...of` statement creates a loop iterating over iterable objects, including Strings, Arrays, and array-like objects (e.g., NodeList).
 
-## Bindings
-#### Const and let
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var
-#### globalThis
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis
+The `for...of` statement iterates over the **values** of the iterable object.
+
+```js ln
+const iterable = [10, 20, 30];
+
+for (const value of iterable) {
+	console.log(value);
+}
+// 10
+// 20
+// 30
+
+const iterable = 'boo';
+
+for (const value of iterable) {
+	console.log(value);
+}
+// "b"
+// "o"
+// "o"
+```
+
+`for...of` is different from the `for...in` statement, which [iterates](#iterators) over the **properties**, of an object, i.e., the key rather than the value. This means you often have to take an extra step to access the value.
+
+The problem with `for...in` is that adding properties to `Object` or `Array` 's prototype means that those properties will also be iterated over, even though this is rarely the behavior you want.
+
+```js ln
+Object.prototype.objCustom = function() {};
+Array.prototype.arrCustom = function() {};
+
+const iterable = [3, 5, 7];
+iterable.foo = 'hello';
+
+for (const i in iterable) {
+	console.log(i);
+	// logs "0", "1", "2", "foo", "arrCustom", "objCustom"
+
+	if (iterable.hasOwnProperty(i)) {
+		console.log(i);
+		// logs "0", "1", "2", "foo"
+	}
+}
+
+for (const i of iterable) {
+	console.log(i);
+	// logs 3, 5, 7
+}
+```
+
+[MDN: for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
+
+#### Template literals
+
+Template literals are string literals that allow embedded expressions. You can use multi-line strings and string interpolation features with them.
+
+```js ln
+`string text`
+
+`string text line 1
+ string text line 2`
+
+`string text ${expression} string text`
+```
+
+Template literals are enclosed by the backtick (`). Any newline characters inserted in the source are part of the template literal, which isn't possible with normal strings, instead you'd have to use newline characters and string concatenation.
+
+The expressions in a template literal also support nested templates. For more complex use cases, you can read about tagged templates in the following link.
+
+[MDN: Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+
+#### Optional chaining `?.`
+
+The optional chaining operator `?.` enables you to read the value of a property in an object without having to check that the reference is valid. With nested structures, it is possible to use optional chaining multiple times.
+
+The `?.` operator is like the `.` chaining operator, except that instead of causing an error if a reference is nullish (`null` or `undefined`), the expression short-circuits with a return value of `undefined`.
+
+```js ln
+const adventurer = {
+	name: 'Alice',
+	cat: {
+		name: 'Dinah'
+	}
+};
+
+const dogName = adventurer.dog?.name;
+console.log(dogName); // undefined
+```
+
+[MDN: Optional chaining (?.)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+
+#### Nullish coalescing `??`
+
+The nullish coalescing operator (`??`) is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
+
+This can be contrasted with the logical OR (`||`) operator, which returns the right-hand side operand if the left operand is any falsy value, not only null or undefined. In other words, if you use || to provide some default value to another variable foo, you may encounter unexpected behaviors if you consider some falsy values as usable (e.g.," or 0).
+
+```js ln
+let myText = '';
+// An empty string (which is also a falsy value)
+
+let notFalsyText = myText || 'Hello world';
+console.log(notFalsyText);
+// Hello world
+
+let preservingFalsy = myText ?? 'Hi neighborhood';
+console.log(preservingFalsy);
+// '' (as myText is neither undefined nor null)
+```
+
+[] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator
+
+
+#### `const` and `let`
+
+Traditionally JavaScript variables were declared using the `var` statement, which declares a function-scoped or globally-scoped variable. The major difference between `var` and `const` or `let` is that `var` variables are function-scoped, where as `let` and `const` are block-scoped, and `var` declarations are [hoisted](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting).
+
+The difference between `const` and `let` is that the value of a constant can't be changed through reassignment, and it can't be redeclared.
+
+Note that `const` does not make the value itself immutable, just that the variable identifier cannot be reassigned.
+
+```js ln
+function varTest() {
+	var x = 1;
+	{
+		var x = 2; // same variable
+		console.log(x); // 2
+	}
+	console.log(x); // 2
+}
+
+function letTest() {
+	let x = 1;
+	{
+		let x = 2; // different variable
+		console.log(x); // 2
+	}
+	console.log(x); // 1
+}
+```
+
+The nature of `var` makes it unpredictable in some cases. For example:
+
+```js ln
+for (var i = 0; i < 5; ++i) {
+	setTimeout(function () {
+		console.log(i);
+	}, 1000);
+}
+// prints '5' five times
+```
+
+This will call the `setTimeout` function five time immediately, and a second later all five callbacks are called with the same value of `i', rather than creating a new lexical environment with each iteration.
+
+[MDN: const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
+[MDN: let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
+[MDN: var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
 
 ## Functions
-#### Arrow functions
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-#### Generators
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield
-#### Iterators
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#is_a_generator_object_an_iterator_or_an_iterable
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
-  - Iterator extensions (ES.Next)
-    - https://github.com/tc39/proposal-iterator-helpers
-#### Async functions
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
-  - https://github.com/tc39/proposal-top-level-await
+
+ECMAScript has had a lot of addition to functions. These come in the form of arrow functions, generators, async functions and classes. We'll be going through all of these and seeing how these new additions work.
+
+### Arrow functions
+
+An arrow function expression is a compact alternative to a traditional function expression, but is limited and can't be used in all situations.
+
+```js ln
+// Traditional Function
+function (a){
+	return a + 100;
+}
+
+// Arrow Function
+a => a + 100;
+```
+
+The main difference is that arrow functions do not have their own scope, meaning they don't bind their own `this`. This means it's not a good idea to use them as methods, as you won't be able to refer to the other properties of the object. On the other hand, arrow functions are well suited for callbacks, since you often want to access the scope where the callback was defined, and not the scope of the function you're passing the callback into.
+
+Let's take a closer look at the concise syntax of arrow functions. Arrow functions can omit paranthesis around the parameters, if there's only one parameter. They can also omit the brackets around the body of the function, and the return statement, in which case the return is implicit.
+
+Here's the above arrow function in it's full form
+
+```js
+(a) => {
+	return a + 100;
+}
+```
+
+Arrow functions, just like regular functions, are expressions and can be assigned to a variable.
+
+```js
+let max = (a, b) => a > b ? a : b;
+```
+
+This short syntax makes arrow functions excellent in use as arguments in higher-order functions, such as `filter`, `find`, or `map`.
+
+```js
+const numbers = [1, 4, 9, 16];
+const multiplied = numbers.map(x => x * 2);
+```
+
+vs.
+
+```js
+const numbers = [1, 4, 9, 16];
+const multiplied = numbers.map(function(x) { return x * 2 });
+```
+
+[MDN: Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+### Iterators and generators
+
+Iterators and Generators bring the concept of iteration directly into the core language and provide a mechanism for customizing the behavior of `for...of` loops.
+
+In JavaScript an **iterator** is an object which defines a sequence and potentially a return value upon its termination.
+
+Specifically, an iterator is any object which implements the [Iterator protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol) by having a `next()` method that returns an object with two properties:
+
+`value`
+The next value in the iteration sequence.
+
+`done`
+This is true if the last value in the sequence has already been consumed. If value is present alongside done, it is the iterator's return value.
+Once created, an iterator object can be iterated explicitly by repeatedly calling `next()`. Iterating over an iterator is said to consume the iterator, because it is generally only possible to do once. After a terminating value has been yielded additional calls to `next()` should continue to return `{ done: true }`.
+
+The most common iterator in JavaScript is the `Array` iterator, which returns each value in the associated array in sequence.
+
+Note that iterators are not equivalent to arrays. Iterators are consumed only as necessary. Because of this, iterators can express sequences of unlimited size, such as the range of integers between 0 and Infinity.
+
+Here is an example which can do just that. It allows creation of a simple range iterator which defines a sequence of integers from `start` to `end`, spaced `step` apart. Its final return value is the size of the sequence it created, tracked by the variable `iterationCount`.
+
+::: c wide center-child
+```js ln
+function makeRangeIterator(start = 0, end = Infinity, step = 1) {
+	let nextIndex = start;
+	let iterationCount = 0;
+
+	const rangeIterator = {
+		next: function() {
+			let result;
+			if (nextIndex < end) {
+				result = { value: nextIndex, done: false }
+				nextIndex += step;
+				iterationCount++;
+				return result;
+			}
+			return { value: iterationCount, done: true }
+		}
+	};
+	return rangeIterator;
+}
+```
+:::
+Using the iterator then looks like this:
+``` js ln
+const it = makeRangeIterator(1, 10, 2);
+
+let result = it.next();
+while (!result.done) {
+	console.log(result.value); // 1 3 5 7 9
+	result = it.next();
+}
+```
+
+#### Generator functions
+While custom iterators are a useful tool, their creation requires careful programming due to the need to explicitly maintain their internal state. Generator functions provide a powerful alternative: they allow you to define an iterative algorithm by writing a single function whose execution is not continuous. Generator functions are written using the `function*` syntax.
+
+When called, generator functions do not initially execute their code. Instead, they return a special type of iterator, called a Generator. When a value is consumed by calling the generator's `next` method, the Generator function executes until it encounters the `yield` keyword.
+
+The function can be called as many times as desired, and returns a new Generator each time. Each Generator may only be iterated once.
+
+We can now adapt the example from above. The behavior of this code is identical, but the implementation is much easier to write and read.
+
+```js ln
+function* makeRangeIterator(start = 0, end = 100, step = 1) {
+	let iterationCount = 0;
+	for (let i = start; i < end; i += step) {
+		iterationCount++;
+		yield i;
+	}
+	return iterationCount;
+}
+```
+
+#### Iterables
+An object is iterable if it defines its iteration behavior, i.e. what values are looped over in a `for...of` construct. Some built-in types, such as `Array` or `Map`, have a default iteration behavior, while other types (such as `Object`) do not.
+
+In order to be iterable, an object must implement the `@@iterator` method. This means that the object (or one of the objects up its prototype chain) must have a property with a `Symbol.iterator` key.
+
+::: c note Note box
+`@@` describes what's called a well-known [symbol](#symbols). These symbols are typically used as keys of properties that extend the functionality of objects.
+:::
+
+It may be possible to iterate over an iterable more than once, or only once. It is up to the programmer to know which is the case.
+
+Iterables which can iterate only once (such as Generators) customarily return `this` from their `@@iterator` method, whereas iterables which can be iterated many times must return a new iterator on each invocation of `@@iterator`.
+
+You can make your own iterables like this:
+```js ln
+const myIterable = {
+	*[Symbol.iterator]() {
+		yield 1;
+		yield 2;
+		yield 3;
+	}
+}
+
+for (let value of myIterable) {
+	console.log(value);
+}
+// 1
+// 2
+// 3
+
+
+// Using the spread operator will also consume the iterator
+[...myIterable]; // [1, 2, 3]
+```
+
+#### More on generators
+
+Generators compute their yielded values on demand, which allows them to efficiently represent sequences that are expensive to compute (or even infinite sequences, as demonstrated above).
+
+The `next()` method also accepts a value, which can be used to modify the internal state of the generator. A value passed to `next()` will be received by yield.
+
+Note: A value passed to the first invocation of `next()` is always ignored.
+
+Here is the fibonacci generator using `next(x)` to restart the sequence:
+
+```js ln
+function* fibonacci() {
+	let current = 0;
+	let next = 1;
+	while (true) {
+		let reset = yield current;
+		[current, next] = [next, next + current];
+		if (reset) {
+			current = 0;
+			next = 1;
+		}
+	}
+}
+
+const sequence = fibonacci();
+console.log(sequence.next().value);     // 0
+console.log(sequence.next().value);     // 1
+console.log(sequence.next().value);     // 1
+console.log(sequence.next().value);     // 2
+console.log(sequence.next().value);     // 3
+console.log(sequence.next(true).value); // 0
+console.log(sequence.next().value);     // 1
+console.log(sequence.next().value);     // 1
+console.log(sequence.next().value);     // 2
+```
+
+You can force a generator to throw an exception by calling its `throw()` method and passing the exception value it should throw. This exception will be thrown from the current suspended context of the generator, as if the yield that is currently suspended were instead a throw value statement.
+
+If the exception is not caught from within the generator, it will propagate up through the call to `throw()`, and subsequent calls to `next()` will result in the done property being true.
+
+Generators have a `return(value)` method that returns the given value and finishes the generator itself.
+
+[MDN: Iterators and generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators)
+
+### Asynchronous functions
+
+JavaScript has a new way of dealing with callbacks in asynchronous functions, called Promises, and some new keywords, `async` and `await`, which let us write asynchronous functions in a more readable form.
+
 #### Promise
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
-  - all
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
-  - allSettled
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled
-  - any
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any
-  - race
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
-  - Then, Finally, Catch
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
-  - Resolve & Reject
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject
-#### new.target
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new.target
-#### Classes
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/class
-  - Super
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super
-  - Subclassing
-    - Array, Regexp, Function, Promise, others...
-    - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance
-  - Class field declarations
-    - https://github.com/tc39/proposal-class-fields
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields
-    - https://github.com/tc39/proposal-private-methods
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
+
+A Promise is an object representing the eventual completion or failure of an asynchronous operation. Essentially, a promise is a returned object to which you attach callbacks, instead of passing callbacks into a function.
+
+A `Promise` is in one of these states:
+- `pending`: initial state, neither fulfilled nor rejected.
+- `fulfilled`: meaning that the operation was completed successfully.
+- `rejected`: meaning that the operation failed.
+
+Callbacks are added with `then()`. One of the great things about using promises is chaining. Multiple callbacks may be added by calling `then()` several times. They will be invoked one after another, in the order in which they were inserted. The `then()` function returns a new promise object every time.
+
+Doing several asynchronous operations in a row would lead to the classic callback pyramid of doom:
+
+```js ln
+doSomething(function(result) {
+	doSomethingElse(result, function(newResult) {
+		doThirdThing(newResult, function(finalResult) {
+		console.log('Got the final result: ' + finalResult);
+		}, failureCallback);
+	}, failureCallback);
+}, failureCallback);
+```
+
+With modern functions, we attach our callbacks to the returned promises instead, forming a promise chain:
+
+```js ln
+doSomething()
+.then(result => doSomethingElse(result))
+.then(newResult => doThirdThing(newResult))
+.then(finalResult => {
+	console.log(`Got the final result: ${finalResult}`);
+})
+.catch(failureCallback);
+```
+
+Besides the `then` and `catch` methods, there's a third one called `finally`. The finally() method's callback is executed when the promise is settled, i.e. either fulfilled or rejected.
+
+Here's an example of how to wrap an old-style callback-based function, `setTimeout` with a promise.
+
+```js
+const wait = ms => new Promise((resolve, reject) => setTimeout(resolve, ms));
+
+wait(10*1000) // Wait 10 seconds
+	.then(() => saySomething("10 seconds"))
+	.catch(failureCallback);
+```
+Note that the `reject` method is left unused here, but generally, you'd wrap an asynchronous function in a try/catch block and reject the promise with some error object if the operation failed.
+
+```js
+const myFirstPromise = new Promise((resolve, reject) => {
+	// do something asynchronous which eventually calls either:
+	// resolve(someValue)		// fulfilled
+	// or
+	// reject("failure reason")	// rejected
+});
+```
+
+The `Promise` object contains some built-in static methods that help deal with multiple concurrent promises. See [all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), [allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled), [any](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any), [race](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race).
+
+[MDN: Using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+[MDN: Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+#### Async/await
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+- https://github.com/tc39/proposal-top-level-await
+
+### Classes
+- Pre ES6 "classes"
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/class
+- Super
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super
+- Subclassing
+  - Array, Regexp, Function, Promise, others...
+  - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance
+- Class field declarations
+  - https://github.com/tc39/proposal-class-fields
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields
+  - https://github.com/tc39/proposal-private-methods
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
 
 ## Built-ins
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
@@ -314,9 +692,9 @@ Regular expressions have had a lot of updates as well, but we're not going to co
 
 ### Reflection
 #### Proxy
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 #### Reflect
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect
 
 ### BigInt
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
@@ -324,46 +702,46 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ### Symbols
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
 - https://developer.mozilla.org/en-US/docs/Glossary/Symbol
-  - Well-known symbols
+- Well-known symbols
 
 
 ### Collections and structured data
 #### Indexed collections
-  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
-  - Array
-  - Int8Array
-  - Uint8Array
-  - Uint8ClampedArray
-  - Int16Array
-  - Uint16Array
-  - Int32Array
-  - Uint32Array
-  - Float32Array
-  - Float64Array
-  - BigInt64Array
-  - BigUint64Array
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
+- Array
+- Int8Array
+- Uint8Array
+- Uint8ClampedArray
+- Int16Array
+- Uint16Array
+- Int32Array
+- Uint32Array
+- Float32Array
+- Float64Array
+- BigInt64Array
+- BigUint64Array
 
 #### Keyed collections
-  - Map
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
-  - Set
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
-  - WeakRef
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef
+- Map
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+- Set
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+- WeakRef
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef
 
 #### Structured data
-  - JSON
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
-  - ArrayBuffer
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
-  - SharedArrayBuffer
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer
-  - Atomics
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics
-  - DataView
-    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView
+- JSON
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
+- ArrayBuffer
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
+- SharedArrayBuffer
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer
+- Atomics
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics
+- DataView
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView
 
 
 ## Built-in extensions
@@ -467,6 +845,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MIN_SAFE_INTEGER
 
 ### Math
+
+#### Exponentiation `**`
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Exponentiation
+#### Numeric separators
+  - Octal and binary literals, hex literals
+  - https://github.com/tc39/proposal-numeric-separator
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
 - clz32
 - imul
