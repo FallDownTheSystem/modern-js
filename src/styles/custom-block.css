@@ -1,5 +1,5 @@
 .aside {
-	@apply rounded-xl bg-gray-800 p-8 pb-2 text-gray-100;
+	@apply rounded-xl bg-gray-800 px-8 pb-2 pt-6 text-gray-100;
 
 	& h2:first-of-type,
 	& p:first-of-type {

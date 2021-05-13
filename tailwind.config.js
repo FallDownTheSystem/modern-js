@@ -43,7 +43,7 @@ module.exports = {
 				DEFAULT: {
 					css: [
 						{
-							color: theme('colors.gray.200', defaultTheme.colors.gray[300]),
+							color: theme('colors.gray.200', defaultTheme.colors.gray[200]),
 							maxWidth: 'none',
 							'[class~="lead"]': {
 								color: theme('colors.gray.400', defaultTheme.colors.gray[400])
@@ -65,11 +65,11 @@ module.exports = {
 							},
 							sub: {
 								lineHeight: '1.25',
-								color: theme('colors.gray.400', defaultTheme.colors.gray[400])
+								color: theme('colors.gray.200', defaultTheme.colors.gray[200])
 							},
 							sup: {
 								lineHeight: '1.25',
-								color: theme('colors.gray.400', defaultTheme.colors.gray[400])
+								color: theme('colors.gray.200', defaultTheme.colors.gray[200])
 							},
 							'ol[type="A"]': {
 								'--list-counter-style': 'upper-alpha'
@@ -157,11 +157,19 @@ module.exports = {
 								color: theme('colors.gray.100', defaultTheme.colors.gray[100]),
 								fontWeight: '600'
 							},
+							':not(pre)>code': {
+								paddingTop: '0.125rem',
+								paddingBottom: '0.125rem',
+								paddingRight: '0.25rem',
+								paddingLeft: '0.25rem',
+								background: 'hsla(210, 80%, 80%, 0.075)',
+								borderRadius: '0.2rem'
+							},
 							'code::before': {
-								content: '"`"'
+								content: ''
 							},
 							'code::after': {
-								content: '"`"'
+								content: ''
 							},
 							'a code': {
 								color: theme('colors.pink.600', defaultTheme.colors.pink[600])

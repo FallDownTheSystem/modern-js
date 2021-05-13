@@ -20,6 +20,17 @@ div[class*='language-'] {
 	@apply shadow-lg;
 }
 
+.tip,
+.info,
+.note,
+.warn,
+.danger {
+	& div[class*='language-'] {
+		background-color: hsla(0, 0%, 100%, 0.04);
+		box-shadow: none;
+	}
+}
+
 .aside div[class*='language-'] {
 	background-color: theme('colors.gray.700');
 }

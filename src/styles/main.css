@@ -68,7 +68,7 @@
 	/* FIX ME! Grid breaks margin collapsing! */
 	.two-col {
 		display: grid;
-		grid-template-columns: 1fr 2rem 1fr;
+		grid-template-columns: 11fr 2rem 13fr;
 		& > *:first-of-type {
 			grid-column: 1;
 		}
