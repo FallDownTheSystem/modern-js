@@ -10,22 +10,76 @@
 
 <Title :title="$route.meta.title" :description="$route.meta.description" />
 
-Now that we know a little bit about the history of JavaScript, we can move onto modern JavaScript. In my mind, modern JavaScript means two things, the new language features released since ES5 and the build tools and frameworks we use these days to create JavaScript applications.
+Now that we know about the history of JavaScript, we can move onto modern JavaScript. In my mind, modern JavaScript means two things, the new language features released since ES5 and the build tools and frameworks we use these days to create JavaScript applications.
 
-In this article, we'll look at the new features introduced in the ECMAScript specifications. We're not going to look at every change and detail. Instead, we'll focus on new syntax, features, built-in global objects and new methods to existing objects. We'll also take a look at some new Web APIs.
+In this article, we'll focus on the former; new features in JavaScript and the web. We're not going to look at every change and detail. Instead, we'll focus on introducing you to the new syntax, new language features, and new built-in global objects. We'll also take a quick look at additions to the existing built-in objects and some new Web APIs. Lastly, we'll go over a completely different language for the web, called WebAssembly.
 
-The goal of this article isn't to teach you new programming concepts, or even to show you how to use these new JavaScript features, that would take far too long. Instead I'm aiming to show you as many cool new features of JavaScript, so you know about them, and link to the relevant MDN articles so you can learn more about the ones that interest you.
+The goal of this article isn't to teach you new programming concepts or how to use these new JavaScript features; that would take far too long. Instead, I'm aiming to show you as many cool new features in JavaScript as possible, so you know about them, and link to the relevant MDN articles so you can learn more about the ones that interest you.
 
-::: c info "Credit" box
+::: c note "Credit" box
 The examples in this article are based on and directly quoted from [MDN articles](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference), found from this [ECMAScript compatibility table](https://kangax.github.io/compat-table/es6/), with some key differences.
 
-This article is like a curated list of these articles, shortened and spliced for brevity and to only, (*mostly* 🙄), contain features introduced since ES5.
+This article is like a curated list of these articles, shortened and spliced for brevity and to only contain features introduced since the days of ES5.
 
 Rather than listing new features of each ECMAScript edition chronologically, I'm grouping related features together. Modern browsers support almost all of the latest ES features. So there's really no reason to make a distinction between the different editions.
 :::
 
 ## Syntax
 Let's start by going through some of the new syntax introduced in ES2015+. These new syntax features make writing JavaScript less tedious and more concise. This isn't a complete list; some new syntax is also presented in other sections, but those features are large enough to warrant their own chapters.
+
+#### `const` and `let`
+
+Traditionally JavaScript variables were declared using the `var` statement, which declares a function-scoped or globally-scoped variable. The major difference between `var` and `const` or `let` is that `let` and `const` are block-scoped, and `var` declarations are [hoisted](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting).
+
+The difference between `const` and `let` is that the value of a constant can't be changed through reassignment, and it can't be redeclared.
+
+::: c box warn Warning
+`const` does not make the value itself immutable, just so that the variable identifier cannot be reassigned.
+:::
+
+```js ln
+function varTest() {
+	var x = 1;
+	{
+		var x = 2; // same variable
+		console.log(x); // 2
+	}
+	console.log(x); // 2
+}
+
+function letTest() {
+	let x = 1;
+	{
+		let x = 2; // different variable
+		console.log(x); // 2
+	}
+	console.log(x); // 1
+}
+```
+
+The nature of `var` makes it unpredictable in some cases. For example:
+
+```js ln
+for (var i = 0; i < 5; ++i) {
+	setTimeout(function () {
+		console.log(i);
+	}, 1000);
+}
+// prints '5' five times
+```
+
+This will call the `setTimeout` function five times immediately, incrementing the variable `i` each time. A second later, all five callbacks are called, each referencing the same variable `i` defined in the function (or global) scope. With `let`, we're binding the variable to a new lexical environment with each iteration, so each iteration has its own scope, each referencing a different variable `i`.
+
+::: c box info Closures
+A closure is a function bundled with references to its surrounding state (the **lexical environment**). In other words, a closure gives you access to an outer (function's) scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+[MDN: Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+:::
+
+[MDN: const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
+[MDN: let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
+[MDN: var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
+
 
 #### Default function parameters
 
@@ -43,7 +97,8 @@ console.log(multiply(5)); // 5
 [MDN: Default parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters)
 
 #### Rest parameters
-The rest parameter syntax allows a function to accept an indefinite number of arguments as an array. The function declaration can include normal parameters as well, but only the last parameter can be a rest parameter.
+
+The rest parameter syntax allows a function to accept an indefinite number of arguments as an array. The function declaration can include other regular parameters. Only the last parameter can be a rest parameter.
 
 ```js ln
 function myFun(a, b, ...manyMoreArgs) {
@@ -52,10 +107,10 @@ function myFun(a, b, ...manyMoreArgs) {
 	console.log("manyMoreArgs", manyMoreArgs)
 }
 
-myFun("one", "two", "three", "four", "five", "six")
+myFun("one", "two", "three", "four", "five")
 // a, one
 // b, two
-// manyMoreArgs, ["three", "four", "five", "six"]
+// manyMoreArgs, ["three", "four", "five"]
 ```
 
 [MDN: Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
@@ -152,7 +207,7 @@ drawChart({
 ```
 :::
 
-Note that the right hand assignment of an empty object `= {}`, is so that we could call the function without any parameters and it would still work.
+Note that the right-hand assignment of an empty object `= {}` is so that we can call the function without any parameters, and it would still work.
 
 [MDN: Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
@@ -176,6 +231,7 @@ let o = {
 	['b' + 'ar']: 'there'
 }
 ```
+
 [MDN: Object inititalizer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#new_notations_in_ecmascript_2015)
 
 Modern JavaScript also allows leaving trailing commas after object properties and function parameters. Previously trailing commas were only valid syntax in arrays.
@@ -191,15 +247,14 @@ function f(p,) {
 	console.log(p);
 }
 
-// array destructuring with a trailing comma
+// Array destructuring with a trailing comma
 [a, b,] = [1, 2];
 ```
 [MDN: Trailing commas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas)
 
 #### For..of loops
-The `for...of` statement creates a loop iterating over iterable objects, including Strings, Arrays, and array-like objects (e.g., NodeList).
 
-The `for...of` statement iterates over the **values** of the iterable object.
+The `for...of` statement creates a loop iterating over the **values** of **iterable** objects, including Strings, Arrays, and array-like objects (e.g., NodeList).
 
 ```js ln
 const iterable = [10, 20, 30];
@@ -221,9 +276,9 @@ for (const value of iterable) {
 // "o"
 ```
 
-`for...of` is different from the `for...in` statement, which [iterates](#iterators) over the **properties**, of an object, i.e., the key rather than the value. This means you often have to take an extra step to access the value.
+The `for...of` statement is different from the `for...in` statement, which [iterates](#iterators) over the **properties**, of an object, i.e., the keys rather than the values. This means you often have to take an extra step to access the value.
 
-The problem with `for...in` is that adding properties to `Object` or `Array` 's prototype means that those properties will also be iterated over, even though this is rarely the behavior you want.
+The problem with `for...in` is that adding properties to `Object` or `Array`'s prototype means that those properties will also be iterated over, even though this is rarely the behavior you want.
 
 ```js ln
 Object.prototype.objCustom = function() {};
@@ -263,9 +318,11 @@ Template literals are string literals that allow embedded expressions. You can u
 `string text ${expression} string text`
 ```
 
-Template literals are enclosed by the backtick (`). Any newline characters inserted in the source are part of the template literal, which isn't possible with normal strings, instead you'd have to use newline characters and string concatenation.
+Template literals are enclosed by the backtick (`). Any newline characters inserted in the source are part of the template literal, which isn't possible with regular strings. Instead, you'd have to use newline characters and string concatenation.
 
-The expressions in a template literal also support nested templates. For more complex use cases, you can read about tagged templates in the following link.
+The expressions in a template literal also support nested templates.
+
+For more complex use cases, you can read about tagged templates.
 
 [MDN: Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 
@@ -291,7 +348,7 @@ console.log(dogName); // undefined
 
 #### Nullish coalescing (??)
 
-The nullish coalescing operator `??` is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
+The nullish coalescing operator `??` is a logical operator that returns its right-hand side operand when its left-hand side operand is `null` or `undefined`.
 
 This can be contrasted with the logical OR `||` operator, which returns the right-hand side operand if the left operand is any falsy value.
 
@@ -310,85 +367,35 @@ console.log(preservingFalsy);
 
 [MDN: Nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
 
-
 #### Exponentiation (**)
 
 The exponentiation operator `**` returns the result of raising the first operand to the power of the second operand. It is equivalent to `Math.pow`, except it also accepts [BigInts](#bigint) as operands.
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Exponentiation
-
-#### `const` and `let`
-
-Traditionally JavaScript variables were declared using the `var` statement, which declares a function-scoped or globally-scoped variable. The major difference between `var` and `const` or `let` is that `var` variables are function-scoped, where as `let` and `const` are block-scoped, and `var` declarations are [hoisted](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting).
-
-The difference between `const` and `let` is that the value of a constant can't be changed through reassignment, and it can't be redeclared.
-
-Note that `const` does not make the value itself immutable, just that the variable identifier cannot be reassigned.
-
-```js ln
-function varTest() {
-	var x = 1;
-	{
-		var x = 2; // same variable
-		console.log(x); // 2
-	}
-	console.log(x); // 2
-}
-
-function letTest() {
-	let x = 1;
-	{
-		let x = 2; // different variable
-		console.log(x); // 2
-	}
-	console.log(x); // 1
-}
-```
-
-The nature of `var` makes it unpredictable in some cases. For example:
-
-```js ln
-for (var i = 0; i < 5; ++i) {
-	setTimeout(function () {
-		console.log(i);
-	}, 1000);
-}
-// prints '5' five times
-```
-
-This will call the `setTimeout` function five time immediately, and a second later all five callbacks are called with the same value of `i', rather than creating a new lexical environment with each iteration.
-
-[MDN: const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
-[MDN: let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
-[MDN: var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
+[MDN: Exponentiation operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Exponentiation)
 
 #### Object getter and setter
 
-The `get` syntax binds an object property to a function that will be called when that property is looked up.
-The `set` syntax binds an object property to a function to be called when there is an attempt to set that property.
+The `get` syntax binds an object property to a function called when that property is looked up.
+
+The `set` syntax binds an object property to a function called when there is an attempt to set that property.
 
 ```js ln
-const language = {
-	name: '',
-	dialects: ['a', 'b', 'c'],
-	previousLanguages: [],
-	get firstDialect() {
-		if (dialects.length) {
-			return this.dialects[0];
-		}
-		return undefined;
+const person = {
+	firstName: 'John',
+	lastName: 'Doe',
+	get name() {
+		return `${this.firstName} ${this.lastName}`;
 	},
-	set current(name) {
-		this.name = name;
-		this.previousLanguages.push(name);
+	set name(name) {
+		let [firstName, lastName] = name.split(' ');
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 };
 
-language.current = 'EN';
-language.current = 'FA';
-console.log(language.log); // Array ["EN", "FA"]
-console.log(language.firstDialect); // "a"
-console.log(language.name); // "FA"
+console.log(person.name); // "John Doe"
+person.name = "Jane Doe";
+console.log(person.firstName); // "Jane"
 ```
 
 [MDN: get](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
@@ -396,7 +403,14 @@ console.log(language.name); // "FA"
 
 ## Functions
 
-ECMAScript has had a lot of addition to functions. These come in the form of arrow functions, generators, async functions and classes. We'll be going through all of these and seeing how these new additions work.
+There are a lot of changes to functions in JavaScript. We now have:
+
+- Arrow functions (often referred to as lambdas in other languages)
+- Generator functions (functions that can be re-entered)
+- Async functions (syntactic sugar for promises)
+- Classes (technically special functions in JS)
+
+We'll be going through all of these and seeing they work.
 
 ### Arrow functions
 
@@ -404,7 +418,7 @@ An arrow function expression is a compact alternative to a traditional function 
 
 ```js ln
 // Traditional Function
-function (a){
+function (a) {
 	return a + 100;
 }
 
@@ -412,11 +426,13 @@ function (a){
 a => a + 100;
 ```
 
-The main difference is that arrow functions do not have their own scope, meaning they don't bind their own `this`. This means it's not a good idea to use them as methods, as you won't be able to refer to the other properties of the object. On the other hand, arrow functions are well suited for callbacks, since you often want to access the scope where the callback was defined, and not the scope of the function you're passing the callback into.
+The main difference is that arrow functions do not have their own scope, meaning they don't bind their own `this`. This means it's not a good idea to use them as methods, as you won't be able to refer to the other properties of the object.
 
-Let's take a closer look at the concise syntax of arrow functions. Arrow functions can omit paranthesis around the parameters, if there's only one parameter. They can also omit the brackets around the body of the function, and the return statement, in which case the return is implicit.
+On the other hand, arrow functions are well suited for callbacks since you often want to access the scope where the callback was defined and not the scope of the function you're passing the callback into.
 
-Here's the above arrow function in it's full form.
+Let's take a closer look at the concise syntax of arrow functions. Arrow functions can omit parenthesis around the parameters if there's only one parameter. They can also omit the brackets around the function body. Lastly, arrow functions can omit the return statement, in which case the return is implicit, but only if you've also omitted the brackets around the function body.
+
+Here's the above arrow function in its full form.
 
 ```js
 (a) => {
@@ -448,11 +464,11 @@ Iterators and Generators bring the concept of iteration directly into the core l
 
 #### Iterators
 
-In JavaScript an **iterator** is an object which defines a sequence and potentially a return value upon its termination.
+In JavaScript, an **iterator** is an object which defines a way to produce a sequence of values (either finite or infinite), and optionally a return value when all values have been generated.
 
 Specifically, an iterator is any object which implements the [Iterator protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol) by having a `next()` method that returns an object with the `value` and `done` properties.
 
-Here is an example of an iterator. It allows creation of a simple range iterator which defines a sequence of integers from `start` to `end`.
+Here is an example of an iterator. It creates a simple range iterator that defines a sequence of integers from `start` to `end`.
 
 ```js ln
 function makeRangeIterator(start = 0, end = Infinity) {
@@ -472,12 +488,13 @@ function makeRangeIterator(start = 0, end = Infinity) {
 ```
 
 Using the iterator then looks like this:
+
 ``` js ln
-const it = makeRangeIterator(1, 10, 2);
+const it = makeRangeIterator(3, 7);
 
 let result = it.next();
 while (!result.done) {
-	console.log(result.value); // 1 3 5 7 9
+	console.log(result.value); // 3 4 5 6 7
 	result = it.next();
 }
 ```
@@ -488,7 +505,7 @@ While custom iterators are a useful tool, their creation requires careful progra
 
 When called, generator functions do not initially execute their code. Instead, they return a special type of iterator, called a `Generator`. When a value is consumed by calling the generator's `next` method, the Generator function executes until it encounters the `yield` keyword.
 
-The function can be called as many times as desired, and returns a new Generator each time. Each Generator may only be iterated once.
+The generator function can be called as many times as desired and returns a new `Generator` each time. Each `Generator` may only be iterated once.
 
 Generators compute their yielded values on demand, which allows them to efficiently represent sequences that are expensive to compute (or even infinite sequences).
 
@@ -517,8 +534,10 @@ console.log(sequence.next().value); // 5
 
 An iterable is an object that defines a method that returns an iterator. This method is the `@@iterator` method and is defined as a property with a `Symbol.iterator` as the key.
 
-::: c note Note box
+::: c info Info box
 `@@` describes what's called a well-known [symbol](#symbols). These symbols are typically used as keys of properties that extend the functionality of objects.
+
+JavaScript has quite a few of these well-known symbols. For a full list, refer to [EC39: Well-known symbols](https://tc39.es/ecma262/#sec-well-known-symbols).
 :::
 
 For example we, can access the iterators of built-in objects like this:
@@ -551,26 +570,26 @@ const iterated = [...myIterable]; // Array [1, 2, 3]
 
 ### Asynchronous functions
 
-JavaScript has a new way of dealing with callbacks in asynchronous functions, called Promises, and some new keywords, `async` and `await`, which let us write asynchronous functions in a more readable form.
+JavaScript has a new way of dealing with callbacks in asynchronous functions, called promises, and some new keywords, `async` and `await`, which let us write asynchronous functions in a more readable form.
 
 #### Promise
 
-A Promise is an object representing the eventual completion or failure of an asynchronous operation. Essentially, a promise is a returned object to which you attach callbacks, instead of passing callbacks into a function.
+A `Promise` is an object representing the eventual completion or failure of an asynchronous operation. Essentially, a promise is a returned object to which you attach callbacks, rather than passing callbacks into a function.
 
 A `Promise` is in one of these states:
 - `pending`: initial state, neither fulfilled nor rejected.
 - `fulfilled`: meaning that the operation was completed successfully.
 - `rejected`: meaning that the operation failed.
 
-Callbacks are added with `then()`. One of the great things about using promises is chaining. Multiple callbacks may be added by calling `then()` several times. They will be invoked one after another, in the order in which they were inserted. The `then()` function returns a new promise object every time.
+Callbacks are added with `then()`. One of the great things about using promises is chaining. Multiple callbacks may be added by calling `then()` several times. They will be invoked one after another in the order in which they were inserted. The `then()` function returns a new `Promise` object every time.
 
-Doing several asynchronous operations in a row would lead to the classic callback pyramid of doom:
+In the olden days, doing several asynchronous operations in a row would lead to the classic callback pyramid of doom ☠
 
-```js ln
+```js
 doSomething(function(result) {
 	doSomethingElse(result, function(newResult) {
 		doThirdThing(newResult, function(finalResult) {
-		console.log('Got the final result: ' + finalResult);
+			console.log('Got the final result: ' + finalResult);
 		}, failureCallback);
 	}, failureCallback);
 }, failureCallback);
@@ -578,7 +597,7 @@ doSomething(function(result) {
 
 With modern functions, we attach our callbacks to the returned promises instead, forming a promise chain:
 
-```js ln
+```js
 doSomething()
 .then(result => doSomethingElse(result))
 .then(newResult => doThirdThing(newResult))
@@ -590,7 +609,7 @@ doSomething()
 
 Besides the `then` and `catch` methods, there's a third one called `finally`. The finally method's callback is executed when the promise is settled, i.e. either fulfilled or rejected.
 
-Here's an example of how to wrap an old-style callback-based function, `setTimeout` with a promise.
+Here's an example of how to wrap an old-style callback-based function, `setTimeout` with a promise:
 
 ::: c wide center-child
 ```js
@@ -613,14 +632,14 @@ const myFirstPromise = new Promise((resolve, reject) => {
 });
 ```
 
-The `Promise` object contains some built-in static methods that help deal with multiple concurrent promises. See [all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), [allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled), [any](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any), [race](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race).
+The `Promise` object contains some built-in static methods that help deal with multiple concurrent promises. See [all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), [allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled), [any](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any), or [race](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race).
 
 [MDN: Using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
 [MDN: Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 #### Async/await
 
-An async function is a function declared with the `async` keyword, and the `await` keyword is permitted within them. The `async` and `await` keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
+An async function is a function declared with the `async` keyword, and the `await` keyword can be used within them. The `async` and `await` keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
 
 ::: c info Info box
 There's a proposal to allow using `await` at the top-level of modules, enabling modules to act as big async functions.
@@ -677,7 +696,7 @@ async function* asyncGenerator() {
 
 ### Classes
 
-Classes are "special functions", they're built on prototypes. Before ES2015, there was no `class` keyword, instead functions would be used to construct "classes". Functions were a good substitute for classes since they had their own scope, meaning access to `this` and JavaScript's object prototypes allowed for adding class-like "methods" to functions.
+Classes are "special functions"; they're built on prototypes. Before ES2015, there was no `class` keyword. Instead, functions would be used to construct "classes". Functions were a good substitute for classes since they had their own scope, meaning access to `this` and JavaScript's object prototypes allowed for adding class-like "methods" to functions.
 
 ```js ln
 function Person(name, age, gender) {
@@ -691,7 +710,7 @@ Person.prototype.getName = function() {
 };
 ```
 
-In modern JavaScript we have the `class` keyword, which is syntactic sugar for the same prototypical behavior, but makes it much easier to deal with classes.
+In modern JavaScript, we have the `class` keyword, which is syntactic sugar for the same prototypical behavior but makes it much easier to deal with classes.
 
 To declare a class, you use the `class` keyword with the name of the class:
 
@@ -720,7 +739,6 @@ class Rectangle {
 }
 
 const square = new Rectangle(10, 10);
-
 console.log(square.area); // 100
 ```
 
@@ -746,7 +764,7 @@ class Rectangle {
 :::
 ::::
 
-Classes can be inherited with the `extends` key word.
+Classes can be inherited with the `extends` keyword.
 
 ```js ln
 class Cat {
@@ -776,13 +794,13 @@ l.speak();
 
 ## New built-in objects
 
-In this chapter we'll look at new built-in objects in JavaScript. Standard built-in objects are things like `Number`, `Object`, or `Array`. In the next chapter we'll look at additions to existing built-ins, but for now we'll focus on some new additions.
+In this chapter, we'll look at new built-in objects in JavaScript. Standard built-in objects are things like `Number`, `Object`, or `Array`.
 
-For a full list, see [MDN: Standard built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects).
+For a complete list, see [MDN: Standard built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects).
 
 ### Symbols
 
-Symbols are one of the seven primitive data types in JavaScript, along side with string, number, bigint, boolean, undefined, and null. In other-languages Symbols are referred to as "atoms". The `Symbol` function produces an anonymous, unique value that can be used as an object property. The `Symbol` function can optionally take a description string as an argument.
+Symbols are one of the seven primitive data types in JavaScript, alongside with string, number, bigint, boolean, undefined, and null. In other languages, Symbols are commonly referred to as "atoms." The `Symbol` function produces an anonymous, unique value that can be used as an object property. The `Symbol` function can optionally take a description string as an argument.
 
 Here are two symbols with the same description:
 
@@ -795,8 +813,6 @@ console.log(Sym1 === Sym2) // returns "false"
 
 Earlier, in the iterables section, we saw how symbols can be used to extend the functionality of objects by using them as property keys.
 
-JavaScript has quite a few of these well-known symbols. For a full list, refer to [EC39: Well-known symbols](https://tc39.es/ecma262/#sec-well-known-symbols).
-
 [MDN: Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 
 ### Reflection
@@ -805,10 +821,9 @@ Reflection is the ability of a process to examine, introspect, and modify its ow
 
 #### Proxy
 
-The Proxy object enables you to create a proxy for another object, which can intercept and redefine fundamental operations for that object.
+The `Proxy` object enables you to create a *proxy* for another object, which can intercept and redefine fundamental operations for that object.
 
 A Proxy is created with two parameters:
-
 - `target`: the original object which you want to proxy
 - `handler`: an object that defines which operations will be intercepted and how to redefine intercepted operations.
 
@@ -841,14 +856,13 @@ You can see the full list of proxy handler functions [here](https://developer.mo
 
 #### Reflect
 
-Reflect is a built-in object that provides methods for interceptable JavaScript operations. The methods are the same as those of proxy handlers. `Reflect` is not a function object, so it's not constructible.
+`Reflect` is a built-in object that provides methods for interceptable JavaScript operations. The methods are the same as those of proxy handlers. `Reflect` is not a function object, so it's not constructible.
 
-The Reflect object provides the following static functions which have the same names as the proxy handler methods. You may be familiar with these methods, since many of them correspond to the methods on `Object`, with some subtle differences.
+The `Reflect` object provides the following static functions, which have the same names as the proxy handler methods. You may be familiar with these methods since many of them correspond to the methods on `Object` (with some subtle differences).
 
-Here's some examples of Reflect in action:
+Here's an example of `Reflect` in action:
 
 ```js ln
-// Detecting whether an object contains certain properties
 const duck = {
 	name: 'Maurice',
 	color: 'white',
@@ -857,6 +871,7 @@ const duck = {
 	}
 }
 
+// Detecting whether an object contains certain properties
 Reflect.has(duck, 'color'); // true
 Reflect.has(duck, 'haircut'); // false
 
@@ -893,15 +908,21 @@ BigInts can use all the math operator symbols and boolean logic you'd expect, bu
 
 [MDN: BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
 
-### Typed Arrays
+### Typed arrays
 
-Who wants to talk about low-level JavaScript? Great! Let's talk about low-level JavaScript. Namely about ArrayBuffers and TypedArrays.
+Who wants to talk about low-level JavaScript? Great! Let's talk about low-level JavaScript. Namely about ArrayBuffers, TypedArrays, and DataViews.
 
-#### ArrayBuffer and TypedArrays
+#### ArrayBuffer
 
-The `ArrayBuffer` object is used to represent a generic, fixed-length raw binary data buffer.
+The `ArrayBuffer` object is used to represent a generic, fixed-length raw binary data buffer, i.e., an array of bytes.
 
-It is an array of bytes, often referred to in other languages as a "byte array". You cannot directly manipulate the contents of an [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer); instead, you create one of the [`TypedArray` objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) or a [`DataView`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) object which represents the buffer in a specific format, and use that to read and write the contents of the buffer.
+You cannot directly manipulate the contents of an [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer); instead, you create one of the [`TypedArray` objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) or a [`DataView`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) object which represents the buffer in a specific format and use that to read and write the contents of the buffer.
+
+#### TypedArrays
+
+A `TypedArray` object describes an array-like view of an underlying binary data buffer. There is no global property named `TypedArray`, nor is there a directly visible `TypedArray` constructor. Instead, there are a number of different global properties, whose values are typed array constructors for [specific element types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#typedarray_objects).
+
+Here's how an array of bytes is represented as different concrete typed arrays:
 
 <table class="box">
 	<thead>
@@ -965,14 +986,14 @@ The `DataView` view provides a low-level interface for reading and writing multi
 
 Multi-byte number formats are represented in memory differently depending on machine architecture. `DataView` accessors provide explicit control of how data is accessed, regardless of the executing computer's endianness.
 
-So really `DataView` is used in special cases where you need control over the endianness of the data. In most cases you can just use the methods on the `TypedArray` directly.
+So really, `DataView` is used in exceptional cases where you need control over the endianness of the data. In most cases, you can just use the methods on the `TypedArray` directly.
 
 :::: c box info SharedArrayBuffer
 There's also a [`SharedArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer), similar to the ArrayBuffer object. The difference is that SharedArrayBuffers can share memory between the main page and [web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
 
 ::: c tag more
 
-Since web workes operate in a different thread from the main program, sharing memory introduces concurrency problems. Shared memory can be created and updated simultaneously in workers or the main thread. Depending on the system (the CPU, the OS, the Browser) it can take a while until the change is propagated to all contexts. To synchronize, atomic operations are needed.
+Since web workes operate in a different thread from the main program, sharing memory introduces concurrency problems. Shared memory can be created and updated simultaneously in workers or the main thread. Depending on the system (the CPU, the OS, the browser) it can take a while until the change is propagated to all contexts. To synchronize, atomic operations are needed.
 
 The [Atomics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics) object provides atomic operations as static methods. Atomic operations make sure that predictable values are written and read, that operations are finished before the next operation starts and that operations are not interrupted.
 :::
@@ -986,16 +1007,16 @@ We just looked at new indexed collections in JavaScript, now let's take a look a
 
 #### Map
 
-[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) is a new data structure to map values to values. A Map object is a simple key/value map, also known as a dictionary.
+[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) is a new data structure to map keys to values. A `Map` object is also commonly known as a dictionary.
 
-Traditionally, objects have been used to map strings to values. Objects allow you to set keys to values, retrieve those values, delete keys, and detect whether something is stored at a key. Map objects, however, have a few more advantages that make them better maps.
+Traditionally, objects have been used to map strings to values. Objects allow you to set keys to values, retrieve those values, delete keys, and detect whether something is stored at a key. `Map` objects, however, have a few more advantages that make them better maps.
 
 - The keys of an `Object` are `Strings` or `Symbols`, where they can be of any value for a `Map`.
 - You can get the size of a `Map` easily, while you have to manually keep track of size for an `Object`.
 - The iteration of maps is in insertion order of the elements.
 - An `Object` has a prototype, so there are default keys in the map.
 
-The following code shows some basic operations with a Map. You can use a `for...of` loop to return an array of `[key, value]` for each iteration.
+The following code shows some basic operations with a Map.
 
 ```js ln
 let sayings = new Map();
@@ -1010,7 +1031,7 @@ sayings.delete('dog');
 sayings.has('dog'); // false
 
 for (let [key, value] of sayings) {
-  console.log(key + ' goes ' + value);
+	console.log(key + ' goes ' + value);
 }
 // "cat goes meow"
 // "elephant goes toot"
@@ -1021,7 +1042,7 @@ sayings.size; // 0
 
 ::: c box info WeakMap
 
-The [`WeakMap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) object is a collection of key/value pairs in which the keys are objects only and the values can be arbitrary values. The object references in the keys are held weakly, meaning that they are a target of garbage collection (GC) if there is no other reference to the object anymore. The WeakMap API is the same as the Map API.
+The [`WeakMap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) object is a collection of key/value pairs in which the keys are objects only, and the values can be arbitrary values. The object references in the keys are held weakly, meaning that they are a target of garbage collection (GC) if there is no other reference to the object anymore. The WeakMap API is the same as the Map API.
 
 One difference to Map objects is that WeakMap keys are not enumerable (i.e., there is no method giving you a list of the keys). If they were, the list would depend on the state of garbage collection, introducing non-determinism.
 
@@ -1066,16 +1087,16 @@ mySet2 = new Set([1, 2, 3, 4]);
 
 :::: c box info WeakSet
 
-[WeakSet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet) objects are collections of objects. An object in the `WeakSet` may only occur once. It is unique in the `WeakSet`'s collection, and objects are not enumerable.
+[WeakSet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet) objects are collections of objects. An object in the `WeakSet` may only occur once. It is unique in the `WeakSet` 's collection, and objects are not enumerable.
 
 ::: c tag more
 
 The main differences to the `Set` object are:
 
-- In contrast to Sets, WeakSets are collections of objects only, and not of arbitrary values of any type.
-- The WeakSet is weak: References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. That also means that there is no list of current objects stored in the collection.
+- In contrast to Sets, WeakSets can only hold objects rather than any type.
+- The `WeakSet` is weak: References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. That also means that there is no list of current objects stored in the collection.
 WeakSets are not enumerable.
-- The use cases of WeakSet objects are limited. They will not leak memory, so it can be safe to use DOM elements as a key and mark them for tracking purposes, for example.
+- The use cases of `WeakSet` objects are limited. They will not leak memory, so it can be safe to use DOM elements as a key and mark them for tracking purposes, for example.
 :::
 ::::
 
@@ -1083,9 +1104,9 @@ WeakSets are not enumerable.
 
 ### Internationalization API
 
-We've been saving the best for last. The Internationalization API, that's right, internationalization built straight into JavaScript. The `Intl` object provides language sensitive string comparison, number formatting, date and time formatting, as well as other language sensitive functions.
+We've been saving the best for last. The Internationalization API, that's right, internationalization built straight into JavaScript. The `Intl` object provides language-sensitive string comparison, number formatting, date and time formatting, as well as other language-sensitive functions.
 
-These are all the constructors under the `Intl` namespace:
+These are all the constructors under the `Intl` (object) namespace:
 
 - [Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator): Language-sensitive string comparison.
 - [DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat): Language-sensitive date and time formatting.
@@ -1109,7 +1130,7 @@ new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'long' }).forma
 ```
 :::
 
-The other constructors work more or less the same, you pass in a locale string and an optional options object argument.
+The other constructors work more or less the same; you pass in a locale string and an optional `options` object argument.
 
 Internationalization features have been added outside of the `Intl` object as well. Object's can define a `toLocaleString` method, for example:
 
@@ -1131,23 +1152,71 @@ array1.toLocaleString('fr', { style: 'currency', currency: 'EUR'});
 
 ## Built-in extensions
 
-All the built-in objects have gotten a lot of new additions. Rather than listing all of them here, I'm going to encourage you to checkout the page for the [Standard built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects). Check out the objects you're interested in and see what new methods, static methods and properties they have now-a-days.
+Now that we know about new built-in objects let's talk about the old ones.
 
-The basics are the most interesting ones, [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), and [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object).
+`Object`, `String`, `Array`, `Number`, `RegExp`, and others have gotten a bunch of new useful methods and properties added to them. Rather than listing all of them here, I'm going to encourage you to check out the page for the [Standard built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects). Check out the ones you're interested in and see what new methods, static methods, and properties they have nowadays.
 
-Methods like [`Array.includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes), [`Array.find`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find), [`String.includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes), [`String.replaceAll`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll) and [`Object.entries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries), to name a few, are extremely useful.
+The basics are the most interesting ones and have to most additions, [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), and [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object).
+
+Methods like [`Array.includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes), [`Array.find`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find), and [`String.includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes) have replaced methods like `indexOf` in a lot of cases:
+
+```js
+var x = [1,2,3].indexOf(1) > -1; //true
+// vs
+var x = [1,2,3].includes(1); //true
+```
+
+With [`String.replaceAll`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll) we no longer need to use global regular expressions to actually replace all instances, since the `replace` method only replaces the first instance.
+
+```js
+const p = 'A dog jumps over another dog.';
+p.replace('dog', 'monkey'); // A monkey jumps over another dog."
+// vs
+p.replace(/dog/g, 'monkey'); // A monkey jumps over another monkey."
+// vs
+p.replaceAll('dog', 'monkey'); // A monkey jumps over another monkey."
+```
+
+[`Object.entries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries) and [`Object.values`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values) allow us to iterate over the properties of an object, without having to take an additional step of accessing the values with the keys, as previously only [`Object.keys`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) was available.
+
+```js ln
+const object1 = {
+	a: 'somestring',
+	b: 42,
+	c: false
+};
+
+for (var key in object1) {
+	var value = object1[key];
+}
+// vs
+for (const value in Object.values(object1)) {
+	// Direct access to the value
+}
+```
+
+We also have a new array method, called [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), that joins the likes of other functional-style methods, such as `map` and `reduce`.
+
+```js
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction'];
+const result = words.filter(word => word.length > 6);
+// expected output: Array ["exuberant", "destruction"]
+```
+
+::: c box note Note
+If you're curious about whether a feature is a new addition or can be used with a specific browser, check out [Can I use](https://caniuse.com/), where you look up the browser support for different features and web technologies.
+:::
 
 ## Web APIs
 
-We've more or less covered the new features of modern JavaScript. But that's not all there is. The web also has a whole host of new APIs for the DOM and for devices. API's like Fetch, Mutation, Resize, and Intersection (DOM) Observers, Web Workers, File access APIs, or devices API's like notifications, geolocation, or the ambient light sensor API.
+We've more or less covered the new features of modern JavaScript. But that's not all there is. The web also has a whole host of new APIs.
 
-These aren't defined in the ECMAScript specification, but rather they're standards that web browsers implement, defined by the World Wide Web Consortium (W3C) and Web Hypertext Application Technology Working Group (WHATWG).
+Web APIs aren't defined in the ECMAScript specification. Instead, they're standards defined by the World Wide Web Consortium (W3C) and Web Hypertext Application Technology Working Group (WHATWG).
 
 :::: c box info Info
-On May 28th, 2019, W3C and the WHATWG have signed a agreement to collaborate on a single, authoritative version of the HTML and DOM specifications, published by WHATWG.
+On May 28th, 2019, W3C and the WHATWG have signed an agreement to collaborate on a single, authoritative version of the HTML and DOM specifications published by WHATWG.
 
 ::: c tag more
-
 According to W3C's statement, the two parties have come to the following terms:
 
 - W3C and WHATWG work together on HTML and DOM, in the WHATWG repositories, to produce a Living Standard and Recommendation/Review Draft-snapshots
@@ -1157,18 +1226,33 @@ According to W3C's statement, the two parties have come to the following terms:
 :::
 ::::
 
-You can see the full index of Web API's [here](https://developer.mozilla.org/en-US/docs/Web/API). There's a lot of them, so I won't be listing and introducing them here; although we will cover the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) in the next article. Here's a few interesting APIs for you to checkout:
+You can see the full index of Web APIs [here](https://developer.mozilla.org/en-US/docs/Web/API). There's a lot of them, so I won't be listing and introducing them here, but I will list some of the more common ones for you to look into.
 
+Browser APIs:
+- [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API): Provides an interface for fetching resources as promises, replacing `XMLHttpRequest`.
+- [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver): Observe and attach callbacks when elements, classes, or styles are added, changed, or removed.
+- [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver): Observe and attach callbacks when elements change size.
+- [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver): Observe and attach callbacks when elements become visible, i.e., scrolling.
 - [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API): Background threads, for running long tasks without blocking.
-- [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) Two-way interactive communication session between the browser and a server.
-- [File System Access](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API): Interaction with files on a user's local device.
-- [Houdini](https://developer.mozilla.org/en-US/docs/Web/Houdini): A set of low-level APIs that exposes parts of the CSS engine.
+- [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API): Two-way interactive communication session between the browser and a server.
+- [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API): Web Real-Time Communication enables Web applications and sites to capture and optionally stream audio and/or video media.
+
+Devices APIs:
+- [Notifications](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API): Allows web pages to control the display of system notifications.
+- [Geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API): Allows users to provide location information.
+- [Sensor APIs](https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs): Access device sensors, such as ambient light sensor, accelerometer, gyroscope, etc.
+
+Here are some exciting upcoming APIs (these are still drafts and aren't supported by many browsers yet):
+- [File System Access](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API): Interaction with files on a user's local device 
+- [Houdini](https://developer.mozilla.org/en-US/docs/Web/Houdini): A set of low-level APIs that expose parts of the CSS engine.
+
+There's one Web API we haven't mentioned yet, and that's the [`DOM`](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model). There are many new useful methods in the DOM API, which we'll explore in-depth in the following article.
 
 ## WebAssembly
 
 Lastly, let's talk about WebAssembly. WebAssembly is a new type of code that can be run in modern web browsers — it is a low-level assembly-like language with a compact binary format that runs with near-native performance and provides languages such as C/C++, C# and Rust with a compilation target so that they can run on the web. It is also designed to run alongside JavaScript, allowing both to work together.
 
-WebAssembly has huge implications for the web platform — it provides a way to run code written in multiple languages on the web at near native speed, with client apps running on the web that previously couldn’t have done so.
+WebAssembly has huge implications for the web platform — it provides a way to run code written in multiple languages on the web at near-native speed, with client apps running on the web that previously couldn't have done so.
 
 WebAssembly is designed to complement and run alongside JavaScript — using the WebAssembly JavaScript APIs, you can load WebAssembly modules into a JavaScript app and share functionality between the two. This allows you to take advantage of WebAssembly's performance and power and JavaScript's expressiveness and flexibility in the same apps, even if you don't know how to write WebAssembly code.
 
@@ -1181,9 +1265,9 @@ We can use `Fetch` to load a wasm file, and use the `WebAssembly.instantiateStre
 :::: c slide two-col
 
 ::: c
-> What is the exported function?
+> What's the exported function?
 
-Exported functions are basically just JavaScript wrappers for the underlying WebAssembly functions. When you call them the arguments are passed to the function inside your wasm module, the function is invoked, and the result is converted and passed back to JavaScript.
+Exported functions are basically just JavaScript wrappers for the underlying WebAssembly functions. When you call them, the arguments are passed to the function inside your wasm module, the function is invoked, and the result is converted and passed back to JavaScript.
 
 We can access the exported functions through the `WebAssembly.Instance.exports` property.
 :::
@@ -1207,11 +1291,11 @@ WebAssembly.instantiateStreaming(fetch('simple.wasm'), importObj)
 :::: c slide two-col
 
 ::: c
-> What is the exported memory buffer?
+> What's the exported memory buffer?
 
-The wasm modules memory buffer is an array of raw bytes. In JavaScript, a `Memory` instance can be thought of as a resizable `ArrayBuffer`. In the example we access the memory and interpret it as an `Uint32Array`.
+The wasm module's memory buffer is an array of raw bytes. In JavaScript, a `WebAssembly.Memory` instance can be thought of as a resizable `ArrayBuffer`. A memory created by JavaScript or WebAssembly code will be accessible and mutable from JavaScript and WebAssembly.
 
-A memory created by JavaScript or in WebAssembly code will be accessible and mutable from both JavaScript and WebAssembly.
+In the example, we access the memory and interpret it as an `Uint32Array`.
 :::
 
 ```js {7}
@@ -1233,11 +1317,11 @@ WebAssembly.instantiateStreaming(fetch('simple.wasm'), importObj)
 :::: c slide two-col
 
 ::: c
-> What is the exported table?
+> What's the exported table?
 
-A WebAssembly `Table` is a resizable typed array of (function) references that can be accessed by both JavaScript and WebAssembly code.
+A `WebAssembly.Table` is a resizable typed array of (function) references that can be accessed by both JavaScript and WebAssembly code.
 
-While `Memory` provides a resizable typed array of raw bytes, it is unsafe for references to be stored in a Memory since a reference must not be read or written directly for safety reasons.
+While `Memory` provides a resizable typed array of raw bytes, it is unsafe for references to be stored in a `Memory` since a reference must not be read or written directly for safety reasons.
 :::
 
 ```js {10}
@@ -1259,11 +1343,11 @@ WebAssembly.instantiateStreaming(fetch('simple.wasm'), importObj)
 :::: c slide two-col
 
 ::: c
-> What the `importObj` object?
+> What's the `importObj`?
 
-So far we've seen **exported** functions, and exported memory and table instances. The `importObject` parameter allows us to import our own functions, and memory and table instances into the WebAssembly instance.
+So far, we've seen **exported** functions and exported memory and table instances. The `importObject` parameter allows us to import our own functions and memory and table instances into the WebAssembly instance.
 
-The imported object can be accessed in the web assembly code, and the the imported properties must be declared in the compiled module.
+The imported object can be accessed in the web assembly code. Note that the imported properties must be declared in the compiled module.
 :::
 
 ```js {1}
@@ -1284,8 +1368,8 @@ WebAssembly.instantiateStreaming(fetch('simple.wasm'), importObj)
 
 :::::
 
-There's a lot more to WebAssembly, if you're interested check out the full guide at MDN.
+There's a lot more to WebAssembly; if you're interested in learning more, check out the full guide at MDN.
 
 [MDN: WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly)
 
-In the next chapter, we'll see how we can use these new features and APIs to replace the functionality that has been provided by jQuery for so long and return to vanilla JavaScript.
+In the next chapter, we'll see if we can manage without jQuery, using modern JavaScript features and Web APIs.

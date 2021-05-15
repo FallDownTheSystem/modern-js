@@ -12,10 +12,10 @@
 		"@vueuse/head": "^0.5.1",
 		"lodash-es": "^4.17.21",
 		"vue": "^3.0.11",
-		"vue-router": "^4.0.7"
+		"vue-router": "^4.0.8"
 	},
 	"devDependencies": {
-		"@iconify/json": "^1.1.342",
+		"@iconify/json": "^1.1.343",
 		"@vitejs/plugin-vue": "^1.2.2",
 		"@vue/compiler-sfc": "^3.0.11",
 		"autoprefixer": "^10.2.5",
@@ -36,8 +36,8 @@
 		"tailwindcss": "^2.1.2",
 		"vite": "^2.3.2",
 		"vite-plugin-components": "^0.9.1",
-		"vite-plugin-icons": "0.5.0",
-		"vite-plugin-md": "^0.6.6",
+		"vite-plugin-icons": "0.5.1",
+		"vite-plugin-md": "^0.6.7",
 		"vite-plugin-pages": "0.11.3",
 		"vite-plugin-vue-layouts": "^0.3.1"
 	}
