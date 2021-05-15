@@ -1,5 +1,5 @@
 :root {
-	--code-line-height: 24px;
+	--code-line-height: 1.5rem;
 	--code-font-size: 14px;
 }
 
@@ -17,6 +17,7 @@ div[class*='language-'] {
 	margin-bottom: 1.5em;
 	background-color: theme('colors.gray.800');
 	overflow-x: auto;
+	max-width: 44rem !important;
 	@apply shadow-lg;
 }
 
@@ -73,7 +74,7 @@ li > div[class*='language-'] {
 	position: relative;
 	z-index: 1;
 	margin: 0 !important;
-	padding: 1.25rem 1.5rem !important;
+	padding: 2rem !important;
 	background: 0 0;
 	overflow-x: auto;
 }
@@ -87,7 +88,7 @@ li > div[class*='language-'] {
 	top: 0;
 	bottom: 0;
 	left: 0;
-	padding: 1.25rem 0 !important;
+	padding: 2rem 0 !important;
 	width: 100%;
 	line-height: var(--code-line-height) !important;
 	font-family: theme('fontFamily.mono');
@@ -115,7 +116,7 @@ div[class*='language-'].line-numbers-mode {
 	left: 0;
 	z-index: 3;
 	border-right: 1px solid hsla(0, 0%, 0%, 0.33);
-	padding: 1.25rem 0;
+	padding: 2rem 0;
 	width: 3.5rem;
 	text-align: center;
 	line-height: var(--code-line-height);

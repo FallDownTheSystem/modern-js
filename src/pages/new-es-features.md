@@ -920,7 +920,7 @@ You cannot directly manipulate the contents of an [`ArrayBuffer`](https://develo
 
 #### TypedArrays
 
-A `TypedArray` object describes an array-like view of an underlying binary data buffer. There is no global property named `TypedArray`, nor is there a directly visible `TypedArray` constructor. Instead, there are a number of different global properties, whose values are typed array constructors for [specific element types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#typedarray_objects).
+A `TypedArray` object describes an array-like view of an underlying binary data buffer. There is no global property named `TypedArray`, nor is there a directly visible `TypedArray` constructor. Instead, there are a number of different global properties whose values are typed array constructors for [specific element types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#typedarray_objects).
 
 Here's how an array of bytes is represented as different concrete typed arrays:
 

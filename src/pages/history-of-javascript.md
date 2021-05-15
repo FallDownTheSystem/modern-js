@@ -35,7 +35,7 @@ All of this was happening fast. Really fast. The first version of JavaScript (Mo
 
 In 1995 Microsoft released their new browser, [Internet Explorer](https://en.wikipedia.org/wiki/Internet_Explorer). Quickly after the release, Microsoft reverse-engineered Netscape's JavaScript implementation and created their own variation, called [JScript](https://en.wikipedia.org/wiki/JScript).
 
-Although JScript was based on JavaScript, their implementations differed, sometimes in a non-compatible way. This along with other browser specific feature differences lead to a lot of browser interoperability issues. But that wouldn't be the case for long, in theory at least.
+Although JScript was based on JavaScript, their implementations differed, sometimes in a non-compatible way. This, along with other browser-specific feature differences lead to a lot of browser interoperability issues. But that wouldn't be the case for long, in theory at least.
 
 In 1996 Netscape submitted JavaScript to [ECMA International](https://en.wikipedia.org/wiki/Ecma_International) (originally the European Computer Manufacturers Association) to create a language specification that all browsers could adhere to. In 1997 the first ECMAScript language specification, ECMA-262, was created.
 
