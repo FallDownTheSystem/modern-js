@@ -6,7 +6,16 @@
 				Modern
 				<span>
 					<span
-						class="inline-block group-hover:-mb-4 group-hover:text-black group-hover:font-display group-hover:font-bold group-hover:px-[8.5px] group-hover:pb-2 group-hover:bg-js"
+						class="
+							inline-block
+							group-hover:-mb-4
+							group-hover:text-black
+							group-hover:font-display
+							group-hover:font-bold
+							group-hover:px-[8.5px]
+							group-hover:pb-2
+							group-hover:bg-js
+						"
 					>
 						JavaScript
 					</span>
@@ -20,7 +29,7 @@
 					what new features got added to the language along the way,
 					<br />
 					and what modern JavaScript development looks like.
-					<div class="font-light text-sm mt-12 text-gray-400">Updated {{ new Date(2021, 3, 3).toLocaleDateString() }}</div>
+					<div class="font-light text-sm mt-12 text-gray-400">Updated {{ new Date(2021, 4, 31).toLocaleDateString() }}</div>
 				</div>
 			</template>
 		</Title>

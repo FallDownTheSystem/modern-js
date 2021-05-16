@@ -37,7 +37,7 @@ The difference between `const` and `let` is that the value of a constant can't b
 `const` does not make the value itself immutable, just so that the variable identifier cannot be reassigned.
 :::
 
-```js ln
+```js
 function varTest() {
 	var x = 1;
 	{
@@ -59,7 +59,7 @@ function letTest() {
 
 The nature of `var` makes it unpredictable in some cases. For example:
 
-```js ln
+```js
 for (var i = 0; i < 5; ++i) {
 	setTimeout(function () {
 		console.log(i);
@@ -85,7 +85,7 @@ A closure is a function bundled with references to its surrounding state (the **
 
 Default function parameters allow named parameters to be initialized with default values if no value or undefined is passed.
 
-```js ln
+```js
 function multiply(a, b = 1) {
 	return a * b;
 }
@@ -100,7 +100,7 @@ console.log(multiply(5)); // 5
 
 The rest parameter syntax allows a function to accept an indefinite number of arguments as an array. The function declaration can include other regular parameters. Only the last parameter can be a rest parameter.
 
-```js ln
+```js
 function myFun(a, b, ...manyMoreArgs) {
 	console.log("a", a)
 	console.log("b", b)
@@ -119,7 +119,7 @@ myFun("one", "two", "three", "four", "five")
 
 Spread syntax `...` looks exactly like rest syntax. In a way, rest syntax is the opposite of spread syntax. Spread syntax *"expands"* an array into its elements, while rest syntax collects multiple elements and *"condenses"* them into a single element.
 
-```js ln
+```js
 function sum(x, y, z) {
 	return x + y + z;
 }
@@ -130,7 +130,7 @@ console.log(sum(...numbers)); // 6
 
 The spread syntax makes it easy to clone and concatenate arrays and objects.
 
-```js ln
+```js
 let arr1 = [0, 1, 2];
 let arr2 = [3, 4, 5];
 
@@ -156,7 +156,7 @@ let mergedObj = { ...obj1, ...obj2 };
 
 The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
 
-```js ln
+```js
 let [a, b] = [10, 20];
 
 console.log(a); // 10
@@ -176,7 +176,7 @@ console.log(bar); // true
 
 A neat trick is to destructure values into existing variables, allowing us to swap the values of variables in a single expression.
 
-```js ln
+```js
 let a = 1;
 let b = 3;
 
@@ -193,7 +193,7 @@ The destructuring syntax is really powerful. Considering that
 Putting all of that together:
 
 ::: c center-child wide
-```js ln
+```js
 // We still get `size`, since it has a default value
 function drawChart({size = 'big', coords = {x: 0, y: 0}, radius = 25} = {}) {
 	console.log(size, coords, radius);
@@ -214,7 +214,7 @@ Note that the right-hand assignment of an empty object `= {}` is so that we can 
 #### Object literal extensions
 With some new syntactic sugar for objects, an object's keys can now be declared using shorthands and computed names.
 
-```js ln
+```js
 // Shorthand property names
 let a = 'foo', b = 42, someObj = {};
 let o = { a, b, c }
@@ -236,7 +236,7 @@ let o = {
 
 Modern JavaScript also allows leaving trailing commas after object properties and function parameters. Previously trailing commas were only valid syntax in arrays.
 
-```js ln
+```js
 var object = {
 	foo: "bar",
 	baz: "qwerty",
@@ -256,7 +256,7 @@ function f(p,) {
 
 The `for...of` statement creates a loop iterating over the **values** of **iterable** objects, including Strings, Arrays, and array-like objects (e.g., NodeList).
 
-```js ln
+```js
 const iterable = [10, 20, 30];
 
 for (const value of iterable) {
@@ -280,7 +280,7 @@ The `for...of` statement is different from the `for...in` statement, which [iter
 
 The problem with `for...in` is that adding properties to `Object` or `Array`'s prototype means that those properties will also be iterated over, even though this is rarely the behavior you want.
 
-```js ln
+```js
 Object.prototype.objCustom = function() {};
 Array.prototype.arrCustom = function() {};
 
@@ -309,7 +309,7 @@ for (const i of iterable) {
 
 Template literals are string literals that allow embedded expressions. You can use multi-line strings and string interpolation features with them.
 
-```js ln
+```js
 `string text`
 
 `string text line 1
@@ -332,7 +332,7 @@ The optional chaining operator `?.` enables you to read the value of a property 
 
 The `?.` operator is like the `.` chaining operator, except that instead of causing an error if a reference is nullish (`null` or `undefined`), the expression short-circuits with a return value of `undefined`.
 
-```js ln
+```js
 const adventurer = {
 	name: 'Alice',
 	cat: {
@@ -352,7 +352,7 @@ The nullish coalescing operator `??` is a logical operator that returns its righ
 
 This can be contrasted with the logical OR `||` operator, which returns the right-hand side operand if the left operand is any falsy value.
 
-```js ln
+```js
 let myText = '';
 // An empty string (which is also a falsy value)
 
@@ -379,7 +379,7 @@ The `get` syntax binds an object property to a function called when that propert
 
 The `set` syntax binds an object property to a function called when there is an attempt to set that property.
 
-```js ln
+```js
 const person = {
 	firstName: 'John',
 	lastName: 'Doe',
@@ -416,7 +416,7 @@ We'll be going through all of these and seeing they work.
 
 An arrow function expression is a compact alternative to a traditional function expression, but is limited and can't be used in all situations.
 
-```js ln
+```js
 // Traditional Function
 function (a) {
 	return a + 100;
@@ -470,7 +470,7 @@ Specifically, an iterator is any object which implements the [Iterator protocol]
 
 Here is an example of an iterator. It creates a simple range iterator that defines a sequence of integers from `start` to `end`.
 
-```js ln
+```js
 function makeRangeIterator(start = 0, end = Infinity) {
 	let nextIndex = start;
 
@@ -489,7 +489,7 @@ function makeRangeIterator(start = 0, end = Infinity) {
 
 Using the iterator then looks like this:
 
-``` js ln
+``` js
 const it = makeRangeIterator(3, 7);
 
 let result = it.next();
@@ -509,7 +509,7 @@ The generator function can be called as many times as desired and returns a new 
 
 Generators compute their yielded values on demand, which allows them to efficiently represent sequences that are expensive to compute (or even infinite sequences).
 
-```js ln
+```js
 function* fibonacci() {
 	let current = 0;
 	let next = 1;
@@ -553,7 +553,7 @@ console.log(iterator.next()); // { value: undefined, done: true }
 
 You can also use the `Symbol.iterator` to create your own iterables. Here's an example, using a generator function:
 
-```js ln
+```js
 const myIterable = {
 	*[Symbol.iterator]() {
 		yield 1;
@@ -647,7 +647,7 @@ There's a proposal to allow using `await` at the top-level of modules, enabling 
 [TC39: Top-level await](https://github.com/tc39/proposal-top-level-await)
 :::
 
-```js ln
+```js
 function resolveAfter2Seconds() {
 	return new Promise(resolve => {
 		setTimeout(() => {
@@ -683,7 +683,7 @@ for await (variable of iterable) {
 
 The `for await...of` statement can be used with async iterables (iterables defined with `Symbol.asyncIterator`) and async generators, e.g:
 
-```js ln
+```js
 async function* asyncGenerator() {
 	let i = 0;
 	while (i < 3) {
@@ -698,7 +698,7 @@ async function* asyncGenerator() {
 
 Classes are "special functions"; they're built on prototypes. Before ES2015, there was no `class` keyword. Instead, functions would be used to construct "classes". Functions were a good substitute for classes since they had their own scope, meaning access to `this` and JavaScript's object prototypes allowed for adding class-like "methods" to functions.
 
-```js ln
+```js
 function Person(name, age, gender) {
 	this.name = name;
 	this.age = age;
@@ -766,7 +766,7 @@ class Rectangle {
 
 Classes can be inherited with the `extends` keyword.
 
-```js ln
+```js
 class Cat {
 	constructor(name) {
 		this.name = name;
@@ -829,7 +829,7 @@ A Proxy is created with two parameters:
 
 For example, here we've provided an implementation of the `get()` handler, which intercepts attempts to access properties in the target:
 
-```js ln
+```js
 const target = {
 	message1: "hello",
 	message2: "everyone"
@@ -862,7 +862,7 @@ The `Reflect` object provides the following static functions, which have the sam
 
 Here's an example of `Reflect` in action:
 
-```js ln
+```js
 const duck = {
 	name: 'Maurice',
 	color: 'white',
@@ -1018,7 +1018,7 @@ Traditionally, objects have been used to map strings to values. Objects allow yo
 
 The following code shows some basic operations with a Map.
 
-```js ln
+```js
 let sayings = new Map();
 sayings.set('dog', 'woof');
 sayings.set('cat', 'meow');
@@ -1061,7 +1061,7 @@ Traditionally, a set of elements has been stored in arrays in JavaScript in a lo
 
 The following code shows some basic operations with a Set.
 
-```js ln
+```js
 let mySet = new Set();
 mySet.add(1);
 mySet.add('some text');
@@ -1121,7 +1121,7 @@ I've found the DateTimeFormat constructor especially useful. Often negating the 
 Here's an example of what the DateTimeFormat constructor looks like.
 
 ::: c wide center-child
-```js ln
+```js
 const date = new Date(2020, 11, 20, 3, 23, 16, 738);
 
 // Specify date and time format using "style" options (i.e. full, long, medium, short)
@@ -1179,7 +1179,7 @@ p.replaceAll('dog', 'monkey'); // A monkey jumps over another monkey."
 
 [`Object.entries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries) and [`Object.values`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values) allow us to iterate over the properties of an object, without having to take an additional step of accessing the values with the keys, as previously only [`Object.keys`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) was available.
 
-```js ln
+```js
 const object1 = {
 	a: 'somestring',
 	b: 42,

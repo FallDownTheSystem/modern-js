@@ -17,7 +17,7 @@
 
 .default,
 .wide {
-	max-width: 40rem !important;
+	max-width: max-content !important;
 	margin-top: 1.33333em;
 	margin-bottom: 1.333333em;
 }

@@ -35,7 +35,7 @@ All of this was happening fast. Really fast. The first version of JavaScript (Mo
 
 In 1995 Microsoft released their new browser, [Internet Explorer](https://en.wikipedia.org/wiki/Internet_Explorer). Quickly after the release, Microsoft reverse-engineered Netscape's JavaScript implementation and created their own variation, called [JScript](https://en.wikipedia.org/wiki/JScript).
 
-Although JScript was based on JavaScript, their implementations differed, sometimes in a non-compatible way. This, along with other browser-specific feature differences lead to a lot of browser interoperability issues. But that wouldn't be the case for long, in theory at least.
+Although JScript was based on JavaScript, their implementations differed, sometimes in a non-compatible way. This, along with other browser-specific feature differences, lead to a lot of browser interoperability issues. But that wouldn't be the case for long, in theory at least.
 
 In 1996 Netscape submitted JavaScript to [ECMA International](https://en.wikipedia.org/wiki/Ecma_International) (originally the European Computer Manufacturers Association) to create a language specification that all browsers could adhere to. In 1997 the first ECMAScript language specification, ECMA-262, was created.
 
@@ -148,7 +148,7 @@ We're not here to talk about JSON or XML, but I figured they were worth mentioni
 
 ### Asynchronous JavaScript and XML
 
-In 2005, Jesse James Garrett released a white paper in which he coined the term AJAX and described a set of techniques on the client-side to asynchronously (dynamically) change the content of the page. Even though the term is called Asynchronous JavaScript and **XML**, the concept remains the same for JSON.
+In 2005, Jesse James Garrett released a white paper in which he coined the term AJAX and described a set of techniques on the client-side to asynchronously (dynamically) change the page's content. Even though the term is called Asynchronous JavaScript and **XML**, the concept remains the same for JSON.
 
 AJAX was a revolutionary way to develop web applications, and many libraries were built around the concept of AJAX. Looking at an XMLHTTPRequest, it's clear to see why more straightforward APIs were developed around the concept.
 
@@ -176,7 +176,7 @@ xhr.onreadystatechange = function () {
 xhr.send();
 ```
 
-One such library was jQuery. Although jQuery wasn't built around AJAX, jQuery's support for AJAX and it's easy to use API for modifying the DOM made it a perfect library for creating more dynamic web **applications**.
+One such library was jQuery. Although jQuery wasn't built around AJAX, jQuery's support for AJAX and its easy-to-use API for modifying the DOM made it a perfect library for creating more dynamic web **applications**.
 
 ## Coping with Internet Explorer
 
@@ -205,7 +205,7 @@ $.get("http://www.example.org/example.txt", function(data) {
 });
 ```
 
-For the most part, jQuery let developers use existing JavaScript features with these kinds of cleaner APIs. But what about newer features? Features released in ES6 that couldn't be used in Internet Explorer? Well, jQuery doesn't solve that problem.
+For the most part, jQuery lets developers use existing JavaScript features with these kinds of cleaner APIs. But what about newer features? Features released in ES6 that couldn't be used in Internet Explorer? Well, jQuery doesn't solve that problem.
 
 ### Polyfills
 
