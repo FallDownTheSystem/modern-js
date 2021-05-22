@@ -31,6 +31,11 @@ The following examples are based mainly on these two fantastic articles by [Tobi
 
 ## Replacing jQuery
 
+Next, let's look at examples of how we can achieve the most common use cases of jQuery with vanilla JavaScript.
+
+> ***[Vanilla JavaScript?](http://vanilla-js.com/)***
+
+What I mean by vanilla JavaScript is *just* JavaScript, i.e., JavaScript without a library. jQuery is also JavaScript, but it's easier to make the distinction by talking as if jQuery was its own language.
 
 ### Selecting elements
 
@@ -56,11 +61,13 @@ $(".button").hide();
 $(".button").each((index, element) => doSomething(element));
 ```
 
-With vanilla JavaScript, a query returns an [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element), usually an [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) or a [`NodeList`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList), depending on if you use `querySelector` or `querySelectorAll`.
+With vanilla JavaScript, a query returns an [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element) or a [`NodeList`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList), depending on if you use `querySelector` or `querySelectorAll`.
+
+Note that `Element`s are derived from `Node`s. And what `querySelector` usually returns is an [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement).
 
 <svg viewBox="-50 0 600 70" preserveAspectRatio="xMinYMin meet">
 	<a xlink:href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_top">
-		<rect x="1" y="1" width="110" height="50" class="fill-current text-gray-700"></rect>
+		<rect x="1" y="1" width="110" height="50" class="fill-current text-gray-800"></rect>
 		<text
 			x="56"
 			y="27"
@@ -72,10 +79,10 @@ With vanilla JavaScript, a query returns an [`Element`](https://developer.mozill
 			EventTarget
 		</text>
 	</a>
-	<polyline points="111,25  121,20  121,30  111,25" stroke="#D4DDE4" fill="none"></polyline>
-	<line x1="121" y1="25" x2="151" y2="25" stroke="#D4DDE4"></line>
+	<polyline points="111,25  121,20  121,30  111,25" class="stroke-current text-gray-400" fill="none"></polyline>
+	<line x1="121" y1="25" x2="151" y2="25" class="stroke-current text-gray-400"></line>
 	<a xlink:href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_top">
-		<rect x="151" y="1" width="75" height="50" class="fill-current text-gray-700"></rect>
+		<rect x="151" y="1" width="75" height="50" class="fill-current text-gray-800"></rect>
 		<text
 			x="188.5"
 			y="27"
@@ -87,10 +94,10 @@ With vanilla JavaScript, a query returns an [`Element`](https://developer.mozill
 			Node
 		</text>
 	</a>
-	<polyline points="226,25  236,20  236,30  226,25" stroke="#D4DDE4" fill="none"></polyline>
-	<line x1="236" y1="25" x2="266" y2="25" stroke="#D4DDE4"></line>
+	<polyline points="226,25  236,20  236,30  226,25" class="stroke-current text-gray-400" fill="none"></polyline>
+	<line x1="236" y1="25" x2="266" y2="25" class="stroke-current text-gray-400"></line>
 	<a xlink:href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="_top">
-		<rect x="266" y="1" width="75" height="50" class="fill-current text-gray-700"></rect>
+		<rect x="266" y="1" width="75" height="50" class="fill-current text-gray-800"></rect>
 		<text
 			x="303.5"
 			y="27"
@@ -102,10 +109,10 @@ With vanilla JavaScript, a query returns an [`Element`](https://developer.mozill
 			Element
 		</text>
 	</a>
-	<polyline points="341,25  351,20  351,30  341,25" stroke="#D4DDE4" fill="none"></polyline>
-	<line x1="351" y1="25" x2="381" y2="25" stroke="#D4DDE4"></line>
+	<polyline points="341,25  351,20  351,30  341,25" class="stroke-current text-gray-400" fill="none"></polyline>
+	<line x1="351" y1="25" x2="381" y2="25" class="stroke-current text-gray-400"></line>
 	<a xlink:href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" target="_top">
-		<rect x="381" y="1" width="110" height="50" class="fill-current text-gray-700"></rect>
+		<rect x="381" y="1" width="110" height="50" class="fill-current text-gray-800"></rect>
 		<text
 			x="436"
 			y="27"
@@ -159,18 +166,158 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 ```
 
-### Changing styles
-- Styles
+### Modifying styles
+
+In jQuery we can access and modify an element's styles with the `css` method. In vanilla JavaScript we would use the `style` property.
+
+```js
+// With jQuery we can access the css properties
+// the same as we would write them in css declarations
+$(".container").css("background-color", "#000");
+
+// With JavaScript we have to use camelCase
+document.querySelector(".container").style.backgroundColor = "#000";
+```
+
+We can also set multiple styles at once. Although it's a little trickier in vanilla JavaScript.
+
+```js
+// With jQuery we can pass multiple styles at once in an object
+$(".container").css({
+	"color": "white",
+	"background-color": "black"
+});
+
+// With vanilla JS we can set each individual style property seperately
+var container = document.querySelector(".container");
+container.style.color = "white";
+container.style.backgroundColor = "black";
+
+// Or we can set all styles at once (but override any existing styles)
+container.style.cssText = "color: white; background-color: black";
+
+// Or we can use Object.assign
+Object.assign(container.style, {
+	color: "white",
+	backgroundColor: "black"
+});
+```
+
+::: c box note Note
+We can't assign an object directly to the style property since it's read-only.
+
+[`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) works because it doesn't replace the object; it replaces the enumerable own properties of the object.
+:::
 
 ### Hiding/showing elements
-- Hide / Show / Toggle
 
-### Changing classes
-- Classes
-- ClassList
+jQuery has a couple [built-in helper methods](https://api.jquery.com/category/effects/) to set the styles of common css properties. Most notably, `hide`, `show`, and `toggle`.
+
+These methods will set the display property of the selected element. For example:
+
+```js
+$(".target").hide();
+// Sets the display property to "none"
+// Equivalent to .css("display", "none")
+$(".target").show();
+// Sets the display property back to what it was initially, 
+// Equivalent to .css("display", "block")
+// assuming the display property was "block" initially
+
+$(".target").toggle(); // In this case hides the element
+// Works the same as hide and show, just toggles between the two
+$(".target").toggle(); // And shows it again
+```
+
+With JavaScript, you'd have to keep track of the initial display property yourself and set the display property as we saw before.
+
+### Modifying classes
+
+The API for dealing with classes is very similar in vanilla JavaScript and jQuery. jQuery has dedicated methods, as per usual, and JavaScript's `ClassList` has matching methods.
+
+```js
+let navItem = $(".nav-item");
+navItem.addClass("active");
+navItem.removeClass("active");
+navItem.toggleClass("active");
+
+let navItem = document.querySelector(".nav-item");
+navItem.classList.add("active");
+navItem.classList.remove("active");
+navItem.classList.toggle("active");
+```
+
+Here's how to check whether an element contains a specific class:
+
+```js
+$(".nav-item").hasClass("active") // true/false
+
+document.querySelector(".nav-item").classList.contains("active")
+```
 
 ### Creating and inserting elements
-- Creating elements
+
+So far, we've only been modifying elements. What about creating new ones and inserting them into the DOM?
+
+For that JavaScript has a method called [`document.createElement()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement), that takes a tagName as an argument.
+
+Creating an element on its own doesn't do much. Usually, we want to also add the new element to the DOM.
+
+Here's an example of how to do that with jQuery and with vanilla JavaScript:
+
+```js
+// Create a div and set its inner text in one line
+let newElement = $("<div/>").text("Some text");
+// then append it inside another element
+$(".container").append(newElement);
+
+// and the same with vanilla JavaScript
+let newElement = document.createElement("div").textContent = "Some text";
+
+// then append the new element to another element
+document.querySelector(".container").append(element);
+```
+
+We can also just append any html directly into an element with jQuery:
+
+```js
+$("body").append(`
+	<div>
+		Hello <span style="font-weight: bold">world!</span>
+	</div>`
+);
+```
+To do the same in JavaScript, we could create an element and set the `innerHTML` property of the element directly.
+
+```js
+let div = document.createElement('div');
+div.innerHTML = `
+	<div>
+		Hello <span style="font-weight: bold">world!</span>
+	</div>`;
+document.querySelector("body").appendChild(div);
+```
+
+We can also use the [`template`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) tag, if we need to get access to created element(s) in JavaScript.
+
+```js
+let template = document.createElement('template');
+let html = `<div>
+				Hello <span style="font-weight: bold">world!</span>
+			</div>`
+template.innerHTML = html;
+```
+
+Then we can access the `Element` with:
+```js
+template.content.firstChild;
+```
+
+Or if we created multiple root elements, we can access the `NodeList` of elements with:
+```js
+return template.content.childNodes;
+```
+
 - Inserting elements
   - Append
   - Prepend
