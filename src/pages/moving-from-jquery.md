@@ -18,7 +18,7 @@ Let's start with a recap of what jQuery is:
 
 jQuery was started in 2006, almost 15 years ago, and it's still in active development. Although the usage has been declining in favor of modern JavaScript frameworks.
 
-Acording to [W3Techs](https://w3techs.com/technologies/details/js-jquery):
+According to [W3Techs](https://w3techs.com/technologies/details/js-jquery):
 > jQuery is used by 95.7% of all the websites whose JavaScript library we know. This is 77.8% of all websites.
 
 What I find curious is that 50% of jQuery usage is still using version 1 of jQuery. For reference, the current version is 3.6. That means that a lot of sites are using a jQuery version from 2016 or earlier. That might very well be because jQuery is more likely to be found in legacy projects.
@@ -31,13 +31,133 @@ The following examples are based mainly on these two fantastic articles by [Tobi
 
 ## Replacing jQuery
 
+
 ### Selecting elements
-https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Locating_DOM_elements_using_selectors
-- Selectors (querying DOM elements)
-- Running a function on all elements
+
+jQuery makes it very easy to select DOM elements, something that for a long time was cumbersome in JavaScript. Previously the way to get a specific element in JavaScript was to use the `getElement*` methods, such as `getElementById` or `getElementsByClassName`. But thanks to the Selectors API, released in 2013, we can easily query DOM elements using the CSS selector syntax.
+
+```js
+// Select all instances with jQuery
+$(".button");
+// Select the first instance
+$(".button").first();
+
+// Select all instances with JavaScript
+document.querySelectorAll(".button");
+// Select the first instance
+document.querySelector(".button");
+```
+
+One of the nice things with jQuery is that the built-in methods will run against all elements in a query.
+
+```js
+$(".button").hide();
+// or with custom logic
+$(".button").each((index, element) => doSomething(element));
+```
+
+With vanilla JavaScript, a query returns an [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element), usually an [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) or a [`NodeList`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList), depending on if you use `querySelector` or `querySelectorAll`.
+
+<svg viewBox="-50 0 600 70" preserveAspectRatio="xMinYMin meet">
+	<a xlink:href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_top">
+		<rect x="1" y="1" width="110" height="50" class="fill-current text-gray-700"></rect>
+		<text
+			x="56"
+			y="27"
+			font-size="14px"
+			class="fill-current text-gray-100"
+			text-anchor="middle"
+			alignment-baseline="middle"
+		>
+			EventTarget
+		</text>
+	</a>
+	<polyline points="111,25  121,20  121,30  111,25" stroke="#D4DDE4" fill="none"></polyline>
+	<line x1="121" y1="25" x2="151" y2="25" stroke="#D4DDE4"></line>
+	<a xlink:href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_top">
+		<rect x="151" y="1" width="75" height="50" class="fill-current text-gray-700"></rect>
+		<text
+			x="188.5"
+			y="27"
+			font-size="14px"
+			class="fill-current text-gray-100"
+			text-anchor="middle"
+			alignment-baseline="middle"
+		>
+			Node
+		</text>
+	</a>
+	<polyline points="226,25  236,20  236,30  226,25" stroke="#D4DDE4" fill="none"></polyline>
+	<line x1="236" y1="25" x2="266" y2="25" stroke="#D4DDE4"></line>
+	<a xlink:href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="_top">
+		<rect x="266" y="1" width="75" height="50" class="fill-current text-gray-700"></rect>
+		<text
+			x="303.5"
+			y="27"
+			font-size="14px"
+			class="fill-current text-gray-100"
+			text-anchor="middle"
+			alignment-baseline="middle"
+		>
+			Element
+		</text>
+	</a>
+	<polyline points="341,25  351,20  351,30  341,25" stroke="#D4DDE4" fill="none"></polyline>
+	<line x1="351" y1="25" x2="381" y2="25" stroke="#D4DDE4"></line>
+	<a xlink:href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" target="_top">
+		<rect x="381" y="1" width="110" height="50" class="fill-current text-gray-700"></rect>
+		<text
+			x="436"
+			y="27"
+			font-size="14px"
+			class="fill-current text-gray-100"
+			text-anchor="middle"
+			alignment-baseline="middle"
+		>
+			HTMLElement
+		</text>
+	</a>
+</svg>
+
+We can iterate over a `NodeList` with the built-in method `NodeList.forEach()`, or we can turn the `NodeList` into an `Array`, either with `Array.from()` or with the spread operator `...`, which allows us to use all array methods.
+
+```js
+document.querySelectorAll(".button").forEach(x => doSomething(x));
+
+// Turning the returned NodeList into an Array
+Array.from(document.querySelectorAll(".button")).map(x => mapSomething(x));
+// or by using the spread operator, since NodeList is an iterable
+[...document.querySelectorAll(".button")].find(x => x.innerText === "test");
+```
+
+We don't have to query all the way from the `document` object every time. We can also query from a specific element and its children directly.
+With jQuery, we can use the `find` method, where was with vanilla JavaScript, we can query an element directly, exactly how we would query from the `document`.
+
+```js
+// Select the first instance of .button within .container in jQuery
+var container = $(".container");
+container.find(".button");
+
+// The same in vanilla JS
+var container = document.querySelector(".container");
+container.querySelector(".button");
+```
+
+[MDN: Locating DOM elements using selectors](https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Locating_DOM_elements_using_selectors)
 
 ### Waiting for the DOM to be loaded
-- document.ready
+
+A common use case is to wait for the DOM to be loaded before executing any script. In jQuery this is done with the `ready` method; with vanilla JavaScript, we can use the `DOMContentLoaded` event.
+
+```js
+$(document).ready(() => {
+	//...
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+	//...
+})
+```
 
 ### Changing styles
 - Styles
