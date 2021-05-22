@@ -16,7 +16,7 @@ Let's start with a recap of what jQuery is:
 
 > [jQuery](https://jquery.com/) is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
 
-jQuery was started in 2006, almost 15 years ago, and it's still in active development. Although the usage has been declining in favor of modern JavaScript frameworks.
+jQuery was started in 2006, almost 15 years ago, and it's still in active development. However, the usage has been declining in favor of modern JavaScript frameworks.
 
 According to [W3Techs](https://w3techs.com/technologies/details/js-jquery):
 > jQuery is used by 95.7% of all the websites whose JavaScript library we know. This is 77.8% of all websites.
@@ -154,7 +154,7 @@ container.querySelector(".button");
 
 ### Waiting for the DOM to be loaded
 
-A common use case is to wait for the DOM to be loaded before executing any script. In jQuery this is done with the `ready` method; with vanilla JavaScript, we can use the `DOMContentLoaded` event.
+A common use case is to wait for the DOM to be loaded before executing any script. In jQuery, this is done with the `ready` method; with vanilla JavaScript, we can use the `DOMContentLoaded` event.
 
 ```js
 $(document).ready(() => {
@@ -168,27 +168,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 ### Modifying styles
 
-In jQuery we can access and modify an element's styles with the `css` method. In vanilla JavaScript we would use the `style` property.
+In jQuery, we can access and modify an element's styles with the `css` method. In vanilla JavaScript, we would use the `style` property.
 
 ```js
-// With jQuery we can access the css properties
-// the same as we would write them in css declarations
+// With jQuery, we can access the CSS properties
+// the same as we would write them in CSS declarations
 $(".container").css("background-color", "#000");
 
-// With JavaScript we have to use camelCase
+// With JavaScript, we have to use camelCase
 document.querySelector(".container").style.backgroundColor = "#000";
 ```
 
-We can also set multiple styles at once. Although it's a little trickier in vanilla JavaScript.
+We can also set multiple styles at once, although it's a little trickier in vanilla JavaScript.
 
 ```js
-// With jQuery we can pass multiple styles at once in an object
+// With jQuery, we can pass multiple styles at once in an object
 $(".container").css({
 	"color": "white",
 	"background-color": "black"
 });
 
-// With vanilla JS we can set each individual style property seperately
+// With vanilla JS, we can set each style property separately
 let container = document.querySelector(".container");
 container.style.color = "white";
 container.style.backgroundColor = "black";
@@ -211,7 +211,7 @@ We can't assign an object directly to the style property since it's read-only.
 
 ### Hiding/showing elements
 
-jQuery has a couple [built-in helper methods](https://api.jquery.com/category/effects/) to set the styles of common css properties. Most notably, `hide`, `show`, and `toggle`.
+jQuery has a couple [built-in helper methods](https://api.jquery.com/category/effects/) to set the styles of common CSS properties. Most notably, `hide`, `show`, and `toggle`.
 
 These methods will set the display property of the selected element. For example:
 
@@ -225,7 +225,7 @@ $(".target").show();
 // assuming the display property was "block" initially
 
 $(".target").toggle(); // In this case hides the element
-// Works the same as hide and show, just toggles between the two
+// Works the same as hide and show, except it toggles between the two
 $(".target").toggle(); // And shows it again
 ```
 
@@ -271,8 +271,8 @@ let newElement = $("<div/>").text("Some text");
 // then append it inside another element
 $(".container").append(newElement);
 ```
-We can also just append any html as a string directly into an element with jQuery:
 
+We can also append any HTML as a string directly into an element with jQuery:
 ```js
 $("body").append(`
 	<div>
@@ -281,7 +281,7 @@ $("body").append(`
 );
 ```
 
-Here's how this used to be done in JavaScript:
+Here's how creating and inserting elements used to be done in JavaScript:
 
 ```js
 // and the same with vanilla JavaScript
@@ -299,7 +299,7 @@ document.querySelector("body").appendChild(div);
 And how we can do it now:
 
 ```js
-// Appending html as a string directly into an element
+// Appending HTML as a string directly into an element
 document.querySelector(".container").append(`<div>Some text</div>`);
 ```
 The [`append`](https://developer.mozilla.org/en-US/docs/Web/API/Element/append) method works much like jQuery's append. We can append either `Node` objects or [strings](https://developer.mozilla.org/en-US/docs/Web/API/DOMString).
@@ -319,7 +319,7 @@ Yup, that's it.
 
 ### Traversing the DOM tree
 
-We can't always target the exact element we want. Sometimes we want a sibling or a parent of an element and we have to traverse the DOM tree to get to it.
+We can't always target the exact element we want. Sometimes we want a sibling or a parent of an element, and we have to traverse the DOM tree to get to it.
 
 ```js
 let box = $(".box");
@@ -337,7 +337,7 @@ box.childNodes;
 
 ### Handling events
 
-jQuery has built-in methods for different types of event listeners, e.g., `click`, `input`, or `keyup` and a generic `on` method that can handle any event type. JavaScript on the other hand has the `addEventListener` method.
+jQuery has built-in methods for different types of event listeners, e.g., `click`, `input`, or `keyup` and a generic `on` method that can handle any event type. JavaScript, on the other hand, has the `addEventListener` method.
 
 ```js
 // With jQuery
@@ -357,9 +357,9 @@ document.addEventListener("keyup", (e) => {
 });
 ```
 
-For dynamically added elements, we can delegate the event listening to an element higher up in the DOM tree, e.g. a container or the document itself. This
+For dynamically added elements, we can delegate the event listening to an element higher up in the DOM tree, e.g., a container or the document itself.
 
-jQuery makes this easy with the `on` method, which can target child elements that that should trigger the event handler.
+jQuery makes this easy with the `on` method, which can target child elements that trigger the event handler.
 
 ```js
 $('#dataTable tbody').on("click", "tr", function(event) {
@@ -367,7 +367,7 @@ $('#dataTable tbody').on("click", "tr", function(event) {
 });
 ```
 
-In JavaScript we have to recreate this logic manually:
+In JavaScript, we have to recreate this logic manually:
 ```js
 document.querySelector('#dataTable tbody')
 .addEventListener('click', function(event) {
@@ -389,7 +389,7 @@ document.querySelector(".box").dispatchEvent(new Event("myEvent"));
 
 ### Making network requests
 
-jQuery's `ajax` method has been one if its main attractions, but with the addition of the fetch API, making network requests is in vanilla JavaScript is much easier now.
+jQuery's `ajax` method has been one of its main attractions, but with the addition of the fetch API, making network requests is in vanilla JavaScript is much easier now.
 
 ::: c two-col wide
 
@@ -413,7 +413,7 @@ fetch("data.json")
 ```
 :::
 ::: c info Note
-The original response from the fetch call is an HTTP response, not the actual JSON. To extract the JSON body content from the response, we use the `json()` method.
+The initial response from the fetch call is an HTTP response, not the actual JSON. To extract the JSON body content from the response, we use the `json()` method.
 :::
 
 ### Adding animations
@@ -437,7 +437,7 @@ $("div").animate(
 	function() { /* Callback after the animation completes */ }
 );
 ```
-In the meanwhile, creating animations with CSS has become much easier, so in most cases we don't even need JavaScript. We can trigger animations on pseudo classes like `:hover` or `:active`, or we could use JavaScript to toggle a class that triggers the animation.
+In the meanwhile, creating animations with CSS has become much easier, so in most cases we don't even need JavaScript. We can trigger animations on pseudo-classes like `:hover` or `:active`, or we could use JavaScript to toggle a class that triggers the animation.
 
 ```html
 <p class="target">Hover over me for a few seconds</p>
@@ -481,7 +481,7 @@ The [`transition`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition) 
 - [`transition-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function)
 - [`transition-delay`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay)
 
-We defined two properties to be transitioned; `font-size` and `opacity`, with different timings as well. That's why we can see the font size change much faster, and the opacity keeps changing even after the font size has fully transitioned.
+We defined two transition properties with different timings: `font-size` and `opacity`. That's why we can see the font size change much faster, and the opacity keeps changing even after the font size has fully transitioned.
 
 Because we didn't define the color as a transition property, it changes to red immediately on hover.
 
@@ -512,11 +512,14 @@ p {
 }
 ```
 
-CSS animations are much like CSS transition, except you can define your own animations with a specific name, the animation can have multiple steps (keyframes), and you can control things like how many iterations the animation should loop through, or if the animation should just loop indefinetly.
+CSS animations are much like CSS transition, except
+- You can define reusable animations with a name
+- The animation can have multiple steps (keyframes)
+- You can control how many times the animation should loop (or infinitely)
 
-The good news is that you don't usually have to create these animations by yourself from scratch, there are libraries like [Animate.css](https://animate.style/) and [Animista](https://animista.net/) that provide you with copy & paste CSS animations.
+The good news is that you don't usually have to create these animations from scratch; there are libraries like [Animate.css](https://animate.style/) and [Animista](https://animista.net/) that provide you with copy & paste CSS animations.
 
-And if those aren't enough you can create even more complex animations with JavaScript. One way to smoothly and efficiently animate in JavaScript is to create a [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) loop. Or you could just use a library like [Anime.js](https://animejs.com/) or [GSAP](https://greensock.com/gsap/).
+And if those aren't enough, you can create even more complex animations with JavaScript. One way to smoothly and efficiently animate in JavaScript is to create a [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) loop. Or you could use a library like [Anime.js](https://animejs.com/) or [GSAP](https://greensock.com/gsap/).
 
 ## Do we need jQuery?
 
