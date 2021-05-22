@@ -21,9 +21,9 @@ title: About
 ## I can go inside your custom component
 :::
 
-::::: c tag Slides aside wide-box
+::::: c tag Slides aside wide
 
-:::: c two-col slide
+:::: c code-panel slide
 ::: c
 ## Side by Side
 
@@ -44,7 +44,7 @@ export default {
 :::
 ::::
 
-:::: c two-col slide
+:::: c code-panel slide
 ::: c
 ## Side by Side
 
@@ -73,7 +73,7 @@ For years parents have espoused the health benefits of eating garlic bread with 
 :::
 
 
-:::: c box aside tag Slides
+:::: c aside tag Slides
 
 This a slides component example
 
@@ -91,39 +91,39 @@ Slide 3
 
 ::::
 
-::: c box aside
+::: c aside
 Hello!
 [Link](https://github.com/)
 
 :::
 
-::: c box warn "Warning"
+::: c warn "Warning"
 Hello without a title :(
 [Link](https://github.com/)
 
 :::
 
-::: c box tip Hello
+::: c tip Hello
 Hello without quotes!
 [Link](https://github.com/)
 
 :::
 
 
-::: c box info "Hello again"
+::: c info "Hello again"
 Hello with double quotes!
 [Link](https://github.com/)
 
 :::
 
 
-::: c box note 'Hello in single quotes'
+::: c note 'Hello in single quotes'
 Hello?
 [Link](https://github.com/)
 
 :::
 
-:::: c box danger "Hello with a read tag more"
+:::: c danger "Hello with a read tag more"
 By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you really are just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
 
 ::: c tag More
@@ -151,7 +151,7 @@ The `@tailwindcss/typography` plugin is our attempt to give you what you _actual
 
 It adds a new `prose` class that you can slap on any block of vanilla HTML content and turn it into a beautiful, well-formatted document:
 
-<div class="wide center-child">
+<div class="wide">
 
 ```html
 <article class="prose">

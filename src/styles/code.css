@@ -17,8 +17,11 @@ div[class*='language-'] {
 	margin-bottom: 1.5em;
 	background-color: theme('colors.gray.800');
 	overflow-x: auto;
-	max-width: 44rem !important;
 	@apply shadow-lg;
+}
+
+.prose > div[class*='language-'] {
+	max-width: 44rem !important;
 }
 
 .tip,
@@ -186,6 +189,10 @@ div[class*='language-'].line-numbers-mode {
 [class~='language-py']:before,
 [class~='language-python']:before {
 	content: 'py';
+}
+
+[class~='language-xml']:before {
+	content: 'xml';
 }
 
 [class~='language-bash']:before,

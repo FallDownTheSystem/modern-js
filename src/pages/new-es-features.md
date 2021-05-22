@@ -16,7 +16,7 @@ In this article, we'll focus on the former; new features in JavaScript and the w
 
 The goal of this article isn't to teach you new programming concepts or how to use these new JavaScript features; that would take far too long. Instead, I'm aiming to show you as many cool new features in JavaScript as possible, so you know about them, and link to the relevant MDN articles so you can learn more about the ones that interest you.
 
-::: c note "Credit" box
+::: c note "Credit"
 The examples in this article are based on and directly quoted from [MDN articles](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference), found from this [ECMAScript compatibility table](https://kangax.github.io/compat-table/es6/), with some key differences.
 
 This article is like a curated list of these articles, shortened and spliced for brevity and to only contain features introduced since the days of ES5.
@@ -33,7 +33,7 @@ Traditionally JavaScript variables were declared using the `var` statement, whic
 
 The difference between `const` and `let` is that the value of a constant can't be changed through reassignment, and it can't be redeclared.
 
-::: c box warn Warning
+::: c warn Warning
 `const` does not make the value itself immutable, just so that the variable identifier cannot be reassigned.
 :::
 
@@ -70,7 +70,7 @@ for (var i = 0; i < 5; ++i) {
 
 This will call the `setTimeout` function five times immediately, incrementing the variable `i` each time. A second later, all five callbacks are called, each referencing the same variable `i` defined in the function (or global) scope. With `let`, we're binding the variable to a new lexical environment with each iteration, so each iteration has its own scope, each referencing a different variable `i`.
 
-::: c box info Closures
+::: c info Closures
 A closure is a function bundled with references to its surrounding state (the **lexical environment**). In other words, a closure gives you access to an outer (function's) scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
 
 [MDN: Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
@@ -192,7 +192,7 @@ The destructuring syntax is really powerful. Considering that
 
 Putting all of that together:
 
-::: c center-child wide
+::: c wide
 ```js
 // We still get `size`, since it has a default value
 function drawChart({size = 'big', coords = {x: 0, y: 0}, radius = 25} = {}) {
@@ -534,7 +534,7 @@ console.log(sequence.next().value); // 5
 
 An iterable is an object that defines a method that returns an iterator. This method is the `@@iterator` method and is defined as a property with a `Symbol.iterator` as the key.
 
-::: c info Info box
+::: c info Info
 `@@` describes what's called a well-known [symbol](#symbols). These symbols are typically used as keys of properties that extend the functionality of objects.
 
 JavaScript has quite a few of these well-known symbols. For a full list, refer to [EC39: Well-known symbols](https://tc39.es/ecma262/#sec-well-known-symbols).
@@ -611,7 +611,7 @@ Besides the `then` and `catch` methods, there's a third one called `finally`. Th
 
 Here's an example of how to wrap an old-style callback-based function, `setTimeout` with a promise:
 
-::: c wide center-child
+::: c wide
 ```js
 const wait = ms => new Promise((resolve, reject) => setTimeout(resolve, ms));
 
@@ -641,7 +641,7 @@ The `Promise` object contains some built-in static methods that help deal with m
 
 An async function is a function declared with the `async` keyword, and the `await` keyword can be used within them. The `async` and `await` keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
 
-::: c info Info box
+::: c info Info
 There's a proposal to allow using `await` at the top-level of modules, enabling modules to act as big async functions.
 
 [TC39: Top-level await](https://github.com/tc39/proposal-top-level-await)
@@ -742,7 +742,7 @@ const square = new Rectangle(10, 10);
 console.log(square.area); // 100
 ```
 
-:::: c info Info box
+:::: c info Info
 There's a proposal to add public and private fields to classes.
 
 This would allow for defining properties ahead of time, rather than in the constructor and marking them as private.
@@ -891,7 +891,7 @@ Reflect.set(duck, 'eyes', 'black');
 
 BigInt is a built-in object whose constructor returns a `BigInt` value. BigInt represents whole numbers larger than 2<sup>53</sup> - 1, which is the largest number JavaScript can represent with a `Number` value. BigInt values can be used for arbitrarily large integers.
 
-::: c wide center-child
+::: c wide
 
 ```js
 const previouslyMaxSafeInteger = 9007199254740991n
@@ -924,7 +924,7 @@ A `TypedArray` object describes an array-like view of an underlying binary data 
 
 Here's how an array of bytes is represented as different concrete typed arrays:
 
-<table class="box">
+<table class="wide">
 	<thead>
 		<tr>
 			<th colspan="17">
@@ -988,7 +988,7 @@ Multi-byte number formats are represented in memory differently depending on mac
 
 So really, `DataView` is used in exceptional cases where you need control over the endianness of the data. In most cases, you can just use the methods on the `TypedArray` directly.
 
-:::: c box info SharedArrayBuffer
+:::: c info SharedArrayBuffer
 There's also a [`SharedArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer), similar to the ArrayBuffer object. The difference is that SharedArrayBuffers can share memory between the main page and [web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
 
 ::: c tag more
@@ -1040,7 +1040,7 @@ sayings.clear();
 sayings.size; // 0
 ```
 
-::: c box info WeakMap
+::: c info WeakMap
 
 The [`WeakMap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) object is a collection of key/value pairs in which the keys are objects only, and the values can be arbitrary values. The object references in the keys are held weakly, meaning that they are a target of garbage collection (GC) if there is no other reference to the object anymore. The WeakMap API is the same as the Map API.
 
@@ -1085,7 +1085,7 @@ Array.from(mySet);
 mySet2 = new Set([1, 2, 3, 4]);
 ```
 
-:::: c box info WeakSet
+:::: c info WeakSet
 
 [WeakSet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet) objects are collections of objects. An object in the `WeakSet` may only occur once. It is unique in the `WeakSet` 's collection, and objects are not enumerable.
 
@@ -1120,7 +1120,7 @@ I've found the DateTimeFormat constructor especially useful. Often negating the 
 
 Here's an example of what the DateTimeFormat constructor looks like.
 
-::: c wide center-child
+::: c wide
 ```js
 const date = new Date(2020, 11, 20, 3, 23, 16, 738);
 
@@ -1203,7 +1203,7 @@ const result = words.filter(word => word.length > 6);
 // expected output: Array ["exuberant", "destruction"]
 ```
 
-::: c box note Note
+::: c note Note
 If you're curious about whether a feature is a new addition or can be used with a specific browser, check out [Can I use](https://caniuse.com/), where you look up the browser support for different features and web technologies.
 :::
 
@@ -1213,7 +1213,7 @@ We've more or less covered the new features of modern JavaScript. But that's not
 
 Web APIs aren't defined in the ECMAScript specification. Instead, they're standards defined by the World Wide Web Consortium (W3C) and Web Hypertext Application Technology Working Group (WHATWG).
 
-:::: c box info Info
+:::: c info Info
 On May 28th, 2019, W3C and the WHATWG have signed an agreement to collaborate on a single, authoritative version of the HTML and DOM specifications published by WHATWG.
 
 ::: c tag more
@@ -1260,10 +1260,8 @@ We're not going to cover how to compile code from another language into WebAssem
 
 We can use `Fetch` to load a wasm file, and use the `WebAssembly.instantiateStreaming()` function to compile and instantiate the module directly from the streamed source.
 
-::::: c tag slides wide-box aside
-
-:::: c slide two-col
-
+::::: c tag slides wide aside
+:::: c slide code-panel
 ::: c
 > What's the exported function?
 
@@ -1287,9 +1285,7 @@ WebAssembly.instantiateStreaming(fetch('simple.wasm'), importObj)
 });
 ```
 ::::
-
-:::: c slide two-col
-
+:::: c slide code-panel
 ::: c
 > What's the exported memory buffer?
 
@@ -1313,9 +1309,7 @@ WebAssembly.instantiateStreaming(fetch('simple.wasm'), importObj)
 });
 ```
 ::::
-
-:::: c slide two-col
-
+:::: c slide code-panel
 ::: c
 > What's the exported table?
 
@@ -1339,9 +1333,7 @@ WebAssembly.instantiateStreaming(fetch('simple.wasm'), importObj)
 });
 ```
 ::::
-
-:::: c slide two-col
-
+:::: c slide code-panel
 ::: c
 > What's the `importObj`?
 
@@ -1365,7 +1357,6 @@ WebAssembly.instantiateStreaming(fetch('simple.wasm'), importObj)
 });
 ```
 ::::
-
 :::::
 
 There's a lot more to WebAssembly; if you're interested in learning more, check out the full guide at MDN.

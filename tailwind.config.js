@@ -105,7 +105,7 @@ module.exports = {
 								content: 'counter(list-item, var(--list-counter-style, decimal)) "."',
 								position: 'absolute',
 								fontWeight: '400',
-								color: theme('colors.gray.500', defaultTheme.colors.gray[500])
+								color: 'hsla(0, 0%, 100%, 0.4)'
 							},
 							'ul > li': {
 								position: 'relative'
@@ -113,7 +113,7 @@ module.exports = {
 							'ul > li::before': {
 								content: '""',
 								position: 'absolute',
-								backgroundColor: theme('colors.gray.500', defaultTheme.colors.gray[500]),
+								backgroundColor: 'hsla(0, 0%, 100%, 0.4)',
 								borderRadius: '50%'
 							},
 							hr: {

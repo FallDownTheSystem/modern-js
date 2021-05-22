@@ -13,7 +13,7 @@
 
 This article isn't actually about the history of JavaScript. I mean, it is, and it isn't. Really the goal of this article is to explain what I mean by *Modern* JavaScript. To achieve the goal, we're going to have to go through some of JavaScript's history. By understanding JavaScript's history, I hope you'll come to see why there's a divide between the *old*, frequently criticized, and even hated JavaScript and *Modern*, shockingly (😲) popular JavaScript.
 
-::: c note "Intended Audience" box
+::: c note "Intended Audience"
 This and the following articles are written with the assumption that you're at least slightly familiar with JavaScript. A basic understanding of the language and its standing on the web is going to be helpful.
 :::
 
@@ -39,7 +39,7 @@ Although JScript was based on JavaScript, their implementations differed, someti
 
 In 1996 Netscape submitted JavaScript to [ECMA International](https://en.wikipedia.org/wiki/Ecma_International) (originally the European Computer Manufacturers Association) to create a language specification that all browsers could adhere to. In 1997 the first ECMAScript language specification, ECMA-262, was created.
 
-::: c box info "Naming convention"
+::: c info "Naming convention"
 - The standards specification document is called ECMA-262.
 - The language specification is called ECMAScript.
 - The standards were previously referred to by their edition number, e.g., ECMAScript 5 or just ES5 for short.
@@ -54,7 +54,7 @@ The proposed ECMAScript 4 specification included major changes to the language, 
 
 A new version of the specification wouldn't be published until 2009, ten years after the last version. To appease all the stakeholders, ECMAScript 5 was a far less ambitious version focused on compatibility, originally named ECMAScript 3.1 and later renamed to the 5th edition of ECMAScript.
 
-::: c info "ECMAScript 5" box
+::: c info "ECMAScript 5"
 - Adds "strict mode," a subset intended to provide more thorough error checking and avoid error-prone constructs. 
 - Clarifies many ambiguities in the 3rd edition specification
 - Accommodates behavior of real-world implementations that differed consistently from that specification. 
@@ -65,7 +65,7 @@ One reason for the long delay between the 4th and the 5th edition was that by th
 
 It would be another 6 years between ES5 and ES6. The 6th Edition of ECMAScript, later renamed to ECMAScript 2015, contained many proposed features from ES4. The complete list of new features is extensive, and we'll go through a lot of them in the following article, which lists the key features from all ECMAScript specifications since ECMAScript 2015. This is the start of what I refer to as *modern* JavaScript.
 
-::: c box note "Read more"
+::: c note "Read more"
 This is just a glimpse into JavaScript's history. If you're interested in learning [more](https://www.springboard.com/blog/history-of-javascript/) there [are](https://thenewstack.io/brendan-eich-on-creating-javascript-in-10-days-and-what-hed-do-differently-today/) better [articles](https://medium.com/@_benaston/lesson-1a-the-history-of-javascript-8c1ce3bffb17) for [that](https://auth0.com/blog/a-brief-history-of-javascript/).
 :::
 
@@ -84,56 +84,55 @@ JSON was developed in the early 2000s by Douglas Crockford and has since taken o
 
 ```json
 {
-  "firstName": "John",
-  "lastName": "Smith",
-  "isAlive": true,
-  "age": 27,
-  "address": {
-    "streetAddress": "21 2nd Street",
-    "city": "New York",
-    "state": "NY",
-    "postalCode": "10021-3100"
-  },
-  "phoneNumbers": [
-    {
-      "type": "home",
-      "number": "212 555-1234"
-    },
-    {
-      "type": "office",
-      "number": "646 555-4567"
-    }
-  ],
-  "children": [],
-  "spouse": null
+	"firstName": "John",
+	"lastName": "Smith",
+	"isAlive": true,
+	"age": 27,
+	"address": {
+		"streetAddress": "21 2nd Street",
+		"city": "New York",
+		"state": "NY",
+		"postalCode": "10021-3100"
+	},
+	"phoneNumbers": [
+		{
+			"type": "home",
+			"number": "212 555-1234"
+		},
+		{
+			"type": "office",
+			"number": "646 555-4567"
+		}
+	],
+	"children": [],
+	"spouse": null
 }
 ```
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
 <root>
-   <firstName>John</firstName>
-   <lastName>Smith</lastName>
-   <isAlive>true</isAlive>
-   <age>27</age>
-   <address>
-      <city>New York</city>
-      <postalCode>10021-3100</postalCode>
-      <state>NY</state>
-      <streetAddress>21 2nd Street</streetAddress>
-   </address>
-   <phoneNumbers>
-      <element>
-         <number>212 555-1234</number>
-         <type>home</type>
-      </element>
-      <element>
-         <number>646 555-4567</number>
-         <type>office</type>
-      </element>
-   </phoneNumbers>
-   <children />
-   <spouse null="true" />
+	<firstName>John</firstName>
+	<lastName>Smith</lastName>
+	<isAlive>true</isAlive>
+	<age>27</age>
+	<address>
+		<city>New York</city>
+		<postalCode>10021-3100</postalCode>
+		<state>NY</state>
+		<streetAddress>21 2nd Street</streetAddress>
+	</address>
+	<phoneNumbers>
+		<element>
+			<number>212 555-1234</number>
+			<type>home</type>
+		</element>
+		<element>
+			<number>646 555-4567</number>
+			<type>office</type>
+		</element>
+	</phoneNumbers>
+	<children />
+	<spouse null="true" />
 </root>
 ```
 :::
