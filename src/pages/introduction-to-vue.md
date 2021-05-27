@@ -17,11 +17,19 @@ title: About
 
 <Title :title="$route.meta.title" :description="$route.meta.description" />
 
-Now that we know what the tools for modern development are let's look at how frameworks can help us build applications. Specifically, let's look at Vue.
+Let's do a little recap of everything we've learned so far.
+
+We learned:
+- Why JavaScript had a difficult start
+- What new features modern JavaScript offers
+- What new browser APIs we can take advantage of
+- What modern application development looks like
+
+But we still don't know how to *actually* build modern frontend JavaScript applications. We know the language features and the tools, so let's look at how frameworks can help us build applications. Specifically, let's look at Vue.
 
 > Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces.
 
-This isn't a tutorial for Vue; the documentation for Vue does a better job at that than I ever could. Instead, I want to talk about front-end JavaScript frameworks in more generic terms, but it helps to use Vue as an example.
+This isn't a tutorial for Vue; the documentation for Vue does a better job at that than I ever could. Instead, I want to talk about frontend JavaScript frameworks in more generic terms, but it helps to use Vue as an example.
 
 
 
