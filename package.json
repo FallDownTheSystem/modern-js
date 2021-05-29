@@ -15,7 +15,7 @@
 		"vue-router": "^4.0.8"
 	},
 	"devDependencies": {
-		"@iconify/json": "^1.1.349",
+		"@iconify/json": "^1.1.350",
 		"@vitejs/plugin-vue": "^1.2.2",
 		"@vue/compiler-sfc": "^3.0.11",
 		"autoprefixer": "^10.2.6",
@@ -24,7 +24,7 @@
 		"escape-html": "^1.0.3",
 		"eslint": "^7.27.0",
 		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-vue": "^7.9.0",
+		"eslint-plugin-vue": "^7.10.0",
 		"markdown-it": "^12.0.6",
 		"markdown-it-anchor": "^7.1.0",
 		"markdown-it-container": "^3.0.0",
@@ -35,8 +35,8 @@
 		"prismjs": "^1.23.0",
 		"tailwindcss": "^2.1.2",
 		"vite": "^2.3.4",
-		"vite-plugin-components": "^0.10.2",
-		"vite-plugin-icons": "0.5.1",
+		"vite-plugin-components": "^0.10.4",
+		"vite-plugin-icons": "0.6.0",
 		"vite-plugin-md": "^0.6.7",
 		"vite-plugin-pages": "0.12.1",
 		"vite-plugin-vue-layouts": "^0.3.1"
