@@ -1,3 +1,7 @@
+---
+title: Modern JS - Moving on from jQuery
+---
+
 <route>
 {
 	meta: {

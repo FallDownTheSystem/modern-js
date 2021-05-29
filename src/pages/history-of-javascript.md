@@ -1,3 +1,7 @@
+---
+title: Modern JS - History of JavaScript
+---
+
 <route>
 {
 	meta: {

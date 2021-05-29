@@ -1,3 +1,7 @@
+---
+title: Modern JS - New ES Features
+---
+
 <route>
 {
 	meta: {

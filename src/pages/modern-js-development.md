@@ -1,3 +1,7 @@
+---
+title: Modern JS - Modern JS Development
+---
+
 <route>
 {
 	meta: {
@@ -409,7 +413,7 @@ The core principles of the Jamstack are to
 
 There are many platform-as-a-service providers that make it easy to deploy and host modern web apps, for example [Netlify](https://www.netlify.com/) and [Vercel](https://vercel.com/).
 
-It should be noted that this isn't the only architecture for JavaScript applications, nor is it the best one for every scenario. It's just one that enables fast development.
+It should be noted that this isn't the only architecture for JavaScript applications, nor is it the best one for every scenario. It's just one that enables fast development and deployment.
 
 If you're interested in learning more about the why and how of Jamstack, check out:
 
