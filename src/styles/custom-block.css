@@ -10,6 +10,10 @@
 	}
 }
 
+.aside .aside {
+	@apply bg-gray-700;
+}
+
 .tip,
 .info,
 .note,

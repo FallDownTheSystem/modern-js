@@ -183,7 +183,7 @@ One such library was jQuery. Although jQuery wasn't built around AJAX, jQuery's 
 
 ## Coping with Internet Explorer
 
-The effects of Internet Explorer's long reign in the 2000s have lingered well into the 2010s, and the results of IE's dominance can still be seen today, even after its market share has dropped to below 5% globally.
+The effects of Internet Explorer's long reign in the 2000s lingered well into the 2010s, and the results of IE's dominance can still be seen today, even after its market share has dropped to below 5% globally.
 
 The number of web applications and users, especially business users still on Internet Explorer, has meant that developers have had to support the outdated browser for decades. This may not have been such a big deal, except that the latest version of Internet Explorer, IE 11, only implements ES5. That means that all features released since ES5 can not be used 😢.
 
@@ -236,7 +236,7 @@ var _element$index;
 
 ## Summary
 
-JavaScript's rushed initial design and unfortunate design choices, combined with cross-brows incompatibility issues and the fact that you can't break the web (backward compatibility), have led to JavaScript being disliked by many. Yet, the language has persevered.
+JavaScript's rushed initial design and unfortunate design choices, combined with cross-browser incompatibility issues and the fact that you can't break the web (backward compatibility), have led to JavaScript being disliked by many. Yet, the language has persevered.
 
 In the 2020 [Stack Overflow's developer survey](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved), 58.3% of developers reported that they are developing with the language and are interested in continuing to develop with it. This is pretty middle of the pack but far from being dreaded or hated.
 
