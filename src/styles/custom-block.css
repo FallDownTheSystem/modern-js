@@ -1,5 +1,5 @@
 .aside {
-	@apply rounded-xl bg-gray-800 px-8 pb-2 pt-6 my-6 text-gray-100;
+	@apply rounded bg-gray-800 px-8 py-6 my-6 text-gray-100;
 	max-width: 44rem !important;
 	& h2:first-of-type,
 	& p:first-of-type {
@@ -15,7 +15,7 @@
 .note,
 .warn,
 .danger {
-	@apply rounded-xl pl-5 pr-8 pt-4 my-6 text-gray-100 border-l-[0.75rem];
+	@apply rounded pl-5 pr-8 pt-4 my-6 text-gray-100 border-l-[0.75rem];
 	max-width: 44rem !important;
 	& p:last-of-type {
 		@apply mb-4;

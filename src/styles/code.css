@@ -40,17 +40,17 @@ div[class*='language-'] {
 }
 
 li > div[class*='language-'] {
-	border-radius: 6px 0 0 6px;
+	@apply rounded;
 	margin: 1rem -1.5rem 1rem -1.25rem;
 }
 
 @media (min-width: 420px) {
 	div[class*='language-'] {
-		border-radius: 6px;
+		@apply rounded;
 	}
 	li > div[class*='language-'] {
 		margin: 1rem 0 1rem 0;
-		border-radius: 6px;
+		@apply rounded;
 	}
 }
 
@@ -137,6 +137,10 @@ div[class*='language-'].line-numbers-mode {
 	color: theme('colors.gray.400');
 }
 
+[class*='language-'] [class*='language-']:before {
+	content: '' !important;
+}
+
 [class~='language-html']:before,
 [class~='language-markup']:before {
 	content: 'html';
@@ -170,6 +174,10 @@ div[class*='language-'].line-numbers-mode {
 [class~='language-javascript']:before,
 [class~='language-js']:before {
 	content: 'js';
+}
+
+[class~='language-vue']:before {
+	content: 'vue';
 }
 
 [class~='language-ts']:before,
