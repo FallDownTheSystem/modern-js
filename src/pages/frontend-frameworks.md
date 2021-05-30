@@ -819,7 +819,7 @@ But to give you some idea of what's out there, let's go through the most popular
 
 **React**
 
-React allows us to create declarative components that update reactively, just like Vue. The main difference is that React is all JavaScript, where as Vue seperates the template, code, and styles from each other. React may be less intuitive at first, but it's easy to get into if you're familiar with JavaScript. To make it easier to write templates with React, [JSX](https://reactjs.org/docs/introducing-jsx.html), a syntax extension to JavaScript can be used.
+[React](https://reactjs.org/) allows us to create declarative components that update reactively, just like Vue. The main difference is that React is all JavaScript, where as Vue seperates the template, code, and styles from each other. React may be less intuitive at first, but it's easy to get into if you're familiar with JavaScript. To make it easier to write templates with React, [JSX](https://reactjs.org/docs/introducing-jsx.html), a syntax extension to JavaScript can be used.
 
 Here's an example of a basic React component:
 
@@ -844,7 +844,7 @@ It should be noted that Vue also supports JSX and using render functions, very s
 
 **Angular**
 
-Angular is more similar to Vue than React is. Angular also uses HTML templates for the DOM. Components, data binding, and event handling is very similar in both frameworks. The biggest difference is that Angular uses TypeScript and has to be compiled. Angular's templates are also `Class` based and more verbose than Vue's. Angular also prefers to seperate it's template, code and styles into their own files.
+[Angular](https://angular.io/) is more similar to Vue than React is. Angular also uses HTML templates for the DOM. Components, data binding, and event handling is very similar in both frameworks. The biggest difference is that Angular uses TypeScript and has to be compiled. Angular's templates are also `Class` based and more verbose than Vue's. Angular also prefers to seperate it's template, code and styles into their own files.
 
 Angular also comes with a lot more built-in, but nothing that can't be added to Vue with additional libraries.
 
