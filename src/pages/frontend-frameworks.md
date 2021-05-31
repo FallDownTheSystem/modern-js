@@ -789,14 +789,14 @@ Other frameworks will have similar tools. What all of them have is common is tha
 
 ### Framework Frameworks
 
-That's right, a framework to for a framework.
+That's right, a framework for a framework, a *meta framework*, if you will.
 
 Almost all the popular frameworks have projects that help us create fully fledged applications with best practises, by including a lot more features than what the base frameworks/libraries include.
 
 These frameworks generally contain built-in features like
 - Pre-rendering
 - Routing
-- Data fetching / CMS
+- Data fetching / Content Management Systems (CMS)
 - Meta tags and SEO
 - A library of supported add-ons
 
