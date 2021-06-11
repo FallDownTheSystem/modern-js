@@ -675,7 +675,7 @@ Few things to note:
 
 In a simple example like this, handling the applications state is still easy, but what if we had a ton of nested components, and we needed to move data to a deeply nested child, or from one component to a sibling component?
 
-In these types of cases it might be better to move our data away from the component itself, and into a global *"store"*, that we can then import into our components, without having to pass the data beween components.
+In these types of cases it might be better to move our data away from the component itself, and into a global *"store"*, that we can then import into our components, without having to pass the data between components.
 
 ### State management
 
@@ -685,6 +685,26 @@ There's a popular state management architecture pattern called Flux. Even Vue's 
 
 With Vue 3 it's easy enough to create your own global reactive store where you can store data and methods, or you can reach to Vuex if you need more structure, for example when working in a large team.
 
+Here's a simple example of a Vuex store:
+
+```js
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  },
+  actions: {
+    increment (context) {
+      context.commit('increment')
+    }
+  }
+})
+```
+
 This diagram illustrates the Vuex pattern pretty well:
 
 ::: c aside
@@ -693,16 +713,38 @@ This diagram illustrates the Vuex pattern pretty well:
 
 Let's unpack this picture.
 
-> What's the difference between actions and mutations?
+**State**
 
-The idea is that an action can be asynchronous and commit multiple mutations. That's why we can see the Action communicating with a Backend API.
-A mutation is what actually mutates the state in the Vuex store.
+> Vuex uses a single state tree - that is, this single object contains all your application level state and serves as the "single source of truth." This also means usually you will have only one store for each application. A single state tree makes it straightforward to locate a specific piece of state, and allows us to easily take snapshots of the current app state for debugging purposes.
 
-Newer state management patterns have started to drop the idea of seperating mutations as actions, as most of the time they're the same and they add unnessary boilerplate code.
+Even though the state is a single object, it can still be split into sub modules.
 
-> What is `DevTools`?
+**Getters**
 
-By always using a function to mutate our data, we can track the changes in our state. This allows us to use [DevTools](https://devtools.vuejs.org/) (a browser extension), to visualize and debug changes in the state.
+> Vuex allows us to define "getters" in the store. You can think of them as computed properties for stores.
+
+Just like computed properties, getters are automatically updated whenever your state changes.
+
+**Mutations**
+
+> The only way to actually change state in a Vuex store is by committing a mutation.
+
+Mutations are functions that allow you to mutate your state. The idea is that you shouldn't mutate your state directly, instead using mutations to make changes predicatable and trackable.
+
+**Actions**
+
+> Actions are similar to mutations, the differences being that:
+> - Instead of mutating the state, actions commit mutations.
+> - Actions can contain arbitrary asynchronous operations.
+
+Actions can commit multiple mutations. A mutation is supposed to be a pure function, where as an action can contain side effects.
+
+Newer state management libraries (including future versions of Vuex) have started to drop the idea of seperating mutations as actions, as most of the time they're the same and they add unnessary boilerplate code.
+
+
+::: c note Devtools
+By always using a mutations to modify our data, we can track the changes in our state. This allows us to use [Devtools](https://devtools.vuejs.org/) (a browser extension), to visualize and debug changes in the state.
+:::
 
 Keep in mind that a state management library can add a lot of boilerplate code to your project, so you probably shouldn't use one unless you really need to.
 
